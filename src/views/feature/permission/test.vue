@@ -1,0 +1,16 @@
+<script setup lang="ts">
+definePage({
+  meta: {
+    title: '权限验证',
+    auth: 'permission.browse',
+  },
+})
+</script>
+
+<template>
+  <PageLayout navbar>
+    <PageMain>
+      你能看到这个页面，说明你有访问权限。
+    </PageMain>
+  </PageLayout>
+</template>
