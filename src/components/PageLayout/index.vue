@@ -180,7 +180,7 @@ function handleBackTopClick() {
       <div class="h-full flex-center px-4">
         <slot name="tabbar">
           <RouterLink
-            v-for="item in tabbarList" :key="JSON.stringify(item)" class="flex flex-1 flex-col items-center gap-[2px] text-[var(--g-tabbar-color)] transition-all" :class="{
+            v-for="item in tabbarList" :key="JSON.stringify(item)" class="flex flex-1 flex-col items-center gap-[2px] text-[var(--g-tabbar-color)] no-underline transition-all" :class="{
               'text-[var(--g-tabbar-active-color)]!': route.fullPath === item.path,
             }" :to="item.path" replace
           >
