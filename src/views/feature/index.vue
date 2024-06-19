@@ -88,6 +88,13 @@ const data: {
       { path: '/feature/plugin/vchart', title: 'VChart', icon: 'i-ri:bar-chart-2-line' },
     ],
   },
+  {
+    title: '页面',
+    icon: 'i-ri:pages-line',
+    routes: [
+      { path: '/feature/page/loadmore', title: '加载更多' },
+    ],
+  },
 ]
 </script>
 

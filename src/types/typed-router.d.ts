@@ -32,6 +32,7 @@ declare module 'vue-router/auto-routes' {
     '/feature/navbar/custom-navbar': RouteRecordInfo<'/feature/navbar/custom-navbar', '/feature/navbar/custom-navbar', Record<never, never>, Record<never, never>>,
     '/feature/navbar/default': RouteRecordInfo<'/feature/navbar/default', '/feature/navbar/default', Record<never, never>, Record<never, never>>,
     '/feature/navbar/none': RouteRecordInfo<'/feature/navbar/none', '/feature/navbar/none', Record<never, never>, Record<never, never>>,
+    '/feature/page/loadmore': RouteRecordInfo<'/feature/page/loadmore', '/feature/page/loadmore', Record<never, never>, Record<never, never>>,
     '/feature/permission/': RouteRecordInfo<'/feature/permission/', '/feature/permission', Record<never, never>, Record<never, never>>,
     '/feature/permission/test': RouteRecordInfo<'/feature/permission/test', '/feature/permission/test', Record<never, never>, Record<never, never>>,
     '/feature/plugin/animation': RouteRecordInfo<'/feature/plugin/animation', '/feature/plugin/animation', Record<never, never>, Record<never, never>>,
