@@ -27,17 +27,24 @@ withDefaults(
 
 const emits = defineEmits<{
   scroll: [Event]
+  reachBottom: []
 }>()
 
 const route = useRoute()
 const settingsStore = useSettingsStore()
 
-const mainRef = ref()
+const layoutRef = ref()
+defineExpose({
+  ref: layoutRef,
+})
 function handleMainScroll(e: Event) {
   handleNavbarScroll()
   handleTabbarScroll()
   handleBackTopScroll()
   emits('scroll', e)
+  if (Math.ceil((e.target as HTMLElement).scrollTop + (e.target as HTMLElement).clientHeight) >= (e.target as HTMLElement).scrollHeight) {
+    emits('reachBottom')
+  }
 }
 onMounted(() => {
   handleNavbarScroll()
@@ -66,15 +73,15 @@ onMounted(() => {
 })
 const navbarScrollTop = ref(0)
 function handleNavbarScroll() {
-  navbarScrollTop.value = mainRef.value.scrollTop
+  navbarScrollTop.value = layoutRef.value.scrollTop
 }
 
 // Tabbar
 const showTabbarShadow = ref(false)
 function handleTabbarScroll() {
-  const scrollTop = mainRef.value.scrollTop
-  const clientHeight = mainRef.value.clientHeight
-  const scrollHeight = mainRef.value.scrollHeight
+  const scrollTop = layoutRef.value.scrollTop
+  const clientHeight = layoutRef.value.clientHeight
+  const scrollHeight = layoutRef.value.scrollHeight
   showTabbarShadow.value = Math.ceil(scrollTop + clientHeight) < scrollHeight
 }
 const tabbarList = computed(() => {
@@ -95,10 +102,10 @@ function getIcon(item: any) {
 // 返回顶部
 const backTopScrollTop = ref(0)
 function handleBackTopScroll() {
-  backTopScrollTop.value = mainRef.value.scrollTop
+  backTopScrollTop.value = layoutRef.value.scrollTop
 }
 function handleBackTopClick() {
-  mainRef.value.scrollTo({
+  layoutRef.value.scrollTo({
     top: 0,
     behavior: 'smooth',
   })
@@ -106,7 +113,7 @@ function handleBackTopClick() {
 </script>
 
 <template>
-  <div ref="mainRef" class="relative h-vh flex flex-col overflow-auto supports-[(height:100dvh)]:h-dvh" @scroll="handleMainScroll">
+  <div ref="layoutRef" class="relative h-vh flex flex-col overflow-auto supports-[(height:100dvh)]:h-dvh" @scroll="handleMainScroll">
     <!-- Navbar -->
     <header
       v-show="navbar ?? settingsStore.settings.navbar.enable" class="navbar w-full flex-center bg-[var(--g-navbar-bg)] text-[var(--g-navbar-color)] transition-all pt-safe h+safe-t-[var(--g-navbar-height)]" :class="{
