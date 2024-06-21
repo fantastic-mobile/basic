@@ -36,7 +36,7 @@
 - `main` Vue3 版本框架源码分支，不含示例代码，可直接用于实际开发
 - `example` Vue3 版本演示源码分支，同线上演示站，包含大量示例，可用于参考学习
 
-<!-- ## 预览
+## 预览
 
 > 预览截图为专业版
 
@@ -45,13 +45,9 @@
     <td><img src="https://fantastic-mobile.github.io/preview1.png" /></td>
     <td><img src="https://fantastic-mobile.github.io/preview2.png" /></td>
     <td><img src="https://fantastic-mobile.github.io/preview3.png" /></td>
-  </tr>
-  <tr>
     <td><img src="https://fantastic-mobile.github.io/preview4.png" /></td>
-    <td><img src="https://fantastic-mobile.github.io/preview5.png" /></td>
-    <td><img src="https://fantastic-mobile.github.io/preview6.png" /></td>
   </tr>
-</table> -->
+</table>
 
 ## 支持
 
