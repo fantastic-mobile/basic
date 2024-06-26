@@ -2,6 +2,11 @@
 function open(url: string) {
   window.open(url, '_blank')
 }
+
+const UIdialog = ref(false)
+function switchUI() {
+  UIdialog.value = true
+}
 </script>
 
 <template>
@@ -15,12 +20,33 @@ function open(url: string) {
       <div class="text-3xl text-dark/80 font-bold dark-text-light/80">
         别具一格, 自成一派
       </div>
-      <div class="mt-4">
+      <div class="mt-4 flex gap-4">
         <HButton @click="open('https://fantastic-mobile.github.io')">
           <SvgIcon name="i-ri:file-text-line" />
           开发文档
         </HButton>
+        <HButton outline @click="switchUI">
+          切换组件库
+        </HButton>
       </div>
+      <HDialog v-model="UIdialog" title="切换组件库" overlay>
+        <div class="rounded-2 bg-green/20 px-4 py-2 text-sm/6 c-green-6">
+          <p class="my-1">
+            本框架支持与 Vant 组件库解耦，意味着可以轻松将 Vant 组件库替换成其他 UI 组件库，并且不会影响框架原本的功能。
+          </p>
+          <p class="my-1">
+            演示站挑选了以下 2 款组件库作为示例，你可以点击访问并预览。
+          </p>
+        </div>
+        <div class="mt-4 flex flex-wrap justify-center gap-4">
+          <HButton @click="open('https://fantastic-mobile.github.io/varlet-example/')">
+            访问 Varlet 演示站
+          </HButton>
+          <HButton @click="open('https://fantastic-mobile.github.io/nut-example/')">
+            访问 NutUI 演示站
+          </HButton>
+        </div>
+      </HDialog>
     </div>
   </PageLayout>
 </template>
