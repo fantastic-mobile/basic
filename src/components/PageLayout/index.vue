@@ -27,6 +27,7 @@ withDefaults(
 
 const emits = defineEmits<{
   scroll: [Event]
+  reachTop: []
   reachBottom: []
 }>()
 
@@ -42,6 +43,9 @@ function handleMainScroll(e: Event) {
   handleTabbarScroll()
   handleBackTopScroll()
   emits('scroll', e)
+  if ((e.target as HTMLElement).scrollTop === 0) {
+    emits('reachTop')
+  }
   if (Math.ceil((e.target as HTMLElement).scrollTop + (e.target as HTMLElement).clientHeight) >= (e.target as HTMLElement).scrollHeight) {
     emits('reachBottom')
   }
