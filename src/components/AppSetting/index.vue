@@ -114,6 +114,18 @@ function handleCopy() {
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
+          哀悼模式
+        </div>
+        <HToggle v-model="settingsStore.settings.app.enableMournMode" />
+      </div>
+      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
+        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
+          色弱模式
+        </div>
+        <HToggle v-model="settingsStore.settings.app.enableColorAmblyopiaMode" />
+      </div>
+      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
+        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           返回顶部
         </div>
         <HToggle v-model="settingsStore.settings.app.enableBackTop" />
