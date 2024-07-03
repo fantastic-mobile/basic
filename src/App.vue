@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import eruda from 'eruda'
-import VConsole from 'vconsole'
 import Provider from './ui-provider/index.vue'
 import eventBus from '@/utils/eventBus'
 import useSettingsStore from '@/store/modules/settings'
@@ -35,9 +33,6 @@ watch([
   immediate: true,
   deep: true,
 })
-
-import.meta.env.VITE_APP_DEBUG_TOOL === 'eruda' && eruda.init()
-import.meta.env.VITE_APP_DEBUG_TOOL === 'vconsole' && new VConsole()
 
 const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
 </script>
