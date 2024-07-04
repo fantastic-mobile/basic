@@ -12,6 +12,7 @@ declare module 'vue' {
     AuthAll: typeof import('./../components/AuthAll/index.vue')['default']
     HBadge: typeof import('./../ui-kit/HBadge.vue')['default']
     HButton: typeof import('./../ui-kit/HButton.vue')['default']
+    HDialog: typeof import('./../ui-kit/HDialog.vue')['default']
     HInput: typeof import('./../ui-kit/HInput.vue')['default']
     HSlideover: typeof import('./../ui-kit/HSlideover.vue')['default']
     HTabList: typeof import('./../ui-kit/HTabList.vue')['default']
