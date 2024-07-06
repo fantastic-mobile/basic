@@ -9,6 +9,10 @@
   }
 }
 
+html {
+  overscroll-behavior: none;
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
