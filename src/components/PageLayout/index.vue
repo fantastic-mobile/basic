@@ -117,7 +117,7 @@ function handleBackTopClick() {
 </script>
 
 <template>
-  <div ref="layoutRef" class="relative h-vh flex flex-col overflow-auto supports-[(height:100dvh)]:h-dvh" @scroll="handleMainScroll">
+  <div ref="layoutRef" class="relative h-vh flex flex-col overflow-auto overscroll-none supports-[(height:100dvh)]:h-dvh" @scroll="handleMainScroll">
     <!-- Navbar -->
     <header
       v-show="navbar ?? settingsStore.settings.navbar.enable" class="navbar w-full flex-center bg-[var(--g-navbar-bg)] text-[var(--g-navbar-color)] transition-all pt-safe h+safe-t-[var(--g-navbar-height)]" :class="{
