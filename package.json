@@ -50,7 +50,7 @@
     "vue-router": "^4.4.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.21.2",
+    "@antfu/eslint-config": "^2.21.3",
     "@iconify/json": "^2.2.223",
     "@iconify/vue": "^4.1.2",
     "@stylistic/stylelint-config": "^1.0.1",
