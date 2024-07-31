@@ -59,6 +59,7 @@ const data: {
     icon: 'i-bx:bxs-component',
     routes: [
       { path: '/feature/component/basic', title: '基础组件' },
+      { path: '/feature/component/composite', title: '复合组件' },
     ],
   },
   {

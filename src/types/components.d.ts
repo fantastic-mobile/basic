@@ -24,5 +24,6 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
     Trend: typeof import('./../components/Trend/index.vue')['default']
+    VanFieldPicker: typeof import('./../components/VanFieldPicker/index.vue')['default']
   }
 }

@@ -23,6 +23,7 @@ declare module 'vue-router/auto-routes' {
     '/feature/': RouteRecordInfo<'/feature/', '/feature', Record<never, never>, Record<never, never>>,
     '/feature/component/basic': RouteRecordInfo<'/feature/component/basic', '/feature/component/basic', Record<never, never>, Record<never, never>>,
     '/feature/component/built-in': RouteRecordInfo<'/feature/component/built-in', '/feature/component/built-in', Record<never, never>, Record<never, never>>,
+    '/feature/component/composite': RouteRecordInfo<'/feature/component/composite', '/feature/component/composite', Record<never, never>, Record<never, never>>,
     '/feature/component/pagemain-demo': RouteRecordInfo<'/feature/component/pagemain-demo', '/feature/component/pagemain-demo', Record<never, never>, Record<never, never>>,
     '/feature/component/trend-demo': RouteRecordInfo<'/feature/component/trend-demo', '/feature/component/trend-demo', Record<never, never>, Record<never, never>>,
     '/feature/function/icon': RouteRecordInfo<'/feature/function/icon', '/feature/function/icon', Record<never, never>, Record<never, never>>,
