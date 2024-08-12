@@ -13,6 +13,9 @@ const fieldPickerColumns = ref([
   { text: '绍兴', value: 'Shaoxing' },
   { text: '湖州', value: 'Huzhou' },
 ])
+
+const fieldCalendarValue = ref('')
+const fieldCalendarValue2 = ref('')
 </script>
 
 <template>
@@ -24,6 +27,16 @@ const fieldPickerColumns = ref([
       <van-field-picker v-model="fieldPickerValue" placeholder="请选择" :border="false" :columns="fieldPickerColumns" />
       <van-divider />
       选中值: {{ fieldPickerValue }}
+    </PageMain>
+    <PageMain title="VanFieldCalendar">
+      <van-field-calendar v-model="fieldCalendarValue" placeholder="请选择" :border="false" />
+      <van-divider />
+      选中值: {{ fieldCalendarValue }}
+    </PageMain>
+    <PageMain title="VanFieldCalendar 格式化">
+      <van-field-calendar v-model="fieldCalendarValue2" placeholder="请选择" :border="false" format="MM-DD" value-format="YYYY-MM-DD" />
+      <van-divider />
+      选中值: {{ fieldCalendarValue2 }}
     </PageMain>
   </PageLayout>
 </template>
