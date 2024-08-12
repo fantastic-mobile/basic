@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FieldProps, PickerOption, PickerProps, PopupProps } from 'vant'
+import type { FieldProps, PickerOption, PopupProps } from 'vant'
 
 defineOptions({
   name: 'VanFieldPicker',
