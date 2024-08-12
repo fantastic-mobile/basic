@@ -14,7 +14,10 @@ const props = defineProps<{
 }>()
 
 const outputType = computed(() => {
-  if (/^https?:\/\//.test(props.name)) {
+  const hasPathFeatures = (str: string) => {
+    return /^\.{1,2}\//.test(str) || str.startsWith('/') || str.includes('/')
+  }
+  if (/^https?:\/\//.test(props.name) || hasPathFeatures(props.name)) {
     return 'img'
   }
   else if (/i-[^:]+:[^:]+/.test(props.name)) {
