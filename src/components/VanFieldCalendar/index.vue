@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CalendarProps, FieldProps } from 'vant'
+import { pick } from 'lodash-es'
 import dayjs from '@/utils/dayjs'
 
 defineOptions({
@@ -8,6 +9,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<{
+    // field
     label?: FieldProps['label']
     name?: FieldProps['name']
     id?: FieldProps['id']
@@ -24,6 +26,7 @@ const props = withDefaults(
     leftIcon?: FieldProps['leftIcon']
     rightIcon?: FieldProps['rightIcon']
     rules?: FieldProps['rules']
+    // calendar
     color?: CalendarProps['color']
     minDate?: CalendarProps['minDate']
     maxDate?: CalendarProps['maxDate']
@@ -41,6 +44,9 @@ const props = withDefaults(
   },
 )
 
+const fieldProps = computed(() => pick(props, ['label', 'name', 'id', 'size', 'placeholder', 'border', 'colon', 'required', 'center', 'arrowDirection', 'labelClass', 'labelWidth', 'labelAlign', 'leftIcon', 'rightIcon', 'rules']))
+const calendarProps = computed(() => pick(props, ['color', 'minDate', 'maxDate', 'formatter', 'showConfirm', 'confirmText', 'firstDayOfWeek', 'round']))
+
 const value = defineModel<string>()
 const valueStr = computed(() => value.value && dayjs(value.value).format(props.format))
 const valueDate = computed(() => dayjs(value.value).toDate())
@@ -53,6 +59,6 @@ function onConfirm(date: Date) {
 </script>
 
 <template>
-  <van-field :id :model-value="valueStr" :label :name :size :placeholder :border :colon :required :center :arrow-direction :label-class :label-width :label-align :left-icon :right-icon :rules is-link readonly @click="showCalendar = true" />
-  <van-calendar v-model:show="showCalendar" :color :min-date :max-date :default-date="valueDate" :formatter :show-confirm :confirm-text :first-day-of-week :round teleport="body" @confirm="onConfirm" />
+  <van-field :model-value="valueStr" v-bind="fieldProps" is-link readonly @click="showCalendar = true" />
+  <van-calendar v-model:show="showCalendar" v-bind="calendarProps" :default-date="valueDate" teleport="body" @confirm="onConfirm" />
 </template>
