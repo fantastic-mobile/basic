@@ -14,6 +14,8 @@ const fieldPickerColumns = ref([
   { text: '湖州', value: 'Huzhou' },
 ])
 
+const fieldDatePickerValue = ref()
+
 const fieldCalendarValue = ref('')
 const fieldCalendarValue2 = ref('')
 </script>
@@ -27,6 +29,11 @@ const fieldCalendarValue2 = ref('')
       <van-field-picker v-model="fieldPickerValue" placeholder="请选择" :border="false" :columns="fieldPickerColumns" />
       <van-divider />
       选中值: {{ fieldPickerValue }}
+    </PageMain>
+    <PageMain title="VanFieldDatePicker">
+      <van-field-date-picker v-model="fieldDatePickerValue" placeholder="请选择" :border="false" />
+      <van-divider />
+      选中值: {{ fieldDatePickerValue }}
     </PageMain>
     <PageMain title="VanFieldCalendar">
       <van-field-calendar v-model="fieldCalendarValue" placeholder="请选择" :border="false" />
