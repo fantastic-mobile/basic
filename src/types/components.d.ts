@@ -25,6 +25,7 @@ declare module 'vue' {
     SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
     Trend: typeof import('./../components/Trend/index.vue')['default']
     VanFieldCalendar: typeof import('./../components/VanFieldCalendar/index.vue')['default']
+    VanFieldDatePicker: typeof import('./../components/VanFieldDatePicker/index.vue')['default']
     VanFieldPicker: typeof import('./../components/VanFieldPicker/index.vue')['default']
   }
 }

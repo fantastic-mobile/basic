@@ -35,6 +35,7 @@ const props = withDefaults(
     confirmText?: CalendarProps['confirmText']
     firstDayOfWeek?: CalendarProps['firstDayOfWeek']
     round?: CalendarProps['round']
+    // 自定义
     format?: string
     valueFormat?: string
   }>(),
