@@ -24,6 +24,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.22",
     "@vant/touch-emulator": "^1.4.0",
+    "@vueuse/components": "^10.11.1",
     "@vueuse/core": "^10.11.0",
     "@vueuse/integrations": "^10.11.0",
     "animate.css": "^4.1.1",
