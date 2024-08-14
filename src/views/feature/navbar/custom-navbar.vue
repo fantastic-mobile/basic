@@ -5,6 +5,8 @@ definePage({
   },
 })
 
+const router = useRouter()
+
 const scrollTop = ref(0)
 function onScroll(e: Event) {
   scrollTop.value = (e.target as HTMLElement).scrollTop
@@ -23,7 +25,7 @@ function onScroll(e: Event) {
       </header>
       <div class="mt-[80px] flex flex-1 flex-col gap-4 p-4">
         使用自定义导航可以满足更复杂的业务场景，例如当前页面，你可以滚动页面试试。
-        <van-button @click="$router.back()">
+        <van-button @click="router.back()">
           返回
         </van-button>
         <div v-for="i in 50" :key="i" class="text-center">

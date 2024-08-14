@@ -7,6 +7,8 @@ definePage({
   },
 })
 
+const router = useRouter()
+
 const checked = ref(false)
 
 const show = ref(false)
@@ -38,7 +40,7 @@ function onSelect(item: any) {
       <div>
         Switch: {{ checked }}
       </div>
-      <van-button @click="$router.back()">
+      <van-button @click="router.back()">
         返回
       </van-button>
     </div>

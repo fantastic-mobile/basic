@@ -17,7 +17,6 @@ const data: {
     path: string
     title: string
     icon?: string
-    pro?: boolean
   }[]
 }[] = [
   {
@@ -110,12 +109,7 @@ const data: {
           </div>
         </div>
         <div class="grid grid-cols-2 mt-4 gap-3">
-          <router-link
-            v-for="route in item.routes" :key="route.path" :to="route.path" class="relative flex of-hidden rounded-lg bg-[var(--g-container-bg)] text-sm text-gray-6 shadow-sm dark-text-gray-4" :class="{
-              'bg-gradient-to-r from-transparent to-[#ffd700] dark-to-[#ffd70030] b-(1 solid [#d4af37])': route.pro,
-            }"
-          >
-            <SvgIcon v-if="route.pro" name="i-mdi:professional-hexagon" class="right-[-12px] top--3 z-0 rotate-30 text-6xl c-[#d4af37] absolute! dark-c-[#d4af3730]" />
+          <router-link v-for="route in item.routes" :key="route.path" :to="route.path" class="relative flex of-hidden rounded-lg bg-[var(--g-container-bg)] text-sm text-gray-6 shadow-sm dark-text-gray-4">
             <div v-if="route.icon" class="z-1 flex-center b-r-(1 [var(--g-bg)] solid) px-3 py-2 pe-2">
               <SvgIcon :name="route.icon" />
             </div>

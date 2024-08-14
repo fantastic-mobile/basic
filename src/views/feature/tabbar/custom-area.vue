@@ -5,6 +5,8 @@ definePage({
   },
 })
 
+const router = useRouter()
+
 const checked = ref(false)
 </script>
 
@@ -26,7 +28,7 @@ const checked = ref(false)
       <div>
         <van-switch v-model="checked" size="16px" />
       </div>
-      <van-button @click="$router.back()">
+      <van-button @click="router.back()">
         返回
       </van-button>
     </div>
