@@ -115,7 +115,7 @@ const data: {
               'bg-gradient-to-r from-transparent to-[#ffd700] dark-to-[#ffd70030] b-(1 solid [#d4af37])': route.pro,
             }"
           >
-            <SvgIcon v-if="route.pro" name="i-mdi:professional-hexagon" class="right-[-12px] top--3 z-0 rotate-30 bg-[#d4af37] text-6xl absolute! dark-bg-[#d4af3730]" />
+            <SvgIcon v-if="route.pro" name="i-mdi:professional-hexagon" class="right-[-12px] top--3 z-0 rotate-30 text-6xl c-[#d4af37] absolute! dark-c-[#d4af3730]" />
             <div v-if="route.icon" class="z-1 flex-center b-r-(1 [var(--g-bg)] solid) px-3 py-2 pe-2">
               <SvgIcon :name="route.icon" />
             </div>
