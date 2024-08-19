@@ -31,7 +31,7 @@ const globalSettings: Settings.all = {
   copyright: {
     dates: '2024-present',
     company: 'Fantastic-mobile',
-    website: 'https://fantastic-mobile.github.io',
+    website: 'https://fantastic-mobile.hurui.me',
   },
 }
 

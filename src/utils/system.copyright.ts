@@ -5,11 +5,11 @@ if (import.meta.env.PROD) {
   const copyright_sub_style = `${copyright_common_style} background: #707070;`
   if (navigator.language.toLowerCase() === 'zh-cn') {
     // eslint-disable-next-line no-console
-    console.info('%c由%cFantastic-mobile%c驱动', copyright_sub_style, copyright_main_style, copyright_sub_style, '\nhttps://fantastic-mobile.github.io')
+    console.info('%c由%cFantastic-mobile%c驱动', copyright_sub_style, copyright_main_style, copyright_sub_style, '\nhttps://fantastic-mobile.hurui.me')
   }
   else {
     // eslint-disable-next-line no-console
-    console.info('%cPowered by%cFantastic-mobile', copyright_sub_style, copyright_main_style, '\nhttps://fantastic-mobile.github.io')
+    console.info('%cPowered by%cFantastic-mobile', copyright_sub_style, copyright_main_style, '\nhttps://fantastic-mobile.hurui.me')
   }
 }
 

@@ -14,13 +14,13 @@ const checked = ref(false)
   <PageLayout :navbar="false" tabbar>
     <template #tabbar>
       <div class="flex-center flex-1">
-        <SvgIcon name="https://fantastic-admin.github.io/logo.png" class="text-8" />
+        <SvgIcon name="https://fantastic-admin.hurui.me/logo.png" class="text-8" />
       </div>
       <div v-show="checked" class="flex-center flex-1">
-        <SvgIcon name="https://fantastic-mobile.github.io/logo.png" class="text-8" />
+        <SvgIcon name="https://fantastic-mobile.hurui.me/logo.png" class="text-8" />
       </div>
       <div class="flex-center flex-1">
-        <SvgIcon name="https://one-step-admin.github.io/logo.png" class="text-8" />
+        <SvgIcon name="https://one-step-admin.hurui.me/logo.png" class="text-8" />
       </div>
     </template>
     <div class="flex flex-col gap-4 p-4">

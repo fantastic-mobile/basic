@@ -12,7 +12,7 @@ export default defineFakeRoute([
         data: Mock.mock({
           account: body.account,
           token: `${body.account}_@string`,
-          avatar: 'https://fantastic-mobile.github.io/logo.png',
+          avatar: 'https://fantastic-mobile.hurui.me/logo.png',
         }),
       }
     },
