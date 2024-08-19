@@ -16,7 +16,7 @@ function open(url: string) {
         别具一格, 自成一派
       </div>
       <div class="mt-4">
-        <HButton @click="open('https://fantastic-mobile.github.io')">
+        <HButton @click="open('https://fantastic-mobile.hurui.me')">
           <SvgIcon name="i-ri:file-text-line" />
           开发文档
         </HButton>
