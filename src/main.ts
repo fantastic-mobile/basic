@@ -1,3 +1,5 @@
+import '@/utils/baidu'
+
 import './utils/system.copyright'
 
 import Message from 'vue-m-message'
