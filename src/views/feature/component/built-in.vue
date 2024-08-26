@@ -69,10 +69,10 @@ const toggle = ref(false)
   </PageLayout>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .page-main {
   :deep(.main-container) {
-    --at-apply: flex items-center justify-center flex-1 gap-8;
+    --uno: flex items-center justify-center flex-1 gap-8;
   }
 }
 </style>

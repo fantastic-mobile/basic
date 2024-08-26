@@ -36,7 +36,7 @@ function onScroll(e: Event) {
   </PageLayout>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 header {
   position: fixed;
   top: 0;

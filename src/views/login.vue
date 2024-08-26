@@ -65,7 +65,7 @@ function testAccount(account: string) {
   </PageLayout>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .svg {
   position: absolute;
   bottom: 0;

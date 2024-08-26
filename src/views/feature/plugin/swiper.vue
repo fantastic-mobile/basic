@@ -129,7 +129,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
   </PageLayout>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .swiper {
   width: 100%;
   height: 300px;
@@ -138,7 +138,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36.4px;
+    font-size: 36px;
     font-weight: 700;
     text-align: center;
     background-color: #fff;
