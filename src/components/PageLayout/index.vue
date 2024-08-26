@@ -225,7 +225,7 @@ function handleBackTopClick() {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .navbar {
   position: fixed;
   top: 0;

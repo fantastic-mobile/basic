@@ -22,7 +22,7 @@ body {
   box-sizing: inherit;
 }
 
-// 全局样式
+/* 全局样式 */
 #app {
   overflow: hidden auto;
   font-size: 14px;

@@ -22,7 +22,7 @@ importers:
         version: 10.11.1(vue@3.4.37(typescript@5.5.4))
       '@vueuse/integrations':
         specifier: ^10.11.1
-        version: 10.11.1(axios@1.7.4)(change-case@5.4.4)(nprogress@0.2.0)(qrcode@1.5.4)(vue@3.4.37(typescript@5.5.4))
+        version: 10.11.1(axios@1.7.4)(change-case@4.1.2)(nprogress@0.2.0)(qrcode@1.5.4)(vue@3.4.37(typescript@5.5.4))
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
@@ -174,6 +174,9 @@ importers:
       postcss-mobile-forever:
         specifier: ^4.1.5
         version: 4.1.5(postcss@8.4.41)
+      postcss-nested:
+        specifier: ^6.2.0
+        version: 6.2.0(postcss@8.4.41)
       sass:
         specifier: ^1.77.8
         version: 1.77.8
@@ -2203,9 +2206,6 @@ packages:
 
   change-case@4.1.2:
     resolution: {integrity: sha512-bSxY2ws9OtviILG1EiY5K7NNxkqg/JnRnFxLtKQ96JaviiIxi7djMrSd0ECT9AC+lttClmYwKw53BWpOMblo7A==}
-
-  change-case@5.4.4:
-    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
 
   character-entities-legacy@1.1.4:
     resolution: {integrity: sha512-3Xnr+7ZFS1uxeiUDvV02wQ+QDbc55o97tIV5zHScSPJpcLm/r0DFPcoY3tYRp+VZukxuMeKgXYmsXQHO05zQeA==}
@@ -4424,6 +4424,12 @@ packages:
     resolution: {integrity: sha512-Htr0dv8fcohXZJRv22SP3dH80fJ+QHmwF3Fx4OLT5jsLEgJtqkb0okv2C1v67GGnXZhiTKxHqb2ai+DA8qtsLQ==}
     peerDependencies:
       postcss: ^8.0.0
+
+  postcss-nested@6.2.0:
+    resolution: {integrity: sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.2.14
 
   postcss-prefix-selector@1.16.0:
     resolution: {integrity: sha512-rdVMIi7Q4B0XbXqNUEI+Z4E+pueiu/CS5E6vRCQommzdQ/sgsS4dK42U7GX8oJR+TJOtT+Qv3GkNo6iijUMp3Q==}
@@ -7424,14 +7430,14 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
-  '@vueuse/integrations@10.11.1(axios@1.7.4)(change-case@5.4.4)(nprogress@0.2.0)(qrcode@1.5.4)(vue@3.4.37(typescript@5.5.4))':
+  '@vueuse/integrations@10.11.1(axios@1.7.4)(change-case@4.1.2)(nprogress@0.2.0)(qrcode@1.5.4)(vue@3.4.37(typescript@5.5.4))':
     dependencies:
       '@vueuse/core': 10.11.1(vue@3.4.37(typescript@5.5.4))
       '@vueuse/shared': 10.11.1(vue@3.4.37(typescript@5.5.4))
       vue-demi: 0.14.10(vue@3.4.37(typescript@5.5.4))
     optionalDependencies:
       axios: 1.7.4
-      change-case: 5.4.4
+      change-case: 4.1.2
       nprogress: 0.2.0
       qrcode: 1.5.4
     transitivePeerDependencies:
@@ -7845,9 +7851,6 @@ snapshots:
       sentence-case: 3.0.4
       snake-case: 3.0.4
       tslib: 2.6.2
-
-  change-case@5.4.4:
-    optional: true
 
   character-entities-legacy@1.1.4: {}
 
@@ -10222,6 +10225,11 @@ snapshots:
   postcss-mobile-forever@4.1.5(postcss@8.4.41):
     dependencies:
       postcss: 8.4.41
+
+  postcss-nested@6.2.0(postcss@8.4.41):
+    dependencies:
+      postcss: 8.4.41
+      postcss-selector-parser: 6.1.2
 
   postcss-prefix-selector@1.16.0(postcss@5.2.18):
     dependencies:

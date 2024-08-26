@@ -1,5 +1,7 @@
 export default {
   plugins: {
+    'autoprefixer': {},
+    'postcss-nested': {},
     'postcss-mobile-forever': {
       viewportWidth: 375,
       maxDisplayWidth: 600,
@@ -8,6 +10,5 @@ export default {
         'van-popup',
       ],
     },
-    'autoprefixer': {},
   },
 }

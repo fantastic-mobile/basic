@@ -56,9 +56,9 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
   </Provider>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .app-setting {
-  --at-apply: text-white dark-text-dark bg-ui-primary;
+  --uno: text-white dark-text-dark bg-ui-primary;
 
   position: fixed;
   top: 70%;
@@ -108,7 +108,7 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
   transform: translateY(100%);
 }
 
-// 主内容区动画
+/* 主内容区动画 */
 .fade-enter-active {
   transition: 0.2s;
 }

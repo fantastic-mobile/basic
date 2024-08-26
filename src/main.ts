@@ -19,7 +19,7 @@ import 'virtual:svg-icons-register'
 import 'virtual:uno.css'
 
 // 全局样式
-import '@/assets/styles/globals.scss'
+import '@/assets/styles/globals.css'
 
 const app = createApp(App)
 
