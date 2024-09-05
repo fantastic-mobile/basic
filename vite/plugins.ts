@@ -6,6 +6,7 @@ import type { PluginOption } from 'vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import vueLegacy from '@vitejs/plugin-legacy'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import autoImport from 'unplugin-auto-import/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
@@ -33,6 +34,12 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
     }),
     vue(),
     vueJsx(),
+    vueLegacy({
+      renderLegacyChunks: false,
+      modernPolyfills: [
+        'es.array.at',
+      ],
+    }),
 
     // https://github.com/vuejs/devtools-next
     viteEnv.VITE_OPEN_DEVTOOLS === 'true' && VueDevTools(),
