@@ -99,9 +99,6 @@ importers:
       '@stylistic/stylelint-config':
         specifier: ^2.0.0
         version: 2.0.0(stylelint@16.9.0(typescript@5.5.4))
-      '@types/archiver':
-        specifier: ^6.0.2
-        version: 6.0.2
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
@@ -138,9 +135,6 @@ importers:
       '@yeungkc/unocss-preset-safe-area':
         specifier: ^0.0.10
         version: 0.0.10
-      archiver:
-        specifier: ^7.0.1
-        version: 7.0.1
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.42)
@@ -225,6 +219,9 @@ importers:
       vite:
         specifier: ^5.4.2
         version: 5.4.2(@types/node@22.5.2)(sass@1.77.8)(terser@5.31.6)
+      vite-plugin-archiver:
+        specifier: ^0.1.1
+        version: 0.1.1
       vite-plugin-banner:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1674,9 +1671,6 @@ packages:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
 
-  '@types/archiver@6.0.2':
-    resolution: {integrity: sha512-KmROQqbQzKGuaAbmK+ZcytkJ51+YqDa7NmbXjmtC5YBLSyQYo21YaUnQ3HbaPFKL1ooo6RQ6OPYPIDyxfpDDXw==}
-
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
 
@@ -1742,9 +1736,6 @@ packages:
 
   '@types/qs@6.9.15':
     resolution: {integrity: sha512-uXHQKES6DQKKCLh441Xv/dwxOq1TVS3JPUMlEqoEglvlhR6Mxnlew/Xq/LRVHpLyk7iK3zODe1qYHIMltO7XGg==}
-
-  '@types/readdir-glob@1.1.5':
-    resolution: {integrity: sha512-raiuEPUYqXu+nvtY2Pe8s8FEmZ3x5yAH4VkLdihcPdalvsHltomrRC9BzuStrJ9yk06470hS0Crw0f1pXqD+Hg==}
 
   '@types/svgo@2.6.4':
     resolution: {integrity: sha512-l4cmyPEckf8moNYHdJ+4wkHvFxjyW6ulm9l4YGaOxeyBWPhBOT0gvni1InpFPdzx1dKf/2s62qGITwxNWnPQng==}
@@ -3366,6 +3357,10 @@ packages:
   file-entry-cache@9.1.0:
     resolution: {integrity: sha512-/pqPFG+FdxWQj+/WSuzXSDaNzxgTLr/OrR1QuqfEZzDakpdYE70PwUxL7BPUa8hpjbvY1+qvCl8k+8Tq34xJgg==}
     engines: {node: '>=18'}
+
+  filesize@10.1.6:
+    resolution: {integrity: sha512-sJslQKU2uM33qH5nqewAwVB2QgR6w1aMNsYUp3aN5rMRyXEwJGmZvaWzeJFNTOXWlHQyBFCWrdj3fV/fsTOX8w==}
+    engines: {node: '>= 10.4.0'}
 
   fill-range@4.0.0:
     resolution: {integrity: sha512-VcpLTWqWDiTerugjj8e3+esbg+skS3M9e54UuR3iCeIDMXCLTsAH8hTSzDQU/X6/6t3eYkOKoZSef2PlU6U1XQ==}
@@ -5778,6 +5773,9 @@ packages:
     peerDependencies:
       vite: ^2.6.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-0
 
+  vite-plugin-archiver@0.1.1:
+    resolution: {integrity: sha512-d+W6c02OTU+GjlMJ3NXlMaDQazR653l7Ni7HLF6NfI795A4uVlaiDoh6XDaqFnWG+omnD2cK/DMhj/Nh9HYtdA==}
+
   vite-plugin-banner@0.7.1:
     resolution: {integrity: sha512-Bww2Xd5tOGsZ1yZ9rQiGneryvsL1u86znPrqeQjCsXPsG72pnSdV5lcQA+cy8UNDguMqyTJiCevlNUbLnT85UA==}
 
@@ -7439,10 +7437,6 @@ snapshots:
 
   '@trysound/sax@0.2.0': {}
 
-  '@types/archiver@6.0.2':
-    dependencies:
-      '@types/readdir-glob': 1.1.5
-
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 0.7.34
@@ -7513,10 +7507,6 @@ snapshots:
       '@types/node': 20.12.8
 
   '@types/qs@6.9.15': {}
-
-  '@types/readdir-glob@1.1.5':
-    dependencies:
-      '@types/node': 20.10.5
 
   '@types/svgo@2.6.4':
     dependencies:
@@ -9499,6 +9489,8 @@ snapshots:
   file-entry-cache@9.1.0:
     dependencies:
       flat-cache: 5.0.0
+
+  filesize@10.1.6: {}
 
   fill-range@4.0.0:
     dependencies:
@@ -12063,6 +12055,13 @@ snapshots:
   vite-hot-client@0.2.3(vite@5.4.2(@types/node@22.5.2)(sass@1.77.8)(terser@5.31.6)):
     dependencies:
       vite: 5.4.2(@types/node@22.5.2)(sass@1.77.8)(terser@5.31.6)
+
+  vite-plugin-archiver@0.1.1:
+    dependencies:
+      archiver: 7.0.1
+      dayjs: 1.11.13
+      filesize: 10.1.6
+      open: 10.1.0
 
   vite-plugin-banner@0.7.1: {}
 
