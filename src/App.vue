@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Provider from './ui-provider/index.vue'
-import eventBus from '@/utils/eventBus'
-import useSettingsStore from '@/store/modules/settings'
 import useKeepAliveStore from '@/store/modules/keepAlive'
+import useSettingsStore from '@/store/modules/settings'
+import eventBus from '@/utils/eventBus'
+import Provider from './ui-provider/index.vue'
 
 const route = useRoute()
 

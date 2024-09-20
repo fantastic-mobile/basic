@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useElementSize } from '@vueuse/core'
 import useSettingsStore from '@/store/modules/settings'
+import { useElementSize } from '@vueuse/core'
 
 defineOptions({
   name: 'PageLayout',

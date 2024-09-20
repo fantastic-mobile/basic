@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import VueEsign from 'vue-esign'
 import { showNotify } from 'vant'
+import VueEsign from 'vue-esign'
 
 definePage({
   meta: {
@@ -69,7 +69,7 @@ function handleDownload() {
       </van-action-sheet>
     </template>
     <PageMain>
-      <VueEsign ref="esignRef" v-model:bgColor="options.bgColor" :width="800" :height="400" :is-crop="options.isCrop" :line-width="options.lineWidth" :line-color="options.lineColor" />
+      <VueEsign ref="esignRef" v-model:bg-color="options.bgColor" :width="800" :height="400" :is-crop="options.isCrop" :line-width="options.lineWidth" :line-color="options.lineColor" />
       <div class="mt-2 space-x-2">
         <VanButton @click="handleReset">
           清空画板

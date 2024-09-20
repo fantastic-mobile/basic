@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router/auto'
+import path from 'path-browserify'
 import { createRouter, createWebHashHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
-import path from 'path-browserify'
 import setupGuards from './guards'
 
 function resolveRoutePath(basePath?: string, routePath?: string) {

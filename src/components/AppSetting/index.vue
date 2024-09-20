@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useClipboard } from '@vueuse/core'
-import Message from 'vue-m-message'
 import settingsDefault from '@/settings.default'
+import useSettingsStore from '@/store/modules/settings'
 import { getTwoObjectDiff } from '@/utils'
 import eventBus from '@/utils/eventBus'
-import useSettingsStore from '@/store/modules/settings'
+import { useClipboard } from '@vueuse/core'
+import Message from 'vue-m-message'
 
 defineOptions({
   name: 'AppSetting',
