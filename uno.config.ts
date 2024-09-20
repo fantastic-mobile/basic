@@ -1,4 +1,7 @@
 import type { Theme } from 'unocss/preset-uno'
+import { entriesToCss, toArray } from '@unocss/core'
+import presetRemToPx from '@unocss/preset-rem-to-px'
+import presetSafeArea from '@yeungkc/unocss-preset-safe-area'
 import {
   defineConfig,
   presetAttributify,
@@ -9,9 +12,6 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
-import presetRemToPx from '@unocss/preset-rem-to-px'
-import presetSafeArea from '@yeungkc/unocss-preset-safe-area'
-import { entriesToCss, toArray } from '@unocss/core'
 import { darkTheme, lightTheme } from './themes'
 
 export default defineConfig<Theme>({

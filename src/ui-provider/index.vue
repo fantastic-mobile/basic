@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import useSettingsStore from '@/store/modules/settings'
 import { Locale } from 'vant'
 import zhCN from 'vant/es/locale/lang/zh-CN'
-import useSettingsStore from '@/store/modules/settings'
 
 const settingsStore = useSettingsStore()
 
