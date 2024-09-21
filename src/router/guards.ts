@@ -7,7 +7,7 @@ import '@/assets/styles/nprogress.css'
 
 // 鉴权
 function setupAuth(router: Router) {
-  router.beforeEach(async (to, from, next) => {
+  router.beforeEach(async (to, _from, next) => {
     const settingsStore = useSettingsStore()
     const userStore = useUserStore()
     if (to.meta.auth) {
@@ -39,7 +39,7 @@ function setupProgress(router: Router) {
     showSpinner: false,
     parent: '#app',
   })
-  router.beforeEach((to, from, next) => {
+  router.beforeEach((_to, _from, next) => {
     const settingsStore = useSettingsStore()
     if (settingsStore.settings.app.enableProgress) {
       isLoading.value = true
