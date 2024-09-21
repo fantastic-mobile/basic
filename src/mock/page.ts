@@ -12,7 +12,7 @@ export default defineFakeRoute([
     method: 'get',
     response: ({ query }) => {
       const { from, limit } = query
-      const pageList = allList.filter((item, index) => {
+      const pageList = allList.filter((_item, index) => {
         return index >= ~~from && index < (~~from + ~~limit)
       })
       return {
