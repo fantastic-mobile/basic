@@ -22,7 +22,6 @@ async function accountChange(val: any) {
     password: '',
   })
   await userStore.getPermissions()
-  router.push('/reload')
 }
 function goTest() {
   router.push({
@@ -66,49 +65,6 @@ function permissionCheck2(permissions: string[]) {
           点击访问
         </VanButton>
       </div>
-      <h3>鉴权组件（请对照代码查看）</h3>
-      <div>
-        <Auth value="permission.browse" style="margin-bottom: 10px;">
-          <VanTag type="primary">
-            你有 permission.browse 权限
-          </VanTag>
-          <template #no-auth>
-            <VanTag type="danger">
-              你没有 permission.browse 权限
-            </VanTag>
-          </template>
-        </Auth>
-        <Auth value="permission.create" style="margin-bottom: 10px;">
-          <VanTag type="primary">
-            你有 permission.create 权限
-          </VanTag>
-          <template #no-auth>
-            <VanTag type="danger">
-              你没有 permission.create 权限
-            </VanTag>
-          </template>
-        </Auth>
-        <Auth :value="['permission.browse', 'permission.create']" style="margin-bottom: 10px;">
-          <VanTag type="primary">
-            你有 permission.browse 或 permission.create 权限
-          </VanTag>
-          <template #no-auth>
-            <VanTag type="danger">
-              你没有 permission.browse 或 permission.create 权限
-            </VanTag>
-          </template>
-        </Auth>
-        <AuthAll :value="['permission.browse', 'permission.create']">
-          <VanTag type="primary">
-            你有 permission.browse 和 permission.create 权限
-          </VanTag>
-          <template #no-auth>
-            <VanTag type="danger">
-              你没有 permission.browse 和 permission.create 权限
-            </VanTag>
-          </template>
-        </AuthAll>
-      </div>
       <h3>鉴权指令（请对照代码查看）</h3>
       <div class="flex flex-col gap-2">
         <div v-auth="'permission.browse'">
@@ -120,9 +76,52 @@ function permissionCheck2(permissions: string[]) {
         <div v-auth="['permission.browse', 'permission.create']">
           如果你有 permission.browse 或 permission.create 权限则能看到这句话
         </div>
-        <div v-auth-all="['permission.browse', 'permission.create']">
+        <div v-auth.all="['permission.browse', 'permission.create']">
           如果你有 permission.browse 和 permission.create 权限则能看到这句话
         </div>
+      </div>
+      <h3>鉴权组件（请对照代码查看）</h3>
+      <div class="flex-col-start gap-2">
+        <Auth value="permission.browse">
+          <VanTag type="primary">
+            你有 permission.browse 权限
+          </VanTag>
+          <template #no-auth>
+            <VanTag type="danger">
+              你没有 permission.browse 权限
+            </VanTag>
+          </template>
+        </Auth>
+        <Auth value="permission.create">
+          <VanTag type="primary">
+            你有 permission.create 权限
+          </VanTag>
+          <template #no-auth>
+            <VanTag type="danger">
+              你没有 permission.create 权限
+            </VanTag>
+          </template>
+        </Auth>
+        <Auth :value="['permission.browse', 'permission.create']">
+          <VanTag type="primary">
+            你有 permission.browse 或 permission.create 权限
+          </VanTag>
+          <template #no-auth>
+            <VanTag type="danger">
+              你没有 permission.browse 或 permission.create 权限
+            </VanTag>
+          </template>
+        </Auth>
+        <Auth :value="['permission.browse', 'permission.create']" all>
+          <VanTag type="primary">
+            你有 permission.browse 和 permission.create 权限
+          </VanTag>
+          <template #no-auth>
+            <VanTag type="danger">
+              你没有 permission.browse 和 permission.create 权限
+            </VanTag>
+          </template>
+        </Auth>
       </div>
       <h3>鉴权函数（请对照代码查看）</h3>
       <div>
