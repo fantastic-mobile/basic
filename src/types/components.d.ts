@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppSetting: typeof import('./../components/AppSetting/index.vue')['default']
     Auth: typeof import('./../components/Auth/index.vue')['default']
-    AuthAll: typeof import('./../components/AuthAll/index.vue')['default']
     HBadge: typeof import('./../ui-kit/HBadge.vue')['default']
     HButton: typeof import('./../ui-kit/HButton.vue')['default']
     HDialog: typeof import('./../ui-kit/HDialog.vue')['default']
