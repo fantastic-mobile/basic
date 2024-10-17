@@ -7,7 +7,7 @@ definePage({
   },
 })
 
-const layoutRef = ref()
+const layoutRef = useTemplateRef('layoutRef')
 const pageNumber = ref(0)
 const pageSize = ref(10)
 const pageTotal = ref(0)
@@ -26,8 +26,8 @@ function loadMore() {
     pageTotal.value = res.data.total
     // 不满一屏且当前数据未达到总量时，自动加载下一页
     nextTick(() => {
-      const clientHeight = layoutRef.value.ref.clientHeight
-      const scrollHeight = layoutRef.value.ref.scrollHeight
+      const clientHeight = layoutRef.value?.ref?.clientHeight ?? 0
+      const scrollHeight = layoutRef.value?.ref?.scrollHeight ?? 0
       if (clientHeight === scrollHeight && list.value.length < pageTotal.value) {
         loadMore()
       }
