@@ -34,7 +34,7 @@ const emits = defineEmits<{
 const route = useRoute()
 const settingsStore = useSettingsStore()
 
-const layoutRef = ref()
+const layoutRef = useTemplateRef('layoutRef')
 defineExpose({
   ref: layoutRef,
 })
@@ -63,8 +63,8 @@ onActivated(() => {
 
 // Navbar
 // 计算出左右两侧的最大宽度，让左右两侧的宽度保持一致
-const startSideRef = ref()
-const endSideRef = ref()
+const startSideRef = useTemplateRef('startSideRef')
+const endSideRef = useTemplateRef('endSideRef')
 const sideWidth = ref(0)
 onMounted(() => {
   const { width: startWidth } = useElementSize(startSideRef, undefined, { box: 'border-box' })
@@ -77,15 +77,15 @@ onMounted(() => {
 })
 const navbarScrollTop = ref(0)
 function handleNavbarScroll() {
-  navbarScrollTop.value = layoutRef.value.scrollTop
+  navbarScrollTop.value = layoutRef.value?.scrollTop ?? 0
 }
 
 // Tabbar
 const showTabbarShadow = ref(false)
 function handleTabbarScroll() {
-  const scrollTop = layoutRef.value.scrollTop
-  const clientHeight = layoutRef.value.clientHeight
-  const scrollHeight = layoutRef.value.scrollHeight
+  const scrollTop = layoutRef.value?.scrollTop ?? 0
+  const clientHeight = layoutRef.value?.clientHeight ?? 0
+  const scrollHeight = layoutRef.value?.scrollHeight ?? 0
   showTabbarShadow.value = Math.ceil(scrollTop + clientHeight) < scrollHeight
 }
 const tabbarList = computed(() => {
@@ -106,10 +106,10 @@ function getIcon(item: any) {
 // 返回顶部
 const backTopScrollTop = ref(0)
 function handleBackTopScroll() {
-  backTopScrollTop.value = layoutRef.value.scrollTop
+  backTopScrollTop.value = layoutRef.value?.scrollTop ?? 0
 }
 function handleBackTopClick() {
-  layoutRef.value.scrollTo({
+  layoutRef.value?.scrollTo({
     top: 0,
     behavior: 'smooth',
   })
