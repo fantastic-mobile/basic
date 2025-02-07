@@ -22,11 +22,14 @@ const emits = defineEmits<{
   close: []
 }>()
 
+const slots = defineSlots<{
+  default?: () => VNode
+  footer?: () => VNode
+}>()
+
 const isOpen = defineModel<boolean>({
   default: false,
 })
-
-const slots = useSlots()
 
 const overlayTransitionClass = ref({
   enter: 'ease-in-out duration-500',

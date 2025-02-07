@@ -1,19 +1,19 @@
+// 自定义指令
+import directive from '@/utils/directive'
+
 import Message from 'vue-m-message'
 
 import App from './App.vue'
-
 import router from './router'
+
 import pinia from './store'
 
 import ui from './ui-provider'
-
 import '@/utils/baidu'
 import './utils/system.copyright'
 import 'vue-m-message/dist/style.css'
-import 'overlayscrollbars/overlayscrollbars.css'
 
-// 自定义指令
-import directive from '@/utils/directive'
+import 'overlayscrollbars/overlayscrollbars.css'
 
 // 加载 svg 图标
 import 'virtual:svg-icons-register'
