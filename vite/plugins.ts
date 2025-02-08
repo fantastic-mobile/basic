@@ -16,12 +16,13 @@ import { loadEnv } from 'vite'
 import Archiver from 'vite-plugin-archiver'
 import banner from 'vite-plugin-banner'
 import { compression } from 'vite-plugin-compression2'
+import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import { vitePluginFakeServer } from 'vite-plugin-fake-server'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
 export default function createVitePlugins(mode: string, isBuild = false) {
-  const viteEnv = loadEnv(mode, process.cwd())
+  const viteEnv = parseLoadedEnv(loadEnv(mode, process.cwd()))
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     VueRouter({
       routesFolder: './src/views',
@@ -38,7 +39,11 @@ export default function createVitePlugins(mode: string, isBuild = false) {
     }),
 
     // https://github.com/vuejs/devtools-next
-    viteEnv.VITE_OPEN_DEVTOOLS === 'true' && VueDevTools(),
+    viteEnv.VITE_OPEN_DEVTOOLS && VueDevTools(),
+
+    envParse({
+      dtsPath: 'src/types/env.d.ts',
+    }),
 
     // https://github.com/unplugin/unplugin-auto-import
     autoImport({
@@ -81,7 +86,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       logger: !isBuild,
       include: 'src/mock',
       infixName: false,
-      enableProd: isBuild && viteEnv.VITE_BUILD_MOCK === 'true',
+      enableProd: isBuild && viteEnv.VITE_BUILD_MOCK,
     }),
 
     // https://github.com/nonzzz/vite-plugin-compression
