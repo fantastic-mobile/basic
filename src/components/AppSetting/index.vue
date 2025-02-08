@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import settingsDefault from '@/settings.default'
 import useSettingsStore from '@/store/modules/settings'
-import { getTwoObjectDiff } from '@/utils'
 import eventBus from '@/utils/eventBus'
+import { diffTwoObj } from '@/utils/object'
 import { useClipboard } from '@vueuse/core'
 import Message from 'vue-m-message'
 
@@ -31,7 +31,7 @@ watch(copied, (val) => {
 })
 
 function handleCopy() {
-  copy(JSON.stringify(getTwoObjectDiff(settingsDefault, settingsStore.settings), null, 2))
+  copy(JSON.stringify(diffTwoObj(settingsDefault, settingsStore.settings), null, 2))
 }
 </script>
 

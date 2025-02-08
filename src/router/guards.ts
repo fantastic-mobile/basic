@@ -12,10 +12,13 @@ function setupAuth(router: Router) {
     const userStore = useUserStore()
     if (to.meta.auth) {
       if (userStore.isLogin) {
-        // 获取用户权限
-        if (settingsStore.settings.app.enablePermission) {
-          !userStore.isGetPermissions && await userStore.getPermissions()
+        try {
+          // 获取用户权限
+          if (settingsStore.settings.app.enablePermission) {
+            !userStore.isGetPermissions && await userStore.getPermissions()
+          }
         }
+        catch {}
         next()
       }
       else {

@@ -1,3 +1,7 @@
 import mitt from 'mitt'
 
-export default mitt()
+interface MittTypes {
+  [key: string | symbol]: any
+}
+
+export default mitt<MittTypes>()
