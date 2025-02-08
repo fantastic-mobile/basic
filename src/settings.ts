@@ -1,5 +1,6 @@
 import settingsDefault from '@/settings.default'
-import { defaultsDeep } from 'lodash-es'
+import { merge } from '@/utils/object'
+import { cloneDeep } from 'es-toolkit'
 
 const globalSettings: Settings.all = {
   // 请在此处编写或粘贴配置代码
@@ -21,4 +22,4 @@ const globalSettings: Settings.all = {
   },
 }
 
-export default defaultsDeep(globalSettings, settingsDefault) as RecursiveRequired<Settings.all>
+export default merge(globalSettings, cloneDeep(settingsDefault)) as RecursiveRequired<Settings.all>

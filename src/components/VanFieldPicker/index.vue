@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FieldProps, PickerOption, PopupProps } from 'vant'
-import { pick } from 'lodash-es'
+import { pick } from 'es-toolkit'
 
 defineOptions({
   name: 'VanFieldPicker',
