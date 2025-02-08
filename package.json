@@ -34,7 +34,6 @@
     "eruda": "^3.4.1",
     "es-toolkit": "^1.32.0",
     "mitt": "^3.0.1",
-    "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "overlayscrollbars-vue": "^0.5.9",
     "path-browserify": "^1.0.1",
@@ -51,6 +50,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.1",
+    "@faker-js/faker": "^9.4.0",
     "@iconify/json": "^2.2.303",
     "@iconify/vue": "^4.3.0",
     "@stylistic/stylelint-config": "^2.0.0",
