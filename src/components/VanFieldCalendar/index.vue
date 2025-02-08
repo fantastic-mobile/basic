@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CalendarProps, FieldProps } from 'vant'
 import dayjs from '@/utils/dayjs'
-import { pick } from 'lodash-es'
+import { pick } from 'es-toolkit'
 
 defineOptions({
   name: 'VanFieldCalendar',

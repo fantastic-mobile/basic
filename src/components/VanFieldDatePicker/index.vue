@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DatePickerProps, FieldProps, PopupProps } from 'vant'
-import { pick } from 'lodash-es'
+import { pick } from 'es-toolkit'
 
 defineOptions({
   name: 'VanFieldDatePicker',

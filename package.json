@@ -28,7 +28,7 @@
     "dayjs": "^1.11.13",
     "echarts": "^5.6.0",
     "eruda": "^3.4.1",
-    "lodash-es": "^4.17.21",
+    "es-toolkit": "^1.32.0",
     "mitt": "^3.0.1",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
