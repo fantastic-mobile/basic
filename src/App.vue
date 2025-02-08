@@ -34,7 +34,7 @@ watch([
   deep: true,
 })
 
-const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
+const enableAppSetting = import.meta.env.VITE_APP_SETTING
 </script>
 
 <template>
