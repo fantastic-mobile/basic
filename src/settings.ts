@@ -1,3 +1,4 @@
+import type { RecursiveRequired, Settings } from '#/global'
 import settingsDefault from '@/settings.default'
 import { merge } from '@/utils/object'
 import { cloneDeep } from 'es-toolkit'
@@ -13,7 +14,7 @@ const globalSettings: Settings.all = {
         text: '主页',
       },
       {
-        path: '/user',
+        path: '/user/',
         icon: 'i-ic:baseline-person',
         activeIcon: 'i-ic:twotone-person',
         text: '我的',

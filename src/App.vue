@@ -2,7 +2,7 @@
 import useKeepAliveStore from '@/store/modules/keepAlive'
 import useSettingsStore from '@/store/modules/settings'
 import eventBus from '@/utils/eventBus'
-import Provider from './ui-provider/index.vue'
+import Provider from './ui/provider/index.vue'
 
 const route = useRoute()
 
@@ -43,26 +43,27 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
       <Transition name="fade" mode="out-in" appear>
         <KeepAlive :include="keepAliveStore.list">
           <component :is="Component" v-if="isAuth" :key="route.fullPath" />
-          <NotAllowed v-else />
+          <FmNotAllowed v-else />
         </KeepAlive>
       </Transition>
     </RouterView>
     <template v-if="enableAppSetting">
       <div class="app-setting" @click="eventBus.emit('global-app-setting-toggle')">
-        <SvgIcon name="i-uiw:setting-o" class="icon" />
+        <FmIcon name="i-uiw:setting-o" class="icon" />
       </div>
-      <AppSetting />
+      <FmAppSetting />
     </template>
+    <FmToast />
   </Provider>
 </template>
 
 <style scoped>
 .app-setting {
-  --uno: text-white dark-text-dark bg-ui-primary;
+  --uno: bg-primary text-primary-foreground rounded-l-md;
 
   position: fixed;
+  inset-inline-end: 0;
   top: 70%;
-  right: 0;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -71,7 +72,6 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
   height: 50px;
   font-size: 24px;
   cursor: pointer;
-  border-radius: 5px 0 0 5px;
 
   .icon {
     animation: rotate 5s linear infinite;

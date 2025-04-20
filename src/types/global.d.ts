@@ -1,3 +1,5 @@
+import type { RouteNamedMap } from 'vue-router/auto-routes'
+
 type RecursiveRequired<T> = {
   [P in keyof T]-?: RecursiveRequired<T[P]>
 }
@@ -14,6 +16,12 @@ declare namespace Settings {
      * @可选值 `'dark'` 暗黑模式
      */
     colorScheme?: '' | 'light' | 'dark'
+    /**
+     * 圆角系数
+     * @默认值 `0.5`
+     * @可选值 `0到1区间的任意值`
+     */
+    radius?: number
     /**
      * 是否开启哀悼模式
      * @默认值 `false`
@@ -62,7 +70,7 @@ declare namespace Settings {
      * 导航菜单
      */
     list?: {
-      path: string
+      path: keyof RouteNamedMap
       icon?: string
       activeIcon?: string
       text?: string

@@ -1,12 +1,18 @@
 :root {
-  --g-navbar-height: 50px;
-  --g-tabbar-height: 60px;
+  --g-navbar-min-height: 50px;
+  --g-tabbar-min-height: 60px;
 
   color-scheme: light;
 
   &.dark {
     color-scheme: dark;
   }
+}
+
+* {
+  scrollbar-color: hsl(var(--scrollbar-color)) transparent;
+  scrollbar-width: thin;
+  border-color: hsl(var(--border));
 }
 
 html {
@@ -16,10 +22,9 @@ html {
 body {
   box-sizing: border-box;
   margin: 0;
-}
-
-* {
-  box-sizing: inherit;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* 全局样式 */
@@ -27,9 +32,4 @@ body {
   overflow: hidden auto;
   font-size: 14px;
   background-color: var(--g-bg);
-}
-
-.medium-zoom-overlay,
-.medium-zoom-image--opened {
-  z-index: 1100;
 }

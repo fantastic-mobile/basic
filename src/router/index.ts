@@ -1,33 +1,24 @@
 import type { RouteRecordRaw } from 'vue-router/auto'
-import path from 'path-browserify'
 import { createRouter, createWebHashHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
 import setupGuards from './guards'
 
-function resolveRoutePath(basePath?: string, routePath?: string) {
-  return basePath ? path.resolve(basePath, routePath ?? '') : routePath ?? ''
-}
-
-// 将多层嵌套路由处理成一级
-function flatRoutesRecursive(routes: RouteRecordRaw[], baseUrl = '') {
-  const result: RouteRecordRaw[] = []
-  for (const route of routes) {
+// 删除路由中间层级对应的组件
+function deleteMiddleRouteComponent(routes: RouteRecordRaw[]) {
+  const res: RouteRecordRaw[] = []
+  routes.forEach((route) => {
     if (route.children) {
-      result.push(...flatRoutesRecursive(route.children, resolveRoutePath(baseUrl, route.path)))
+      delete route.component
+      route.children = deleteMiddleRouteComponent(route.children)
     }
-    else {
-      result.push({
-        ...route,
-        path: resolveRoutePath(baseUrl, route.path),
-      })
-    }
-  }
-  return result
+    res.push(route)
+  })
+  return res
 }
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: flatRoutesRecursive(routes),
+  routes: deleteMiddleRouteComponent(routes),
 })
 
 setupGuards(router)
