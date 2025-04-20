@@ -33,7 +33,7 @@ function goBack() {
 
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center">
-    <SvgIcon name="404" class="text-[300px] -mt-9xl" />
+    <FmIcon name="404" class="text-[300px] -mt-9xl" />
     <div class="flex flex-col items-center gap-4">
       <h1 class="m-0 text-6xl font-sans">
         404
@@ -41,9 +41,9 @@ function goBack() {
       <div class="mx-0 text-xl text-stone-5">
         抱歉，你访问的页面不存在
       </div>
-      <HButton @click="goBack">
+      <FmButton @click="goBack">
         {{ data.countdown }} 秒后，返回首页
-      </HButton>
+      </FmButton>
     </div>
   </div>
 </template>

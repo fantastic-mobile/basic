@@ -143,10 +143,10 @@ const flag = ref(true)
 </script>
 
 <template>
-  <PageLayout navbar>
+  <FmPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
       <div class="h-full flex-center px-1" @click="show = true">
-        <SvgIcon name="i-mdi:information" class="text-4" />
+        <FmIcon name="i-mdi:information" class="text-4" />
       </div>
       <van-action-sheet v-model:show="show" teleport="body">
         <div class="whitespace-break-spaces p-4 space-y-2">
@@ -162,31 +162,33 @@ const flag = ref(true)
         </div>
       </van-action-sheet>
     </template>
-    <div class="m-4">
-      <van-field is-link readonly label="进入动画（显示）" label-width="8em" @click="showPicker1 = true">
-        <template #input>
-          {{ animateList.find(item => item.value === animateIn)?.text }}
-        </template>
-      </van-field>
-      <van-popup v-model:show="showPicker1" round position="bottom">
-        <van-picker :columns="animateList" @cancel="showPicker1 = false" @confirm="onConfirm1" />
-      </van-popup>
-      <van-field is-link readonly label="离开动画（隐藏）" label-width="8em" @click="showPicker2 = true">
-        <template #input>
-          {{ animateList.find(item => item.value === animateOut)?.text }}
-        </template>
-      </van-field>
-      <van-popup v-model:show="showPicker2" round position="bottom">
-        <van-picker :columns="animateList" @cancel="showPicker2 = false" @confirm="onConfirm2" />
-      </van-popup>
+    <div class="flex flex-col gap-4 p-4">
+      <div>
+        <van-field is-link readonly label="进入动画（显示）" label-width="8em" @click="showPicker1 = true">
+          <template #input>
+            {{ animateList.find(item => item.value === animateIn)?.text }}
+          </template>
+        </van-field>
+        <van-popup v-model:show="showPicker1" round position="bottom">
+          <van-picker :columns="animateList" @cancel="showPicker1 = false" @confirm="onConfirm1" />
+        </van-popup>
+        <van-field is-link readonly label="离开动画（隐藏）" label-width="8em" @click="showPicker2 = true">
+          <template #input>
+            {{ animateList.find(item => item.value === animateOut)?.text }}
+          </template>
+        </van-field>
+        <van-popup v-model:show="showPicker2" round position="bottom">
+          <van-picker :columns="animateList" @cancel="showPicker2 = false" @confirm="onConfirm2" />
+        </van-popup>
+      </div>
+      <FmPageMain class="m-0">
+        <FmButton @click="flag = !flag">
+          {{ flag ? '隐藏' : '显示' }}
+        </FmButton>
+        <Transition :enter-active-class="`animate__animated ${animateIn}`" :leave-active-class="`animate__animated ${animateOut}`">
+          <div v-if="flag" class="mt-2 h-100px w-100px bg-blue" />
+        </Transition>
+      </FmPageMain>
     </div>
-    <PageMain>
-      <VanButton @click="flag = !flag">
-        {{ flag ? '隐藏' : '显示' }}
-      </VanButton>
-      <Transition :enter-active-class="`animate__animated ${animateIn}`" :leave-active-class="`animate__animated ${animateOut}`">
-        <div v-if="flag" class="mt-2 h-100px w-100px bg-blue" />
-      </Transition>
-    </PageMain>
-  </PageLayout>
+  </FmPageLayout>
 </template>

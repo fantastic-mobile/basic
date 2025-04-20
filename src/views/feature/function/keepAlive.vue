@@ -14,9 +14,9 @@ const value = ref(1)
 </script>
 
 <template>
-  <PageLayout navbar>
-    <PageMain>
+  <FmPageLayout navbar navbar-start-side="back">
+    <FmPageMain>
       <van-stepper v-model="value" />
-    </PageMain>
-  </PageLayout>
+    </FmPageMain>
+  </FmPageLayout>
 </template>

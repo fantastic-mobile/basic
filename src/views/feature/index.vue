@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { RouteNamedMap } from 'vue-router/auto-routes'
+
 defineOptions({
   name: 'Feature',
 })
@@ -14,7 +16,7 @@ const data: {
   title: string
   icon?: string
   routes: {
-    path: string
+    path: keyof RouteNamedMap
     title: string
     icon?: string
   }[]
@@ -50,7 +52,7 @@ const data: {
     title: '权限验证',
     icon: 'i-ri:shield-keyhole-line',
     routes: [
-      { path: '/feature/permission', title: '权限验证' },
+      { path: '/feature/permission/', title: '权限验证' },
     ],
   },
   {
@@ -65,15 +67,24 @@ const data: {
     title: '内建组件',
     icon: 'i-bx:bxs-component',
     routes: [
-      { path: '/feature/component/built-in', title: '内建组件' },
-    ],
-  },
-  {
-    title: '扩展组件',
-    icon: 'i-bx:bxs-component',
-    routes: [
-      { path: '/feature/component/pagemain-demo', title: 'PageMain' },
-      { path: '/feature/component/trend-demo', title: 'Trend' },
+      { path: '/feature/component/built_in/avatar/', title: '头像' },
+      { path: '/feature/component/built_in/badge/', title: '徽章' },
+      { path: '/feature/component/built_in/button/', title: '按钮' },
+      { path: '/feature/component/built_in/card/', title: '卡片' },
+      { path: '/feature/component/built_in/checkbox/', title: '复选框' },
+      { path: '/feature/component/built_in/divider/', title: '分割线' },
+      { path: '/feature/component/built_in/drawer/', title: '抽屉' },
+      { path: '/feature/component/built_in/input/', title: '输入框' },
+      { path: '/feature/component/built_in/loading/', title: '加载遮罩' },
+      { path: '/feature/component/built_in/modal/', title: '弹窗' },
+      { path: '/feature/component/built_in/page_main/', title: '内容块' },
+      { path: '/feature/component/built_in/scroll_area/', title: '滚动区域' },
+      { path: '/feature/component/built_in/select/', title: '选择器' },
+      { path: '/feature/component/built_in/slider/', title: '滑块' },
+      { path: '/feature/component/built_in/switch/', title: '开关' },
+      { path: '/feature/component/built_in/tabs/', title: '标签页' },
+      { path: '/feature/component/built_in/toast/', title: '轻提示' },
+      { path: '/feature/component/built_in/trend/', title: '趋势符号' },
     ],
   },
   {
@@ -99,19 +110,19 @@ const data: {
 </script>
 
 <template>
-  <PageLayout :navbar="false" tabbar saved-position>
+  <FmPageLayout :navbar="false" tabbar saved-position>
     <div class="p-4">
       <div v-for="(item, index) in data" :key="index" class="mb-4">
         <div class="inline-flex items-center gap-2 text-gray-7 dark-text-gray-3">
-          <SvgIcon v-if="item.icon" :name="item.icon" class="text-6" />
+          <FmIcon v-if="item.icon" :name="item.icon" class="text-6" />
           <div class="relative z-0 inline-block text-2xl font-bold after:(absolute bottom-0 left-0 h-2 w-full bg-yellow content-[''] -z-1 dark-bg-yellow-9)">
             {{ item.title }}
           </div>
         </div>
         <div class="grid grid-cols-2 mt-4 gap-3">
-          <router-link v-for="route in item.routes" :key="route.path" :to="route.path" class="relative flex of-hidden rounded-lg bg-[var(--g-container-bg)] text-sm text-gray-6 shadow-sm dark-text-gray-4">
-            <div v-if="route.icon" class="z-1 flex-center b-r-(1 [var(--g-bg)] solid) px-3 py-2 pe-2">
-              <SvgIcon :name="route.icon" />
+          <router-link v-for="route in item.routes" :key="route.path" :to="route.path" class="relative flex of-hidden border rounded-lg bg-card text-sm text-card-foreground/80 shadow-sm">
+            <div v-if="route.icon" class="z-1 flex-center border-r px-3 py-2 pe-2">
+              <FmIcon :name="route.icon" />
             </div>
             <div class="z-1 flex-1 truncate px-3 py-2" :class="{ 'ps-2': route.icon }">
               {{ route.title }}
@@ -120,5 +131,5 @@ const data: {
         </div>
       </div>
     </div>
-  </PageLayout>
+  </FmPageLayout>
 </template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
 import { showNotify } from 'vant'
 
@@ -11,6 +12,7 @@ definePage({
 
 const router = useRouter()
 
+const settingsStore = useSettingsStore()
 const userStore = useUserStore()
 
 const { auth, authAll } = useAuth()
@@ -47,107 +49,106 @@ function permissionCheck2(permissions: string[]) {
 </script>
 
 <template>
-  <PageLayout navbar>
-    <PageMain>
-      <h3>切换帐号</h3>
-      <HTabList
-        v-model="userStore.account" :options="[
-          { label: 'admin', value: 'admin' },
-          { label: 'test', value: 'test' },
-          { label: 'hooray(无权限)', value: 'hooray' },
-        ]" @change="accountChange"
-      />
-      <h3>帐号权限</h3>
-      <div>{{ userStore.permissions }}</div>
-      <h3>访问鉴权页面</h3>
-      <div>
-        <VanButton @click="goTest">
-          点击访问
-        </VanButton>
-      </div>
-      <h3>鉴权指令（请对照代码查看）</h3>
-      <div class="flex flex-col gap-2">
-        <div v-auth="'permission.browse'">
-          如果你有 permission.browse 权限则能看到这句话
-        </div>
-        <div v-auth="'permission.create'">
-          如果你有 permission.create 权限则能看到这句话
-        </div>
-        <div v-auth="['permission.browse', 'permission.create']">
-          如果你有 permission.browse 或 permission.create 权限则能看到这句话
-        </div>
-        <div v-auth.all="['permission.browse', 'permission.create']">
-          如果你有 permission.browse 和 permission.create 权限则能看到这句话
-        </div>
-      </div>
-      <h3>鉴权组件（请对照代码查看）</h3>
-      <div class="flex-col-start gap-2">
-        <Auth value="permission.browse">
-          <VanTag type="primary">
-            你有 permission.browse 权限
-          </VanTag>
-          <template #no-auth>
-            <VanTag type="danger">
-              你没有 permission.browse 权限
-            </VanTag>
-          </template>
-        </Auth>
-        <Auth value="permission.create">
-          <VanTag type="primary">
-            你有 permission.create 权限
-          </VanTag>
-          <template #no-auth>
-            <VanTag type="danger">
-              你没有 permission.create 权限
-            </VanTag>
-          </template>
-        </Auth>
-        <Auth :value="['permission.browse', 'permission.create']">
-          <VanTag type="primary">
-            你有 permission.browse 或 permission.create 权限
-          </VanTag>
-          <template #no-auth>
-            <VanTag type="danger">
-              你没有 permission.browse 或 permission.create 权限
-            </VanTag>
-          </template>
-        </Auth>
-        <Auth :value="['permission.browse', 'permission.create']" all>
-          <VanTag type="primary">
-            你有 permission.browse 和 permission.create 权限
-          </VanTag>
-          <template #no-auth>
-            <VanTag type="danger">
-              你没有 permission.browse 和 permission.create 权限
-            </VanTag>
-          </template>
-        </Auth>
-      </div>
-      <h3>鉴权函数（请对照代码查看）</h3>
-      <div>
-        <div class="flex flex-col gap-2">
-          <div>
-            <VanButton size="small" @click="permissionCheck('permission.browse')">
-              校验 permission.browse 权限
-            </VanButton>
+  <FmPageLayout navbar navbar-start-side="back">
+    <div class="flex flex-col gap-4 p-4">
+      <FmPageMain v-if="!settingsStore.settings.app.enablePermission" class="m-0">
+        请到 settings.ts 里设置并开启权限功能，再进入该页面查看演示
+      </FmPageMain>
+      <FmPageMain v-else title="切换账号" class="m-0">
+        <div class="space-y-2">
+          <div class="space-x-2">
+            <FmButton
+              v-for="(item, index) in [
+                { label: 'admin', value: 'admin' },
+                { label: 'test', value: 'test' },
+                { label: 'hooray(无权限)', value: 'hooray' },
+              ]" :key="index" :variant="userStore.account === item.value ? 'default' : 'outline'" @click="accountChange(item.value)"
+            >
+              {{ item.label }}
+            </FmButton>
           </div>
-          <div>
-            <VanButton size="small" @click="permissionCheck('permission.create')">
-              校验 permission.create 权限
-            </VanButton>
+          <div>当前账号权限：{{ userStore.permissions }}</div>
+        </div>
+      </FmPageMain>
+      <FmPageMain v-if="settingsStore.settings.app.enablePermission" title="路由鉴权" class="m-0">
+        <FmButton @click="goTest">
+          跳转页面
+        </FmButton>
+      </FmPageMain>
+      <FmPageMain v-if="settingsStore.settings.app.enablePermission" title="鉴权指令" class="m-0">
+        <div class="flex-col-start space-y-2">
+          <div v-auth="'permission.browse'">
+            如果你有 permission.browse 权限则能看到这句话
           </div>
-          <div>
-            <VanButton size="small" @click="permissionCheck(['permission.browse', 'permission.create'])">
-              校验 permission.browse 或 permission.create 权限
-            </VanButton>
+          <div v-auth="'permission.create'">
+            如果你有 permission.create 权限则能看到这句话
           </div>
-          <div>
-            <VanButton size="small" @click="permissionCheck2(['permission.browse', 'permission.create'])">
-              校验 permission.browse 和 permission.create 权限
-            </VanButton>
+          <div v-auth="['permission.browse', 'permission.create']">
+            如果你有 permission.browse 或 permission.create 权限则能看到这句话
+          </div>
+          <div v-auth.all="['permission.browse', 'permission.create']">
+            如果你有 permission.browse 和 permission.create 权限则能看到这句话
           </div>
         </div>
-      </div>
-    </PageMain>
-  </PageLayout>
+      </FmPageMain>
+      <FmPageMain v-if="settingsStore.settings.app.enablePermission" title="鉴权组件" class="m-0">
+        <div class="text-sm space-y-2">
+          <div>
+            你
+            <FmAuth value="permission.browse">
+              <b>有</b>
+              <template #no-auth>
+                <b>没有</b>
+              </template>
+            </FmAuth>
+            permission.browse 权限
+          </div>
+          <div>
+            你
+            <FmAuth value="permission.create">
+              <b>有</b>
+              <template #no-auth>
+                <b>没有</b>
+              </template>
+            </FmAuth>
+            permission.create 权限
+          </div>
+          <div>
+            你
+            <FmAuth :value="['permission.browse', 'permission.create']">
+              <b>有</b>
+              <template #no-auth>
+                <b>没有</b>
+              </template>
+            </FmAuth>
+            permission.browse 或 permission.create 权限
+          </div>
+          <div>
+            你
+            <FmAuth :value="['permission.browse', 'permission.create']" all>
+              <b>有</b>
+              <template #no-auth>
+                <b>没有</b>
+              </template>
+            </FmAuth>
+            permission.browse 和 permission.create 权限
+          </div>
+        </div>
+      </FmPageMain>
+      <FmPageMain v-if="settingsStore.settings.app.enablePermission" title="鉴权函数" class="m-0" main-class="flex flex-col gap-2">
+        <FmButton variant="outline" @click="permissionCheck('permission.browse')">
+          校验 browse 权限
+        </FmButton>
+        <FmButton variant="outline" @click="permissionCheck('permission.create')">
+          校验 create 权限
+        </FmButton>
+        <FmButton variant="outline" @click="permissionCheck(['permission.browse', 'permission.create'])">
+          校验 browse 或 create 权限
+        </FmButton>
+        <FmButton variant="outline" @click="permissionCheck2(['permission.browse', 'permission.create'])">
+          校验 browse 和 create 权限
+        </FmButton>
+      </FmPageMain>
+    </div>
+  </FmPageLayout>
 </template>

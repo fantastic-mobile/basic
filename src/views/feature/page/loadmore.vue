@@ -47,7 +47,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <PageLayout ref="layoutRef" navbar navbar-start-side="back" @reach-bottom="onReachBottom">
+  <FmPageLayout ref="layoutRef" navbar navbar-start-side="back" @reach-bottom="onReachBottom">
     <div class="m-4 flex flex-col gap-4">
       <div v-for="(item, index) in list" :key="index" class="bg-[var(--g-container-bg)] p-4">
         {{ item }}
@@ -56,5 +56,5 @@ onMounted(() => {
         {{ list.length < pageTotal ? '加载更多' : '已经到底啦' }}
       </div>
     </div>
-  </PageLayout>
+  </FmPageLayout>
 </template>

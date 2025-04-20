@@ -304,10 +304,10 @@ function initChart4() {
 </script>
 
 <template>
-  <PageLayout navbar>
+  <FmPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
       <div class="h-full flex-center px-1" @click="show = true">
-        <SvgIcon name="i-mdi:information" class="text-4" />
+        <FmIcon name="i-mdi:information" class="text-4" />
       </div>
       <van-action-sheet v-model:show="show" teleport="body">
         <div class="whitespace-break-spaces p-4 space-y-2">
@@ -323,17 +323,19 @@ function initChart4() {
         </div>
       </van-action-sheet>
     </template>
-    <PageMain title="柱状图">
-      <div ref="chart1Ref" style="width: 100%; height: 400px;" />
-    </PageMain>
-    <PageMain title="折线图">
-      <div ref="chart2Ref" style="width: 100%; height: 400px;" />
-    </PageMain>
-    <PageMain title="饼图">
-      <div ref="chart3Ref" style="width: 100%; height: 400px;" />
-    </PageMain>
-    <PageMain title="雷达图">
-      <div ref="chart4Ref" style="width: 100%; height: 400px;" />
-    </PageMain>
-  </PageLayout>
+    <div class="flex flex-col gap-4 p-4">
+      <FmPageMain title="柱状图" class="m-0">
+        <div ref="chart1Ref" style="width: 100%; height: 400px;" />
+      </FmPageMain>
+      <FmPageMain title="折线图" class="m-0">
+        <div ref="chart2Ref" style="width: 100%; height: 400px;" />
+      </FmPageMain>
+      <FmPageMain title="饼图" class="m-0">
+        <div ref="chart3Ref" style="width: 100%; height: 400px;" />
+      </FmPageMain>
+      <FmPageMain title="雷达图" class="m-0">
+        <div ref="chart4Ref" style="width: 100%; height: 400px;" />
+      </FmPageMain>
+    </div>
+  </FmPageLayout>
 </template>

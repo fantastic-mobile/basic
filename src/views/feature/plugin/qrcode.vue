@@ -55,10 +55,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <PageLayout navbar>
+  <FmPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
       <div class="h-full flex-center px-1" @click="show = true">
-        <SvgIcon name="i-mdi:information" class="text-4" />
+        <FmIcon name="i-mdi:information" class="text-4" />
       </div>
       <van-action-sheet v-model:show="show" teleport="body">
         <div class="whitespace-break-spaces p-4 space-y-2">
@@ -77,17 +77,19 @@ onMounted(() => {
         </div>
       </van-action-sheet>
     </template>
-    <PageMain title="渲染成 img 标签">
-      <img :src="url1">
-    </PageMain>
-    <PageMain title="渲染成 canvas 标签">
-      <canvas ref="canvasRef" />
-    </PageMain>
-    <PageMain title="自定义颜色">
-      <img :src="url2">
-    </PageMain>
-    <PageMain title="指定宽度">
-      <img :src="url3">
-    </PageMain>
-  </PageLayout>
+    <div class="flex flex-col gap-4 p-4">
+      <FmPageMain title="渲染成 img 标签" class="m-0">
+        <img :src="url1">
+      </FmPageMain>
+      <FmPageMain title="渲染成 canvas 标签" class="m-0">
+        <canvas ref="canvasRef" />
+      </FmPageMain>
+      <FmPageMain title="自定义颜色" class="m-0">
+        <img :src="url2">
+      </FmPageMain>
+      <FmPageMain title="指定宽度" class="m-0">
+        <img :src="url3">
+      </FmPageMain>
+    </div>
+  </FmPageLayout>
 </template>

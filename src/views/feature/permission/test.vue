@@ -8,9 +8,9 @@ definePage({
 </script>
 
 <template>
-  <PageLayout navbar>
-    <PageMain>
+  <FmPageLayout navbar>
+    <FmPageMain>
       你能看到这个页面，说明你有访问权限。
-    </PageMain>
-  </PageLayout>
+    </FmPageMain>
+  </FmPageLayout>
 </template>

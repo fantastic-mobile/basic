@@ -12,65 +12,41 @@ function change() {
 }
 
 const fm = new URL('@/assets/images/logo.png', import.meta.url).href
-
-const flip = ref<'horizontal' | 'vertical' | 'both'>()
-const rotate = ref(0)
 </script>
 
 <template>
-  <PageLayout navbar navbar-start-side="back">
-    <PageMain>
+  <FmPageLayout navbar navbar-start-side="back">
+    <FmPageMain>
       <p>单色 Icon</p>
       <div>
-        <SvgIcon name="example-emotion-line" :size="48" :flip="flip" :rotate="rotate" />
-        <SvgIcon name="example-emotion-laugh-line" :size="48" :flip="flip" :rotate="rotate" />
-        <SvgIcon name="example-emotion-unhappy-line" :size="48" :flip="flip" :rotate="rotate" />
+        <FmIcon name="example-emotion-line" class="size-12" />
+        <FmIcon name="example-emotion-laugh-line" class="size-12" />
+        <FmIcon name="example-emotion-unhappy-line" class="size-12" />
       </div>
       <p>彩色 Icon</p>
       <div>
-        <SvgIcon name="example-crown" :size="48" :flip="flip" :rotate="rotate" />
-        <SvgIcon name="example-star" :size="48" :flip="flip" :rotate="rotate" />
-        <SvgIcon name="example-vip" :size="48" :flip="flip" :rotate="rotate" />
+        <FmIcon name="example-crown" class="size-12" />
+        <FmIcon name="example-star" class="size-12" />
+        <FmIcon name="example-vip" class="size-12" />
       </div>
       <p>Iconify Icon</p>
       <div>
-        <SvgIcon name="i-carbon:4k" :size="48" :flip="flip" :rotate="rotate" />
-        <SvgIcon name="i-carbon:play-filled-alt" :size="48" :flip="flip" :rotate="rotate" />
-        <SvgIcon name="i-carbon:pause-filled" :size="48" :flip="flip" :rotate="rotate" />
+        <FmIcon name="i-carbon:4k" class="size-12" />
+        <FmIcon name="i-carbon:play-filled-alt" class="size-12" />
+        <FmIcon name="i-carbon:pause-filled" class="size-12" />
       </div>
       <p>网络图片</p>
-      <SvgIcon :name="webImage" :size="48" :flip="flip" :rotate="rotate" />
+      <FmIcon :name="webImage" class="size-12" />
       <div class="space-x-2">
-        <HButton @click="change">
+        <FmButton @click="change">
           更改图片
-        </HButton>
-        <HButton @click="webImage = ''">
+        </FmButton>
+        <FmButton @click="webImage = ''">
           创建错误
-        </HButton>
+        </FmButton>
       </div>
       <p>本地图片</p>
-      <SvgIcon :name="fm" :size="48" :flip="flip" :rotate="rotate" />
-      <div>
-        <p>翻转：</p>
-        <van-radio-group v-model="flip" class="space-y-1">
-          <van-radio>
-            无
-          </van-radio>
-          <van-radio name="horizontal">
-            水平翻转
-          </van-radio>
-          <van-radio name="vertical">
-            垂直翻转
-          </van-radio>
-          <van-radio name="both">
-            水平垂直翻转
-          </van-radio>
-        </van-radio-group>
-        <p>旋转：</p>
-        <div class="p-4">
-          <van-slider v-model="rotate" :min="0" :max="360" />
-        </div>
-      </div>
-    </PageMain>
-  </PageLayout>
+      <FmIcon :name="fm" class="size-12" />
+    </FmPageMain>
+  </FmPageLayout>
 </template>

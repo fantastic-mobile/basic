@@ -1,3 +1,4 @@
+import type { Settings } from '#/global'
 import settingsDefault from '@/settings'
 
 const useSettingsStore = defineStore(
@@ -36,6 +37,12 @@ const useSettingsStore = defineStore(
           break
       }
     }
+    watch(() => settings.value.app.radius, (val) => {
+      document.documentElement.style.removeProperty('--radius')
+      document.documentElement.style.setProperty('--radius', `${val}rem`)
+    }, {
+      immediate: true,
+    })
     watch([
       () => settings.value.app.enableMournMode,
       () => settings.value.app.enableColorAmblyopiaMode,

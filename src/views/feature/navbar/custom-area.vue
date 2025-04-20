@@ -26,23 +26,23 @@ function onSelect(item: any) {
 </script>
 
 <template>
-  <PageLayout navbar>
+  <FmPageLayout navbar>
     <template #navbar-start>
-      <van-switch v-model="checked" size="16px" />
+      <FmSwitch v-model="checked" size="16px" />
     </template>
     <template #navbar-end>
-      <van-button size="small" @click="show = true">
+      <FmButton size="sm" @click="show = true">
         操作按钮
-      </van-button>
+      </FmButton>
       <van-action-sheet v-model:show="show" :actions="actions" @select="onSelect" />
     </template>
     <div class="flex flex-col gap-4 p-4">
       <div>
         Switch: {{ checked }}
       </div>
-      <van-button @click="router.back()">
+      <FmButton @click="router.back()">
         返回
-      </van-button>
+      </FmButton>
     </div>
-  </PageLayout>
+  </FmPageLayout>
 </template>

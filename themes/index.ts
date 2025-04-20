@@ -1,39 +1,65 @@
-import { hex2rgba } from '@unocss/preset-mini/utils'
-
 export const lightTheme = {
-  // 颜色主题
   'color-scheme': 'light',
-  // 内置 UI
-  '--ui-primary': hex2rgba('#0f0f0f')!.join(' '),
-  '--ui-text': hex2rgba('#fcfcfc')!.join(' '),
-  // 主体
-  '--g-bg': '#f2f2f2',
-  '--g-container-bg': '#fff',
-  '--g-border-color': '#DCDFE6',
+  // shadcn
+  '--background': '0 0% 100%',
+  '--foreground': '240 10% 3.9%',
+  '--card': '0 0% 100%',
+  '--card-foreground': '240 10% 3.9%',
+  '--popover': '0 0% 100%',
+  '--popover-foreground': '240 10% 3.9%',
+  '--primary': '240 5.9% 10%',
+  '--primary-foreground': '0 0% 98%',
+  '--secondary': '240 4.8% 95.9%',
+  '--secondary-foreground': '240 5.9% 10%',
+  '--muted': '240 4.8% 95.9%',
+  '--muted-foreground': '240 3.8% 46.1%',
+  '--accent': '240 4.8% 95.9%',
+  '--accent-foreground': '240 5.9% 10%',
+  '--destructive': '0 84.2% 60.2%',
+  '--destructive-foreground': '0 0% 98%',
+  '--border': '240 5.9% 90%',
+  '--input': '240 5.9% 90%',
+  '--ring': '240 5.9% 10%',
+  // 主要区域
+  '--g-bg': 'hsl(0 0% 95%)',
   // 导航栏
-  '--g-navbar-bg': '#fff',
-  '--g-navbar-color': '#0f0f0f',
+  '--g-navbar-bg': 'hsl(var(--background))',
+  '--g-navbar-color': 'hsl(var(--foreground))',
   // 标签栏
-  '--g-tabbar-bg': '#fff',
-  '--g-tabbar-color': '#6f6f6f',
-  '--g-tabbar-active-color': '#0f0f0f',
+  '--g-tabbar-bg': 'hsl(var(--background))',
+  '--g-tabbar-color': 'hsl(var(--accent-foreground) / 50%)',
+  '--g-tabbar-active-color': 'hsl(var(--foreground))',
 }
 
 export const darkTheme = {
-  // 颜色主题
   'color-scheme': 'dark',
-  // 内置 UI
-  '--ui-primary': hex2rgba('#e5e5e5')!.join(' '),
-  '--ui-text': hex2rgba('#242b33')!.join(' '),
-  // 主体
-  '--g-bg': '#0a0a0a',
-  '--g-container-bg': '#141414',
-  '--g-border-color': '#15191e',
+  // shadcn
+  '--background': '240 10% 3.9%',
+  '--foreground': '0 0% 98%',
+  '--card': '240 10% 3.9%',
+  '--card-foreground': '0 0% 98%',
+  '--popover': '240 10% 3.9%',
+  '--popover-foreground': '0 0% 98%',
+  '--primary': '0 0% 98%',
+  '--primary-foreground': '240 5.9% 10%',
+  '--secondary': '240 3.7% 15.9%',
+  '--secondary-foreground': '0 0% 98%',
+  '--muted': '240 3.7% 15.9%',
+  '--muted-foreground': '240 5% 64.9%',
+  '--accent': '240 3.7% 15.9%',
+  '--accent-foreground': '0 0% 98%',
+  '--destructive': '0 62.8% 30.6%',
+  '--destructive-foreground': '0 0% 98%',
+  '--border': '240 3.7% 15.9%',
+  '--input': '240 3.7% 15.9%',
+  '--ring': '240 4.9% 83.9%',
+  // 主要区域
+  '--g-bg': 'hsl(var(--background))',
   // 导航栏
-  '--g-navbar-bg': '#141414',
-  '--g-navbar-color': '#e5e5e5',
+  '--g-navbar-bg': 'hsl(var(--background))',
+  '--g-navbar-color': 'hsl(var(--foreground))',
   // 标签栏
-  '--g-tabbar-bg': '#141414',
-  '--g-tabbar-color': '#6f6f6f',
-  '--g-tabbar-active-color': '#e5e5e5',
+  '--g-tabbar-bg': 'hsl(var(--background))',
+  '--g-tabbar-color': 'hsl(var(--accent-foreground) / 50%)',
+  '--g-tabbar-active-color': 'hsl(var(--foreground))',
 }
