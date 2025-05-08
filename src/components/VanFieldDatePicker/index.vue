@@ -42,7 +42,9 @@ const valueDate = ref<string[]>(value.value ?? [])
 const valueStr = computed(() => {
   return value.value ? value.value.join('-') : ''
 })
-
+watch(value, (val) => {
+  valueDate.value = val ?? []
+})
 const showPicker = ref(false)
 function onConfirm({ selectedValues }: { selectedValues: string[] }) {
   value.value = selectedValues
@@ -51,7 +53,9 @@ function onConfirm({ selectedValues }: { selectedValues: string[] }) {
 </script>
 
 <template>
-  <van-field :model-value="valueStr" v-bind="fieldProps" is-link readonly @click="showPicker = true" />
+  <slot :open="() => showPicker = true" :value="valueDate" :value-str="valueStr">
+    <van-field :model-value="valueStr" v-bind="fieldProps" is-link readonly @click="showPicker = true" />
+  </slot>
   <van-popup v-model:show="showPicker" v-bind="popupProps" position="bottom" teleport="body">
     <van-date-picker v-model="valueDate" v-bind="datePickerProps" @confirm="onConfirm" @cancel="showPicker = false" />
   </van-popup>
