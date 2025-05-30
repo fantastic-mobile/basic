@@ -1,8 +1,8 @@
 import type { Router } from 'vue-router/auto'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import useKeepAliveStore from '@/store/modules/keepAlive'
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import '@/assets/styles/nprogress.css'
 
 // 鉴权

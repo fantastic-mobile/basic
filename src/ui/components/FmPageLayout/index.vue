@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import { useElementSize, useScroll } from '@vueuse/core'
 import useSettingsStore from '@/store/modules/settings'
 import { cn } from '@/utils'
-import { useElementSize, useScroll } from '@vueuse/core'
 
 defineOptions({
   name: 'FmPageLayout',
