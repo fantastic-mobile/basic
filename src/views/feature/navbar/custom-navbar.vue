@@ -6,25 +6,16 @@ definePage({
 })
 
 const router = useRouter()
-
-const scrollTop = ref(0)
-function onScroll(e: Event) {
-  scrollTop.value = (e.target as HTMLElement).scrollTop
-}
 </script>
 
 <template>
-  <FmPageLayout navbar @scroll="onScroll">
+  <FmPageLayout navbar :style="{ scrollTimelineName: '--navbar-timeline' }" class="pt+safe-[200px]" content-class="mt+safe!">
     <template #navbar>
-      <div
-        class="h-[80px] flex flex-center gap-2 bg-([url('https://picsum.photos/375/60')] cover center no-repeat) text-light text-shadow text-shadow-color-dark shadow transition-all transition-all-500" :class="{
-          'h-[60px]!': scrollTop > 50,
-        }"
-      >
+      <div class="custom-navbar flex flex-center gap-2 bg-[url('https://picsum.photos/375/200')] bg-cover bg-center bg-no-repeat text-light text-shadow text-shadow-color-dark shadow transition-all-500">
         头部导航
       </div>
     </template>
-    <div class="h-full flex flex-col gap-4 p-4">
+    <div class="flex flex-col gap-4 p-4">
       使用自定义导航可以满足更复杂的业务场景，例如当前页面，你可以滚动页面试试。
       <FmButton @click="router.back()">
         返回
@@ -35,3 +26,23 @@ function onScroll(e: Event) {
     </div>
   </FmPageLayout>
 </template>
+
+<style scoped>
+@keyframes navbar-shrink {
+  from {
+    height: 200px;
+    font-size: 48px;
+  }
+
+  to {
+    height: 60px;
+    font-size: 18px;
+  }
+}
+
+.custom-navbar {
+  animation: navbar-shrink linear forwards;
+  animation-range: 0 140px;
+  animation-timeline: --navbar-timeline;
+}
+</style>
