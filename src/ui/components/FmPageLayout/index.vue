@@ -24,6 +24,8 @@ withDefaults(
     tabbarBorder?: boolean
     /** 标签栏样式 */
     tabbarClass?: HTMLAttributes['class']
+    /** 内容区域样式 */
+    contentClass?: HTMLAttributes['class']
     /** 是否展示底部版权信息，默认使用应用配置 `copyright.enable` */
     copyright?: boolean
     /** 是否启用返回顶部按钮，默认使用应用配置 `app.enableBackTop` */
@@ -175,7 +177,7 @@ function handleBackTopClick() {
         ...((tabbar ?? settingsStore.settings.tabbar.enable) && {
           'mb+safe-[var(--g-tabbar-height)]': true,
         }),
-      })"
+      }, contentClass)"
     >
       <slot />
       <!-- 版权信息 -->
