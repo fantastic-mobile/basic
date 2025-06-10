@@ -53,34 +53,79 @@ defineExpose({
   areaRef: dialogAreaRef,
 })
 
-const id = useId()
-provide('ModalId', id)
-
+const modalId = useId()
 const isOpen = ref(props.modelValue)
 
 watch(() => props.modelValue, (newValue) => {
   isOpen.value = newValue
 })
 
-function updateOpen(value: boolean) {
-  isOpen.value = value
-  emits('update:modelValue', value)
-  if (value) {
+watch(isOpen, (val) => {
+  emits('update:modelValue', val)
+  if (val) {
     emits('open')
   }
   else {
     emits('close')
   }
+})
+
+async function updateOpen(value: boolean) {
+  if (value) {
+    isOpen.value = value
+    emits('open')
+  }
+  else {
+    if (props.beforeClose) {
+      await props.beforeClose(
+        'close',
+        () => {
+          isOpen.value = value
+          emits('close')
+        },
+      )
+    }
+    else {
+      isOpen.value = value
+      emits('close')
+    }
+  }
 }
 
-function onConfirm() {
-  updateOpen(false)
-  emits('confirm')
+const isConfirmButtonLoading = ref(false)
+
+async function onConfirm() {
+  if (props.beforeClose) {
+    isConfirmButtonLoading.value = true
+    await props.beforeClose(
+      'confirm',
+      () => {
+        isOpen.value = false
+        emits('confirm')
+      },
+    )
+    isConfirmButtonLoading.value = false
+  }
+  else {
+    isOpen.value = false
+    emits('confirm')
+  }
 }
 
-function onCancel() {
-  updateOpen(false)
-  emits('cancel')
+async function onCancel() {
+  if (props.beforeClose) {
+    await props.beforeClose(
+      'cancel',
+      () => {
+        isOpen.value = false
+        emits('cancel')
+      },
+    )
+  }
+  else {
+    isOpen.value = false
+    emits('cancel')
+  }
 }
 
 function handleFocusOutside(e: Event) {
@@ -89,7 +134,7 @@ function handleFocusOutside(e: Event) {
 }
 
 function handleClickOutside(e: Event) {
-  if (!props.closeOnClickOverlay || (e.target as HTMLElement).dataset.modalId !== id) {
+  if (!props.closeOnClickOverlay || (e.target as HTMLElement).dataset.modalId !== modalId) {
     e.preventDefault()
     e.stopPropagation()
   }
@@ -115,6 +160,7 @@ function handleAnimationEnd() {
 <template>
   <Dialog :modal="false" :open="isOpen" @update:open="updateOpen">
     <DialogContent
+      :modal-id="modalId"
       :open="isOpen"
       :closable="props.closable"
       :overlay="props.overlay"
@@ -176,7 +222,7 @@ function handleAnimationEnd() {
           <FmButton v-if="showCancelButton" variant="outline" class="w-full" @click="onCancel">
             {{ cancelButtonText }}
           </FmButton>
-          <FmButton v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="confirmButtonLoading" class="w-full" @click="onConfirm">
+          <FmButton v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="confirmButtonLoading || isConfirmButtonLoading" class="w-full" @click="onConfirm">
             {{ confirmButtonText }}
           </FmButton>
         </slot>

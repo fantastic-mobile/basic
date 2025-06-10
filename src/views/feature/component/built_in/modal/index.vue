@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { toast } from 'vue-sonner'
 import { useFmModal } from '@/ui/components/FmModal'
 
 definePage({
@@ -24,34 +25,86 @@ watch(() => modalInfo.value.loading, (loading) => {
   }
 })
 
+function handleBeforeClose(action: 'confirm' | 'cancel' | 'close', done: () => void) {
+  if (action === 'close') {
+    useFmModal().confirm({
+      title: '提示',
+      content: '确定要关闭吗？',
+      onConfirm: () => {
+        done()
+      },
+    })
+  }
+  else {
+    done()
+  }
+}
+
 function showModalInfo() {
   useFmModal().info({
     title: '温馨提醒',
     content: '这是 info 弹窗',
+    onConfirm: () => {
+      toast.info('你点了确定')
+    },
   })
 }
 function showModalSuccess() {
   useFmModal().success({
     title: '温馨提醒',
     content: '这是 success 弹窗',
+    onConfirm: () => {
+      toast.info('你点了确定')
+    },
   })
 }
 function showModalWarning() {
   useFmModal().warning({
     title: '温馨提醒',
     content: '这是 warning 弹窗',
+    onConfirm: () => {
+      toast.info('你点了确定')
+    },
   })
 }
 function showModalError() {
   useFmModal().error({
     title: '温馨提醒',
     content: '这是 confirm 弹窗',
+    onConfirm: () => {
+      toast.info('你点了确定')
+    },
   })
 }
 function showModalConfirm() {
   useFmModal().confirm({
     title: '温馨提醒',
     content: '这是 confirm 弹窗',
+    onConfirm: () => {
+      toast.info('你点了确定')
+    },
+  })
+}
+function showModalPromiseConfirm() {
+  useFmModal().confirm({
+    title: '温馨提醒',
+    content: '这是 confirm 弹窗',
+    confirmButtonText: '确认（随机成功或失败）',
+    beforeClose: async (action, done) => {
+      if (action === 'confirm') {
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        if (Math.random() > 0.5) {
+          toast.success('成功了！')
+          done()
+        }
+        else {
+          toast.error('失败了！')
+        }
+      }
+      else {
+        done()
+      }
+    },
   })
 }
 </script>
@@ -63,7 +116,7 @@ function showModalConfirm() {
         <FmButton @click="modal = true">
           打开
         </FmButton>
-        <FmModal v-model="modal" title="标题" description="这里是一段描述介绍" :closable="modalInfo.closable" :center="modalInfo.center" :loading="modalInfo.loading" :header="modalInfo.header" :footer="modalInfo.footer">
+        <FmModal v-model="modal" title="标题" description="这里是一段描述介绍" :closable="modalInfo.closable" :center="modalInfo.center" :loading="modalInfo.loading" :header="modalInfo.header" :footer="modalInfo.footer" :before-close="handleBeforeClose">
           <div :class="modalInfo.contentHeight">
             <div class="flex-start-center flex-wrap gap-2">
               <FmButton :variant="modalInfo.closable ? 'default' : 'outline'" class="w-full" @click="modalInfo.closable = !modalInfo.closable">
@@ -104,6 +157,9 @@ function showModalConfirm() {
           </FmButton>
           <FmButton @click="showModalConfirm">
             Confirm
+          </FmButton>
+          <FmButton @click="showModalPromiseConfirm">
+            Confirm with promise
           </FmButton>
         </div>
       </FmPageMain>
