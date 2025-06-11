@@ -12,7 +12,6 @@
 * {
   scrollbar-color: hsl(var(--scrollbar-color)) transparent;
   scrollbar-width: thin;
-  border-color: hsl(var(--border));
 }
 
 html {
@@ -22,8 +21,6 @@ html {
 body {
   box-sizing: border-box;
   margin: 0;
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
   -webkit-tap-highlight-color: transparent;
 }
 
