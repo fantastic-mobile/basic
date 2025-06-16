@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useKeepAliveStore from '@/store/modules/keepAlive'
-import useSettingsStore from '@/store/modules/settings'
 import eventBus from '@/utils/eventBus'
 import Provider from './ui/provider/index.vue'
 

@@ -1,7 +1,7 @@
 import apiUser from '@/api/modules/user'
 import router from '@/router'
 
-const useUserStore = defineStore(
+export const useUserStore = defineStore(
   // 唯一ID
   'user',
   () => {
@@ -66,5 +66,3 @@ const useUserStore = defineStore(
     }
   },
 )
-
-export default useUserStore

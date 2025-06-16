@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useUserStore from '@/store/modules/user'
-
 definePage({
   meta: {
     title: '个人中心',
