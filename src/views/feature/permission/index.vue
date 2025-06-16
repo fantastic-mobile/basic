@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { showNotify } from 'vant'
-import useSettingsStore from '@/store/modules/settings'
-import useUserStore from '@/store/modules/user'
 
 definePage({
   meta: {

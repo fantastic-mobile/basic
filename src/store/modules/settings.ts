@@ -1,7 +1,7 @@
 import type { Settings } from '#/global'
 import settingsDefault from '@/settings'
 
-const useSettingsStore = defineStore(
+export const useSettingsStore = defineStore(
   // 唯一ID
   'settings',
   () => {
@@ -75,5 +75,3 @@ const useSettingsStore = defineStore(
     }
   },
 )
-
-export default useSettingsStore
