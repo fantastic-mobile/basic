@@ -44,7 +44,6 @@ export default defineConfig(({ mode, command }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern-compiler',
           additionalData: scssResources.join(''),
         },
       },

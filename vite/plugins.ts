@@ -35,6 +35,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       renderLegacyChunks: false,
       modernPolyfills: [
         'es.array.at',
+        'es.object.has-own',
       ],
     }),
 
