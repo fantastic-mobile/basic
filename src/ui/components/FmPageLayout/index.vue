@@ -75,6 +75,7 @@ function handleMainScroll(e: Event) {
 const startSideRef = useTemplateRef('startSideRef')
 const endSideRef = useTemplateRef('endSideRef')
 const sideWidth = ref(0)
+const isSupprotRound = CSS.supports('width', 'round(up, 1.01px, 1px)')
 onMounted(() => {
   const { width: startWidth } = useElementSize(startSideRef, undefined, { box: 'border-box' })
   const { width: endWidth } = useElementSize(endSideRef, undefined, { box: 'border-box' })
@@ -135,7 +136,7 @@ function handleBackTopClick() {
       <div class="min-h-[var(--g-navbar-min-height)] w-full flex-center">
         <div
           class="h-full flex items-center justify-start" :style="{
-            ...(titleCenter && sideWidth && { width: `round(up, ${sideWidth}px, 1px)` }),
+            ...(titleCenter && sideWidth && { width: isSupprotRound ? `round(up, ${sideWidth}px, 1px)` : `${Math.ceil(sideWidth)}px` }),
           }"
         >
           <div ref="startSideRef" class="h-full flex-center whitespace-nowrap">
@@ -157,7 +158,7 @@ function handleBackTopClick() {
         </div>
         <div
           class="h-full flex items-center justify-end" :style="{
-            ...(titleCenter && sideWidth && { width: `round(up, ${sideWidth}px, 1px)` }),
+            ...(titleCenter && sideWidth && { width: isSupprotRound ? `round(up, ${sideWidth}px, 1px)` : `${Math.ceil(sideWidth)}px` }),
           }"
         >
           <div ref="endSideRef" class="h-full flex-center whitespace-nowrap">
