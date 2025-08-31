@@ -63,4 +63,204 @@ declare module 'vue-router/auto-routes' {
     'reload': RouteRecordInfo<'reload', '/reload', Record<never, never>, Record<never, never>>,
     '/user/': RouteRecordInfo<'/user/', '/user', Record<never, never>, Record<never, never>>,
   }
+
+  /**
+   * Route file to route info map by unplugin-vue-router.
+   * Used by the volar plugin to automatically type useRoute()
+   *
+   * Each key is a file path relative to the project root with 2 properties:
+   * - routes: union of route names of the possible routes when in this page (passed to useRoute<...>())
+   * - views: names of nested views (can be passed to <RouterView name="...">)
+   *
+   * @internal
+   */
+  export interface _RouteFileInfoMap {
+    'src/views/index.vue': {
+      routes: '/'
+      views: never
+    }
+    'src/views/[...all].vue': {
+      routes: '/[...all]'
+      views: never
+    }
+    'src/views/feature/index.vue': {
+      routes: '/feature/'
+      views: never
+    }
+    'src/views/feature/component/basic.vue': {
+      routes: '/feature/component/basic'
+      views: never
+    }
+    'src/views/feature/component/built_in/avatar/index.vue': {
+      routes: '/feature/component/built_in/avatar/'
+      views: never
+    }
+    'src/views/feature/component/built_in/badge/index.vue': {
+      routes: '/feature/component/built_in/badge/'
+      views: never
+    }
+    'src/views/feature/component/built_in/button/index.vue': {
+      routes: '/feature/component/built_in/button/'
+      views: never
+    }
+    'src/views/feature/component/built_in/card/index.vue': {
+      routes: '/feature/component/built_in/card/'
+      views: never
+    }
+    'src/views/feature/component/built_in/checkbox/index.vue': {
+      routes: '/feature/component/built_in/checkbox/'
+      views: never
+    }
+    'src/views/feature/component/built_in/divider/index.vue': {
+      routes: '/feature/component/built_in/divider/'
+      views: never
+    }
+    'src/views/feature/component/built_in/drawer/index.vue': {
+      routes: '/feature/component/built_in/drawer/'
+      views: never
+    }
+    'src/views/feature/component/built_in/input/index.vue': {
+      routes: '/feature/component/built_in/input/'
+      views: never
+    }
+    'src/views/feature/component/built_in/loading/index.vue': {
+      routes: '/feature/component/built_in/loading/'
+      views: never
+    }
+    'src/views/feature/component/built_in/modal/index.vue': {
+      routes: '/feature/component/built_in/modal/'
+      views: never
+    }
+    'src/views/feature/component/built_in/page_main/index.vue': {
+      routes: '/feature/component/built_in/page_main/'
+      views: never
+    }
+    'src/views/feature/component/built_in/scroll_area/index.vue': {
+      routes: '/feature/component/built_in/scroll_area/'
+      views: never
+    }
+    'src/views/feature/component/built_in/select/index.vue': {
+      routes: '/feature/component/built_in/select/'
+      views: never
+    }
+    'src/views/feature/component/built_in/slider/index.vue': {
+      routes: '/feature/component/built_in/slider/'
+      views: never
+    }
+    'src/views/feature/component/built_in/switch/index.vue': {
+      routes: '/feature/component/built_in/switch/'
+      views: never
+    }
+    'src/views/feature/component/built_in/tabs/index.vue': {
+      routes: '/feature/component/built_in/tabs/'
+      views: never
+    }
+    'src/views/feature/component/built_in/toast/index.vue': {
+      routes: '/feature/component/built_in/toast/'
+      views: never
+    }
+    'src/views/feature/component/built_in/trend/index.vue': {
+      routes: '/feature/component/built_in/trend/'
+      views: never
+    }
+    'src/views/feature/component/composite.vue': {
+      routes: '/feature/component/composite'
+      views: never
+    }
+    'src/views/feature/function/icon.vue': {
+      routes: '/feature/function/icon'
+      views: never
+    }
+    'src/views/feature/function/keepAlive.vue': {
+      routes: '/feature/function/keepAlive'
+      views: never
+    }
+    'src/views/feature/function/unocss.vue': {
+      routes: '/feature/function/unocss'
+      views: never
+    }
+    'src/views/feature/navbar/custom-area.vue': {
+      routes: '/feature/navbar/custom-area'
+      views: never
+    }
+    'src/views/feature/navbar/custom-navbar.vue': {
+      routes: '/feature/navbar/custom-navbar'
+      views: never
+    }
+    'src/views/feature/navbar/default.vue': {
+      routes: '/feature/navbar/default'
+      views: never
+    }
+    'src/views/feature/navbar/none.vue': {
+      routes: '/feature/navbar/none'
+      views: never
+    }
+    'src/views/feature/page/loadmore.vue': {
+      routes: '/feature/page/loadmore'
+      views: never
+    }
+    'src/views/feature/permission/index.vue': {
+      routes: '/feature/permission/'
+      views: never
+    }
+    'src/views/feature/permission/test.vue': {
+      routes: '/feature/permission/test'
+      views: never
+    }
+    'src/views/feature/plugin/animation.vue': {
+      routes: '/feature/plugin/animation'
+      views: never
+    }
+    'src/views/feature/plugin/echarts.vue': {
+      routes: '/feature/plugin/echarts'
+      views: never
+    }
+    'src/views/feature/plugin/esign.vue': {
+      routes: '/feature/plugin/esign'
+      views: never
+    }
+    'src/views/feature/plugin/qrcode.vue': {
+      routes: '/feature/plugin/qrcode'
+      views: never
+    }
+    'src/views/feature/plugin/swiper.vue': {
+      routes: '/feature/plugin/swiper'
+      views: never
+    }
+    'src/views/feature/plugin/vchart.vue': {
+      routes: '/feature/plugin/vchart'
+      views: never
+    }
+    'src/views/feature/tabbar/custom-area.vue': {
+      routes: '/feature/tabbar/custom-area'
+      views: never
+    }
+    'src/views/feature/tabbar/default.vue': {
+      routes: '/feature/tabbar/default'
+      views: never
+    }
+    'src/views/login.vue': {
+      routes: 'login'
+      views: never
+    }
+    'src/views/reload.vue': {
+      routes: 'reload'
+      views: never
+    }
+    'src/views/user/index.vue': {
+      routes: '/user/'
+      views: never
+    }
+  }
+
+  /**
+   * Get a union of possible route names in a certain route component file.
+   * Used by the volar plugin to automatically type useRoute()
+   *
+   * @internal
+   */
+  export type _RouteNamesForFilePath<FilePath extends string> =
+    _RouteFileInfoMap extends Record<FilePath, infer Info>
+      ? Info['routes']
+      : keyof RouteNamedMap
 }
