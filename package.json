@@ -103,6 +103,7 @@
     "vite-plugin-env-parse": "^1.0.15",
     "vite-plugin-fake-server": "^2.2.0",
     "vite-plugin-pages": "^0.33.1",
+    "vite-plugin-qrcode": "^0.3.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-vue-devtools": "^8.0.1",
     "vue-tsc": "^3.0.6"
