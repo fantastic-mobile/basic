@@ -34,7 +34,7 @@ function handleMaximize() {
   emits('toggleMaximize', !props.maximize)
 }
 
-const dialogContentRef = useTemplateRef('dialogContentRef')
+const dialogContentRef = useTemplateRef<ComponentPublicInstance<typeof DialogContent>>('dialogContentRef')
 
 defineExpose({
   el: dialogContentRef,
