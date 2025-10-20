@@ -1,4 +1,4 @@
-import type { Router } from 'vue-router/auto'
+import type { Router } from 'vue-router'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import '@/assets/styles/nprogress.css'
 

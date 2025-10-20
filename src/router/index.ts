@@ -1,5 +1,5 @@
-import type { RouteRecordRaw } from 'vue-router/auto'
-import { createRouter, createWebHashHistory } from 'vue-router/auto'
+import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { routes } from 'vue-router/auto-routes'
 import setupGuards from './guards'
 
@@ -18,7 +18,7 @@ function deleteMiddleRouteComponent(routes: RouteRecordRaw[]) {
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: deleteMiddleRouteComponent(routes),
+  routes: deleteMiddleRouteComponent([...routes]),
 })
 
 setupGuards(router)
