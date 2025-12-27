@@ -47,7 +47,6 @@ const slots = defineSlots<{
   footer?: () => VNode
 }>()
 
-const dialogHeaderRef = ref()
 const dialogAreaRef = useTemplateRef('dialogAreaRef')
 
 defineExpose({
@@ -194,7 +193,7 @@ function handleAnimationEnd() {
       @animation-end="handleAnimationEnd"
     >
       <DialogHeader
-        v-if="header" ref="dialogHeaderRef" :class="cn('p-4', props.headerClass, {
+        v-if="header" :class="cn('p-4', props.headerClass, {
           'border-b': props.border,
         })"
       >
