@@ -24,7 +24,7 @@ export interface ModalProps {
   confirmButtonLoading?: boolean
   beforeClose?: (
     action: 'confirm' | 'cancel' | 'close',
-    done: () => void
+    done: () => void,
   ) => void
   header?: boolean
   footer?: boolean
