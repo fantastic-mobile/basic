@@ -10,8 +10,6 @@ import Unocss from 'unocss/vite'
 import autoImport from 'unplugin-auto-import/vite'
 import TurboConsole from 'unplugin-turbo-console/vite'
 import components from 'unplugin-vue-components/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
-import VueRouter from 'unplugin-vue-router/vite'
 import { loadEnv } from 'vite'
 import Archiver from 'vite-plugin-archiver'
 import banner from 'vite-plugin-banner'
@@ -21,13 +19,15 @@ import { vitePluginFakeServer } from 'vite-plugin-fake-server'
 import { qrcode } from 'vite-plugin-qrcode'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import { VueRouterAutoImports } from 'vue-router/unplugin'
+import VueRouter from 'vue-router/vite'
 
 export default function createVitePlugins(mode: string, isBuild = false) {
   const viteEnv = parseLoadedEnv(loadEnv(mode, process.cwd()))
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     VueRouter({
       routesFolder: './src/views',
-      dts: './src/types/typed-router.d.ts',
+      dts: './src/types/route-map.d.ts',
       exclude: ['**/components', '**/_*/**', '**/_*'],
     }),
     vue(),
