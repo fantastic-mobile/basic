@@ -4,7 +4,7 @@ import '@/assets/styles/nprogress.css'
 
 // 鉴权
 function setupAuth(router: Router) {
-  router.beforeEach(async (to, _from, next) => {
+  router.beforeEach(async (to) => {
     const settingsStore = useSettingsStore()
     const userStore = useUserStore()
     if (to.meta.auth) {
@@ -16,19 +16,15 @@ function setupAuth(router: Router) {
           }
         }
         catch {}
-        next()
       }
       else {
-        next({
+        return {
           name: 'login',
           query: {
             redirect: to.fullPath,
           },
-        })
+        }
       }
-    }
-    else {
-      next()
     }
   })
 }
@@ -39,12 +35,11 @@ function setupProgress(router: Router) {
     showSpinner: false,
     parent: '#app',
   })
-  router.beforeEach((_to, _from, next) => {
+  router.beforeEach(() => {
     const settingsStore = useSettingsStore()
     if (settingsStore.settings.app.enableProgress) {
       isLoading.value = true
     }
-    next()
   })
   router.afterEach(() => {
     const settingsStore = useSettingsStore()
