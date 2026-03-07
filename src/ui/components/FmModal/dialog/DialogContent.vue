@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DialogContentEmits, DialogContentProps } from 'reka-ui'
-import type { HTMLAttributes } from 'vue'
+import type { ComponentPublicInstance, HTMLAttributes } from 'vue'
 import { reactiveOmit, useScrollLock } from '@vueuse/core'
 import { Maximize, Minimize, X } from 'lucide-vue-next'
 import {
