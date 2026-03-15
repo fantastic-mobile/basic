@@ -1,4 +1,4 @@
-export default function useAuth() {
+export function useAppAuth() {
   function hasPermission(permission: string) {
     const settingsStore = useSettingsStore()
     const userStore = useUserStore()

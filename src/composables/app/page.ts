@@ -1,4 +1,4 @@
-export default function usePage() {
+export function useAppPage() {
   const router = useRouter()
 
   function reload() {
