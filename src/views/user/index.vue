@@ -6,10 +6,10 @@ definePage({
   },
 })
 
-const userStore = useUserStore()
+const appAuthStore = useAppAuthStore()
 
 const avatarError = ref(false)
-watch(() => userStore.avatar, () => {
+watch(() => appAuthStore.avatar, () => {
   if (avatarError.value) {
     avatarError.value = false
   }
@@ -27,11 +27,11 @@ watch(() => userStore.avatar, () => {
           <FmIcon name="i-carbon:settings" class="text-6" />
         </div>
         <div class="flex items-center gap-4">
-          <img v-if="userStore.avatar && !avatarError" :src="userStore.avatar" :onerror="() => (avatarError = true)" class="h-20 w-20 rounded-full bg-dark p-2 dark-bg-light">
+          <img v-if="appAuthStore.avatar && !avatarError" :src="appAuthStore.avatar" :onerror="() => (avatarError = true)" class="h-20 w-20 rounded-full bg-dark p-2 dark-bg-light">
           <FmIcon v-else name="i-carbon:user-avatar-filled-alt" class="text-20 text-gray-400" />
           <div>
             <div class="text-8 font-bold">
-              Hi, {{ userStore.account }}
+              Hi, {{ appAuthStore.account }}
             </div>
             <div class="mt-1 text-stone-5">
               这是个人中心示例页面噢~
@@ -141,7 +141,7 @@ watch(() => userStore.avatar, () => {
           </div>
         </FmPageMain>
       </div>
-      <FmButton block @click="userStore.logout()">
+      <FmButton block @click="appAuthStore.logout()">
         登出
       </FmButton>
     </div>

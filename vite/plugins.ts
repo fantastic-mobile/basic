@@ -62,7 +62,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       ],
       dts: './src/types/auto-imports.d.ts',
       dirs: [
-        './src/store/modules',
+        './src/store/modules/**/*',
         './src/composables/**/*',
       ],
     }),

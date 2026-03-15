@@ -4,8 +4,8 @@ import Provider from './ui/provider/index.vue'
 
 const route = useRoute()
 
-const settingsStore = useSettingsStore()
-const keepAliveStore = useKeepAliveStore()
+const appSettingsStore = useAppSettingsStore()
+const appKeepAliveStore = useAppKeepAliveStore()
 
 const { auth } = useAppAuth()
 
@@ -16,12 +16,12 @@ const isAuth = computed(() => {
 })
 
 watch([
-  () => settingsStore.settings.app.dynamicTitle,
-  () => settingsStore.title,
+  () => appSettingsStore.settings.app.dynamicTitle,
+  () => appSettingsStore.title,
 ], () => {
   nextTick(() => {
-    if (settingsStore.settings.app.dynamicTitle && settingsStore.title) {
-      document.title = settingsStore.title ?? import.meta.env.VITE_APP_TITLE
+    if (appSettingsStore.settings.app.dynamicTitle && appSettingsStore.title) {
+      document.title = appSettingsStore.title ?? import.meta.env.VITE_APP_TITLE
     }
     else {
       document.title = import.meta.env.VITE_APP_TITLE
@@ -39,7 +39,7 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
   <Provider>
     <RouterView v-slot="{ Component }">
       <Transition name="fade" mode="out-in" appear>
-        <KeepAlive :include="keepAliveStore.list">
+        <KeepAlive :include="appKeepAliveStore.list">
           <component :is="Component" v-if="isAuth" :key="route.fullPath" />
           <AppNotAllowed v-else />
         </KeepAlive>

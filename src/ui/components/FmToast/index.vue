@@ -6,9 +6,9 @@ defineOptions({
   name: 'FmToast',
 })
 
-const settingsStore = useSettingsStore()
+const appSettingsStore = useAppSettingsStore()
 </script>
 
 <template>
-  <Toaster position="top-center" :theme="settingsStore.currentColorScheme" />
+  <Toaster position="top-center" :theme="appSettingsStore.currentColorScheme" />
 </template>
