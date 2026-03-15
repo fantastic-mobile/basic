@@ -1,4 +1,3 @@
-import type { Theme } from 'unocss/preset-uno'
 import { entriesToCss } from '@unocss/core'
 import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import presetRemToPx from '@unocss/preset-rem-to-px'
@@ -16,7 +15,7 @@ import {
 import { presetAnimations } from 'unocss-preset-animations'
 import { darkTheme, lightTheme } from './themes'
 
-export default defineConfig<Theme>({
+export default defineConfig({
   content: {
     pipeline: {
       include: [
