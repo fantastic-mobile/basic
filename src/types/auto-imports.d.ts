@@ -68,16 +68,15 @@ declare global {
   const toValue: typeof import('vue').toValue
   const triggerRef: typeof import('vue').triggerRef
   const unref: typeof import('vue').unref
+  const useAppAuth: typeof import('../composables/app/auth').useAppAuth
+  const useAppPage: typeof import('../composables/app/page').useAppPage
   const useAttrs: typeof import('vue').useAttrs
-  const useAuth: typeof import('../utils/composables/useAuth').default
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
-  const useGlobalProperties: typeof import('../utils/composables/useGlobalProperties').default
   const useId: typeof import('vue').useId
   const useKeepAliveStore: typeof import('../store/modules/keepAlive').useKeepAliveStore
   const useLink: typeof import('vue-router/auto').useLink
   const useModel: typeof import('vue').useModel
-  const usePage: typeof import('../utils/composables/usePage').default
   const useRoute: typeof import('vue-router').useRoute
   const useRouter: typeof import('vue-router').useRouter
   const useSettingsStore: typeof import('../store/modules/settings').useSettingsStore

@@ -7,7 +7,7 @@ const route = useRoute()
 const settingsStore = useSettingsStore()
 const keepAliveStore = useKeepAliveStore()
 
-const { auth } = useAuth()
+const { auth } = useAppAuth()
 
 const isAuth = computed(() => {
   return route.matched.every((item) => {

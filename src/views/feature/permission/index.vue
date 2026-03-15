@@ -13,7 +13,7 @@ const router = useRouter()
 const settingsStore = useSettingsStore()
 const userStore = useUserStore()
 
-const { auth, authAll } = useAuth()
+const { auth, authAll } = useAppAuth()
 
 // 模拟账号切换
 async function accountChange(val: any) {
