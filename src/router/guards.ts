@@ -37,13 +37,13 @@ function setupProgress(router: Router) {
   })
   router.beforeEach(() => {
     const settingsStore = useSettingsStore()
-    if (settingsStore.settings.app.enableProgress) {
+    if (settingsStore.settings.page.progress) {
       isLoading.value = true
     }
   })
   router.afterEach(() => {
     const settingsStore = useSettingsStore()
-    if (settingsStore.settings.app.enableProgress) {
+    if (settingsStore.settings.page.progress) {
       isLoading.value = false
     }
   })

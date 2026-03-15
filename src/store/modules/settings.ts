@@ -8,8 +8,8 @@ export const useSettingsStore = defineStore(
     const settings = ref(settingsDefault)
 
     const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)')
-    const currentColorScheme = ref<Exclude<Settings.app['colorScheme'], ''>>()
-    watch(() => settings.value.app.colorScheme, (val) => {
+    const currentColorScheme = ref<Exclude<Settings.theme['colorScheme'], ''>>()
+    watch(() => settings.value.theme.colorScheme, (val) => {
       if (val === '') {
         prefersColorScheme.addEventListener('change', updateTheme)
       }
@@ -19,11 +19,11 @@ export const useSettingsStore = defineStore(
     }, {
       immediate: true,
     })
-    watch(() => settings.value.app.colorScheme, updateTheme, {
+    watch(() => settings.value.theme.colorScheme, updateTheme, {
       immediate: true,
     })
     function updateTheme() {
-      let colorScheme = settings.value.app.colorScheme
+      let colorScheme = settings.value.theme.colorScheme
       if (colorScheme === '') {
         colorScheme = prefersColorScheme.matches ? 'dark' : 'light'
       }
@@ -37,15 +37,15 @@ export const useSettingsStore = defineStore(
           break
       }
     }
-    watch(() => settings.value.app.radius, (val) => {
+    watch(() => settings.value.theme.radius, (val) => {
       document.documentElement.style.removeProperty('--radius')
       document.documentElement.style.setProperty('--radius', `${val}rem`)
     }, {
       immediate: true,
     })
     watch([
-      () => settings.value.app.enableMournMode,
-      () => settings.value.app.enableColorAmblyopiaMode,
+      () => settings.value.app.rip,
+      () => settings.value.theme.colorAmblyopia,
     ], (val) => {
       document.documentElement.style.removeProperty('filter')
       if (val[0] && val[1]) {

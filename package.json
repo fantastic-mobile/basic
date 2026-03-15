@@ -47,6 +47,7 @@
     "reka-ui": "^2.9.2",
     "spinkit": "^2.0.1",
     "tailwind-merge": "^3.5.0",
+    "type-fest": "^5.4.4",
     "vant": "^4.9.22",
     "vconsole": "^3.15.1",
     "vee-validate": "^4.15.1",

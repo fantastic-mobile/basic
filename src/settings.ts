@@ -1,4 +1,5 @@
-import type { RecursiveRequired, Settings } from '#/global'
+import type { Settings } from '#/global'
+import type { RequiredDeep } from 'type-fest'
 import { cloneDeep } from 'es-toolkit'
 import settingsDefault from '@/settings.default'
 import { merge } from '@/utils/object'
@@ -23,4 +24,4 @@ const globalSettings: Settings.all = {
   },
 }
 
-export default merge(globalSettings, cloneDeep(settingsDefault)) as RecursiveRequired<Settings.all>
+export default merge(globalSettings, cloneDeep(settingsDefault)) as RequiredDeep<Settings.all>

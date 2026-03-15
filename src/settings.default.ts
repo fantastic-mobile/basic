@@ -1,17 +1,18 @@
 // 该文件为系统默认配置，请勿修改！！！
 
-import type { RecursiveRequired, Settings } from '#/global'
+import type { Settings } from '#/global'
+import type { RequiredDeep } from 'type-fest'
 
-const globalSettingsDefault: RecursiveRequired<Settings.all> = {
+const globalSettingsDefault: RequiredDeep<Settings.all> = {
   app: {
+    enablePermission: false,
+    dynamicTitle: false,
+    rip: false,
+  },
+  theme: {
     colorScheme: 'light',
     radius: 0.5,
-    enableMournMode: false,
-    enableColorAmblyopiaMode: false,
-    enablePermission: false,
-    enableProgress: true,
-    enableDynamicTitle: false,
-    enableBackTop: true,
+    colorAmblyopia: false,
   },
   navbar: {
     enable: false,
@@ -20,12 +21,15 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
     enable: false,
     list: [],
   },
+  page: {
+    progress: true,
+    backTop: true,
+  },
   copyright: {
     enable: false,
     dates: '',
     company: '',
     website: '',
-    beian: '',
   },
 }
 
