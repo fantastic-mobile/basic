@@ -1,14 +1,24 @@
 import type { RouteNamedMap } from 'vue-router/auto-routes'
 
-type RecursiveRequired<T> = {
-  [P in keyof T]-?: RecursiveRequired<T[P]>
-}
-type RecursivePartial<T> = {
-  [P in keyof T]?: RecursivePartial<T[P]>
-}
-
 declare namespace Settings {
   interface app {
+    /**
+     * 是否开启权限功能
+     * @默认值 `false`
+     */
+    enablePermission?: boolean
+    /**
+     * 动态标题
+     * @默认值 `false`
+     */
+    dynamicTitle?: boolean
+    /**
+     * 哀悼模式
+     * @默认值 `false`
+     */
+    rip?: boolean
+  }
+  interface theme {
     /**
      * 颜色方案
      * @默认值 `''` 跟随系统
@@ -23,35 +33,10 @@ declare namespace Settings {
      */
     radius?: number
     /**
-     * 是否开启哀悼模式
+     * 色弱模式
      * @默认值 `false`
      */
-    enableMournMode?: boolean
-    /**
-     * 是否开启色弱模式
-     * @默认值 `false`
-     */
-    enableColorAmblyopiaMode?: boolean
-    /**
-     * 是否开启权限功能
-     * @默认值 `false`
-     */
-    enablePermission?: boolean
-    /**
-     * 是否开启载入进度条
-     * @默认值 `true`
-     */
-    enableProgress?: boolean
-    /**
-     * 是否开启动态标题
-     * @默认值 `false`
-     */
-    enableDynamicTitle?: boolean
-    /**
-     * 是否开启返回顶部按钮
-     * @默认值 `true`
-     */
-    enableBackTop?: boolean
+    colorAmblyopia?: boolean
   }
   interface navbar {
     /**
@@ -76,6 +61,18 @@ declare namespace Settings {
       text?: string
     }[]
   }
+  interface page {
+    /**
+     * 载入进度条
+     * @默认值 `true`
+     */
+    progress?: boolean
+    /**
+     * 返回顶部按钮
+     * @默认值 `true`
+     */
+    backTop?: boolean
+  }
   interface copyright {
     /**
      * 是否开启底部版权，同时在路由 meta 对象里可以单独设置某个路由是否显示底部版权信息
@@ -97,19 +94,18 @@ declare namespace Settings {
      * @默认值 `''`
      */
     website?: string
-    /**
-     * 网站备案号
-     * @默认值 `''`
-     */
-    beian?: string
   }
   interface all {
     /** 应用设置 */
     app?: app
+    /** 主题设置 */
+    theme?: theme
     /** 顶部导航栏 */
     navbar?: navbar
     /** 底部导航栏 */
     tabbar?: tabbar
+    /** 页面设置 */
+    page?: page
     /** 底部版权设置 */
     copyright?: copyright
   }

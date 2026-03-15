@@ -27,7 +27,7 @@ withDefaults(
     contentClass?: HTMLAttributes['class']
     /** 是否展示底部版权信息，默认使用应用配置 `copyright.enable` */
     copyright?: boolean
-    /** 是否启用返回顶部按钮，默认使用应用配置 `app.enableBackTop` */
+    /** 是否启用返回顶部按钮，默认使用应用配置 `page.backTop` */
     backTop?: boolean
   }>(),
   {
@@ -199,7 +199,6 @@ function handleBackTopClick() {
             <a v-if="settingsStore.settings.copyright.website" :href="settingsStore.settings.copyright.website" target="_blank" rel="noopener" class="px-1 text-center no-underline">{{ settingsStore.settings.copyright.company }}</a>
             <span v-else class="px-1">{{ settingsStore.settings.copyright.company }}</span>
           </template>
-          <a v-if="settingsStore.settings.copyright.beian" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="px-1 text-center no-underline">{{ settingsStore.settings.copyright.beian }}</a>
         </div>
       </Transition>
     </div>
@@ -241,7 +240,7 @@ function handleBackTopClick() {
       }"
     >
       <div
-        v-if="(backTop ?? settingsStore.settings.app.enableBackTop) && y >= 200"
+        v-if="(backTop ?? settingsStore.settings.page.backTop) && y >= 200"
         class="back-top size-12 flex-center cursor-pointer border rounded-full bg-background shadow-lg transition-all active:bg-border"
         :class="{
           ...((tabbar ?? settingsStore.settings.tabbar.enable) && {

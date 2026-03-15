@@ -16,11 +16,11 @@ const isAuth = computed(() => {
 })
 
 watch([
-  () => settingsStore.settings.app.enableDynamicTitle,
+  () => settingsStore.settings.app.dynamicTitle,
   () => settingsStore.title,
 ], () => {
   nextTick(() => {
-    if (settingsStore.settings.app.enableDynamicTitle && settingsStore.title) {
+    if (settingsStore.settings.app.dynamicTitle && settingsStore.title) {
       document.title = settingsStore.title ?? import.meta.env.VITE_APP_TITLE
     }
     else {

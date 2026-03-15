@@ -80,6 +80,9 @@ importers:
       tailwind-merge:
         specifier: ^3.5.0
         version: 3.5.0
+      type-fest:
+        specifier: ^5.4.4
+        version: 5.4.4
       vant:
         specifier: ^4.9.22
         version: 4.9.22(vue@3.5.30(typescript@5.9.3))
@@ -8263,6 +8266,10 @@ packages:
     resolution: {integrity: sha512-9kY+CygyYM6j02t5YFHbNz2FN5QmYGv9zAjVp4lCDjlCw7amdckXlEt/bjMhUIfj4ThGRE4gCUH5+yGnNuPo5A==}
     engines: {node: '>=10.0.0'}
 
+  tagged-tag@1.0.0:
+    resolution: {integrity: sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng==}
+    engines: {node: '>=20'}
+
   tailwind-merge@3.5.0:
     resolution: {integrity: sha512-I8K9wewnVDkL1NTGoqWmVEIlUcB9gFriAEkXkfCjX5ib8ezGxtR3xD7iZIxrfArjEsH7F1CHD4RFUtxefdqV/A==}
 
@@ -8410,6 +8417,10 @@ packages:
   type-fest@4.41.0:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
+
+  type-fest@5.4.4:
+    resolution: {integrity: sha512-JnTrzGu+zPV3aXIUhnyWJj4z/wigMsdYajGLIYakqyOW1nPllzXEJee0QQbHj+CTIQtXGlAjuK0UY+2xTyjVAw==}
+    engines: {node: '>=20'}
 
   type-level-regexp@0.1.17:
     resolution: {integrity: sha512-wTk4DH3cxwk196uGLK/E9pE45aLfeKJacKmcEgEOA/q5dnPGNxXt0cfYdFxb57L+sEpf1oJH4Dnx/pnRcku9jg==}
@@ -10946,7 +10957,7 @@ snapshots:
       scule: 1.3.0
       semver: 7.7.4
       std-env: 3.9.0
-      tinyexec: 1.0.2
+      tinyexec: 1.0.4
       ufo: 1.6.1
       youch: 4.1.0-beta.11
     transitivePeerDependencies:
@@ -11076,7 +11087,7 @@ snapshots:
 
   '@nuxt/schema@4.0.3':
     dependencies:
-      '@vue/shared': 3.5.29
+      '@vue/shared': 3.5.30
       consola: 3.4.2
       defu: 6.1.4
       pathe: 2.0.3
@@ -12375,7 +12386,7 @@ snapshots:
 
   '@vue-macros/common@3.0.0-beta.16(vue@3.5.30(typescript@5.9.3))':
     dependencies:
-      '@vue/compiler-sfc': 3.5.29
+      '@vue/compiler-sfc': 3.5.30
       ast-kit: 2.1.3
       local-pkg: 1.1.2
       magic-string-ast: 1.0.3
@@ -13736,7 +13747,7 @@ snapshots:
 
   detective-typescript@14.0.0(typescript@5.9.3):
     dependencies:
-      '@typescript-eslint/typescript-estree': 8.56.1(typescript@5.9.3)
+      '@typescript-eslint/typescript-estree': 8.57.0(typescript@5.9.3)
       ast-module-types: 6.0.1
       node-source-walk: 7.0.1
       typescript: 5.9.3
@@ -13747,7 +13758,7 @@ snapshots:
   detective-vue2@2.2.0(typescript@5.9.3):
     dependencies:
       '@dependents/detective-less': 5.0.1
-      '@vue/compiler-sfc': 3.5.29
+      '@vue/compiler-sfc': 3.5.30
       detective-es6: 5.0.1
       detective-sass: 6.0.1
       detective-scss: 5.0.1
@@ -16479,7 +16490,7 @@ snapshots:
       '@nuxt/telemetry': 2.6.6(magicast@0.3.5)
       '@nuxt/vite-builder': 4.0.3(@types/node@22.15.30)(eslint@10.0.3(jiti@2.6.1))(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.50.0)(sass-embedded@1.98.0)(sass@1.98.0)(stylelint@17.4.0(typescript@5.9.3))(terser@5.41.0)(typescript@5.9.3)(vue-tsc@3.2.5(typescript@5.9.3))(vue@3.5.30(typescript@5.9.3))(yaml@2.8.2)
       '@unhead/vue': 2.0.14(vue@3.5.30(typescript@5.9.3))
-      '@vue/shared': 3.5.29
+      '@vue/shared': 3.5.30
       c12: 3.2.0(magicast@0.3.5)
       chokidar: 4.0.3
       compatx: 0.2.0
@@ -16600,7 +16611,7 @@ snapshots:
       consola: 3.4.2
       pathe: 2.0.3
       pkg-types: 2.3.0
-      tinyexec: 1.0.2
+      tinyexec: 1.0.4
     optional: true
 
   object-assign@4.1.1: {}
@@ -18472,6 +18483,8 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
 
+  tagged-tag@1.0.0: {}
+
   tailwind-merge@3.5.0: {}
 
   tapable@2.2.2: {}
@@ -18631,6 +18644,10 @@ snapshots:
   type-fest@0.21.3: {}
 
   type-fest@4.41.0: {}
+
+  type-fest@5.4.4:
+    dependencies:
+      tagged-tag: 1.0.0
 
   type-level-regexp@0.1.17: {}
 
