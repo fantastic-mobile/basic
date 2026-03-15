@@ -48,7 +48,7 @@ const emits = defineEmits<{
 }>()
 
 const route = useRoute()
-const settingsStore = useSettingsStore()
+const appSettingsStore = useAppSettingsStore()
 
 const layoutRef = useTemplateRef('layoutRef')
 const { y, arrivedState } = useScroll(layoutRef)
@@ -91,8 +91,8 @@ const { height: navbarHeight } = useElementSize(navbarRef, undefined, { box: 'bo
 
 // Tabbar
 const tabbarList = computed(() => {
-  if (settingsStore.settings.tabbar.list.length > 0) {
-    return settingsStore.settings.tabbar.list
+  if (appSettingsStore.settings.tabbar.list.length > 0) {
+    return appSettingsStore.settings.tabbar.list
   }
   return []
 })
@@ -126,7 +126,7 @@ function handleBackTopClick() {
   >
     <!-- Navbar -->
     <header
-      v-show="navbar ?? settingsStore.settings.navbar.enable"
+      v-show="navbar ?? appSettingsStore.settings.navbar.enable"
       ref="navbarRef"
       :class="cn('navbar relative w-full flex-col-center bg-[var(--g-navbar-bg)] text-[var(--g-navbar-color)] transition-all pt-safe min-h+safe-t-[var(--g-navbar-min-height)]', {
         // 边框
@@ -152,7 +152,7 @@ function handleBackTopClick() {
         >
           <div class="truncate">
             <slot name="navbar">
-              {{ settingsStore.title }}
+              {{ appSettingsStore.title }}
             </slot>
           </div>
         </div>
@@ -171,10 +171,10 @@ function handleBackTopClick() {
     </header>
     <div
       :class="cn('relative flex flex-1 flex-col transition-margin', {
-        ...((navbar ?? settingsStore.settings.navbar.enable) && {
+        ...((navbar ?? appSettingsStore.settings.navbar.enable) && {
           'mt+safe-[var(--g-navbar-height)]': true,
         }),
-        ...((tabbar ?? settingsStore.settings.tabbar.enable) && {
+        ...((tabbar ?? appSettingsStore.settings.tabbar.enable) && {
           'mb+safe-[var(--g-tabbar-height)]': true,
         }),
       }, contentClass)"
@@ -191,20 +191,20 @@ function handleBackTopClick() {
           leaveToClass: 'opacity-0',
         }"
       >
-        <div v-if="copyright ?? settingsStore.settings.copyright.enable" class="copyright relative flex flex-wrap items-center justify-center p-4 text-sm text-primary/50">
+        <div v-if="copyright ?? appSettingsStore.settings.copyright.enable" class="copyright relative flex flex-wrap items-center justify-center p-4 text-sm text-primary/50">
           <span class="px-1">Copyright</span>
           <FmIcon name="i-ri:copyright-line" class="text-lg" />
-          <span v-if="settingsStore.settings.copyright.dates" class="px-1">{{ settingsStore.settings.copyright.dates }}</span>
-          <template v-if="settingsStore.settings.copyright.company">
-            <a v-if="settingsStore.settings.copyright.website" :href="settingsStore.settings.copyright.website" target="_blank" rel="noopener" class="px-1 text-center no-underline">{{ settingsStore.settings.copyright.company }}</a>
-            <span v-else class="px-1">{{ settingsStore.settings.copyright.company }}</span>
+          <span v-if="appSettingsStore.settings.copyright.dates" class="px-1">{{ appSettingsStore.settings.copyright.dates }}</span>
+          <template v-if="appSettingsStore.settings.copyright.company">
+            <a v-if="appSettingsStore.settings.copyright.website" :href="appSettingsStore.settings.copyright.website" target="_blank" rel="noopener" class="px-1 text-center no-underline">{{ appSettingsStore.settings.copyright.company }}</a>
+            <span v-else class="px-1">{{ appSettingsStore.settings.copyright.company }}</span>
           </template>
         </div>
       </Transition>
     </div>
     <!-- Tabbar -->
     <footer
-      v-show="tabbar ?? settingsStore.settings.tabbar.enable"
+      v-show="tabbar ?? appSettingsStore.settings.tabbar.enable"
       ref="tabbarRef"
       :class="cn('tabbar flex-col-center bg-[var(--g-tabbar-bg)] transition-all pb-safe min-h+safe-b-[calc(var(--g-tabbar-min-height))]', {
         // 边框
@@ -240,10 +240,10 @@ function handleBackTopClick() {
       }"
     >
       <div
-        v-if="(backTop ?? settingsStore.settings.page.backTop) && y >= 200"
+        v-if="(backTop ?? appSettingsStore.settings.page.backTop) && y >= 200"
         class="back-top size-12 flex-center cursor-pointer border rounded-full bg-background shadow-lg transition-all active:bg-border"
         :class="{
-          ...((tabbar ?? settingsStore.settings.tabbar.enable) && {
+          ...((tabbar ?? appSettingsStore.settings.tabbar.enable) && {
             'bottom+safe-[calc(var(--g-tabbar-height)+16px)]!': true,
           }),
         }"

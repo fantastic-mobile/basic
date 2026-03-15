@@ -5,14 +5,14 @@ import '@/assets/styles/nprogress.css'
 // 鉴权
 function setupAuth(router: Router) {
   router.beforeEach(async (to) => {
-    const settingsStore = useSettingsStore()
-    const userStore = useUserStore()
+    const appSettingsStore = useAppSettingsStore()
+    const appAuthStore = useAppAuthStore()
     if (to.meta.auth) {
-      if (userStore.isLogin) {
+      if (appAuthStore.isLogin) {
         try {
           // 获取用户权限
-          if (settingsStore.settings.app.enablePermission) {
-            !userStore.isGetPermissions && await userStore.getPermissions()
+          if (appSettingsStore.settings.app.enablePermission) {
+            !appAuthStore.isGetPermissions && await appAuthStore.getPermissions()
           }
         }
         catch {}
@@ -36,14 +36,14 @@ function setupProgress(router: Router) {
     parent: '#app',
   })
   router.beforeEach(() => {
-    const settingsStore = useSettingsStore()
-    if (settingsStore.settings.page.progress) {
+    const appSettingsStore = useAppSettingsStore()
+    if (appSettingsStore.settings.page.progress) {
       isLoading.value = true
     }
   })
   router.afterEach(() => {
-    const settingsStore = useSettingsStore()
-    if (settingsStore.settings.page.progress) {
+    const appSettingsStore = useAppSettingsStore()
+    if (appSettingsStore.settings.page.progress) {
       isLoading.value = false
     }
   })
@@ -52,15 +52,15 @@ function setupProgress(router: Router) {
 // 标题
 function setupTitle(router: Router) {
   router.afterEach((to) => {
-    const settingsStore = useSettingsStore()
-    settingsStore.setTitle(to.meta.title ?? '')
+    const appSettingsStore = useAppSettingsStore()
+    appSettingsStore.setTitle(to.meta.title ?? '')
   })
 }
 
 // 页面缓存
 function setupKeepAlive(router: Router) {
   router.afterEach(async (to, from) => {
-    const keepAliveStore = useKeepAliveStore()
+    const appKeepAliveStore = useAppKeepAliveStore()
     if (to.fullPath !== from.fullPath) {
       if (to.meta.cache) {
         const componentName = to.matched.at(-1)?.components?.default.name
@@ -90,10 +90,10 @@ function setupKeepAlive(router: Router) {
             }
           }
           if (shouldClearCache) {
-            keepAliveStore.remove(componentName)
+            appKeepAliveStore.remove(componentName)
             await nextTick()
           }
-          keepAliveStore.add(componentName)
+          appKeepAliveStore.add(componentName)
         }
         else {
           // turbo-console-disable-next-line

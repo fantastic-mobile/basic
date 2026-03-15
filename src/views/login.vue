@@ -13,7 +13,7 @@ definePage({
 
 const router = useRouter()
 const route = useRoute()
-const userStore = useUserStore()
+const appAuthStore = useAppAuthStore()
 
 const redirect = ref(route.query.redirect?.toString() ?? '/')
 const loading = ref(false)
@@ -30,7 +30,7 @@ const form = useForm({
 })
 const onSubmit = form.handleSubmit((values) => {
   loading.value = true
-  userStore.login(values).then(() => {
+  appAuthStore.login(values).then(() => {
     router.replace(redirect.value)
   }).finally(() => {
     loading.value = false

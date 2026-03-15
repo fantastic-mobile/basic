@@ -1,6 +1,5 @@
-export const useKeepAliveStore = defineStore(
-  // 唯一ID
-  'keepAlive',
+export const useAppKeepAliveStore = defineStore(
+  'appKeepAlive',
   () => {
     const list = ref<string[]>([])
 

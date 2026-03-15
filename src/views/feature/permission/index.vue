@@ -10,18 +10,18 @@ definePage({
 
 const router = useRouter()
 
-const settingsStore = useSettingsStore()
-const userStore = useUserStore()
+const appSettingsStore = useAppSettingsStore()
+const appAuthStore = useAppAuthStore()
 
 const { auth, authAll } = useAppAuth()
 
 // 模拟账号切换
 async function accountChange(val: any) {
-  await userStore.login({
+  await appAuthStore.login({
     account: val,
     password: '',
   })
-  await userStore.getPermissions()
+  await appAuthStore.getPermissions()
 }
 function goTest() {
   router.push({
@@ -49,7 +49,7 @@ function permissionCheck2(permissions: string[]) {
 <template>
   <FmPageLayout navbar navbar-start-side="back">
     <div class="flex flex-col gap-4 p-4">
-      <FmPageMain v-if="!settingsStore.settings.app.enablePermission" class="m-0">
+      <FmPageMain v-if="!appSettingsStore.settings.app.enablePermission" class="m-0">
         请到 settings.ts 里设置并开启权限功能，再进入该页面查看演示
       </FmPageMain>
       <FmPageMain v-else title="切换账号" class="m-0">
@@ -60,20 +60,20 @@ function permissionCheck2(permissions: string[]) {
                 { label: 'admin', value: 'admin' },
                 { label: 'test', value: 'test' },
                 { label: 'hooray(无权限)', value: 'hooray' },
-              ]" :key="index" :variant="userStore.account === item.value ? 'default' : 'outline'" @click="accountChange(item.value)"
+              ]" :key="index" :variant="appAuthStore.account === item.value ? 'default' : 'outline'" @click="accountChange(item.value)"
             >
               {{ item.label }}
             </FmButton>
           </div>
-          <div>当前账号权限：{{ userStore.permissions }}</div>
+          <div>当前账号权限：{{ appAuthStore.permissions }}</div>
         </div>
       </FmPageMain>
-      <FmPageMain v-if="settingsStore.settings.app.enablePermission" title="路由鉴权" class="m-0">
+      <FmPageMain v-if="appSettingsStore.settings.app.enablePermission" title="路由鉴权" class="m-0">
         <FmButton @click="goTest">
           跳转页面
         </FmButton>
       </FmPageMain>
-      <FmPageMain v-if="settingsStore.settings.app.enablePermission" title="鉴权指令" class="m-0">
+      <FmPageMain v-if="appSettingsStore.settings.app.enablePermission" title="鉴权指令" class="m-0">
         <div class="flex-col-start space-y-2">
           <div v-auth="'permission.browse'">
             如果你有 permission.browse 权限则能看到这句话
@@ -89,7 +89,7 @@ function permissionCheck2(permissions: string[]) {
           </div>
         </div>
       </FmPageMain>
-      <FmPageMain v-if="settingsStore.settings.app.enablePermission" title="鉴权组件" class="m-0">
+      <FmPageMain v-if="appSettingsStore.settings.app.enablePermission" title="鉴权组件" class="m-0">
         <div class="text-sm space-y-2">
           <div>
             你
@@ -133,7 +133,7 @@ function permissionCheck2(permissions: string[]) {
           </div>
         </div>
       </FmPageMain>
-      <FmPageMain v-if="settingsStore.settings.app.enablePermission" title="鉴权函数" class="m-0" main-class="flex flex-col gap-2">
+      <FmPageMain v-if="appSettingsStore.settings.app.enablePermission" title="鉴权函数" class="m-0" main-class="flex flex-col gap-2">
         <FmButton variant="outline" @click="permissionCheck('permission.browse')">
           校验 browse 权限
         </FmButton>

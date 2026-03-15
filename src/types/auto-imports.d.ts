@@ -69,20 +69,20 @@ declare global {
   const triggerRef: typeof import('vue').triggerRef
   const unref: typeof import('vue').unref
   const useAppAuth: typeof import('../composables/app/auth').useAppAuth
+  const useAppAuthStore: typeof import('../store/modules/app/auth').useAppAuthStore
+  const useAppKeepAliveStore: typeof import('../store/modules/app/keepAlive').useAppKeepAliveStore
   const useAppPage: typeof import('../composables/app/page').useAppPage
+  const useAppSettingsStore: typeof import('../store/modules/app/settings').useAppSettingsStore
   const useAttrs: typeof import('vue').useAttrs
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
   const useId: typeof import('vue').useId
-  const useKeepAliveStore: typeof import('../store/modules/keepAlive').useKeepAliveStore
   const useLink: typeof import('vue-router/auto').useLink
   const useModel: typeof import('vue').useModel
   const useRoute: typeof import('vue-router').useRoute
   const useRouter: typeof import('vue-router').useRouter
-  const useSettingsStore: typeof import('../store/modules/settings').useSettingsStore
   const useSlots: typeof import('vue').useSlots
   const useTemplateRef: typeof import('vue').useTemplateRef
-  const useUserStore: typeof import('../store/modules/user').useUserStore
   const watch: typeof import('vue').watch
   const watchEffect: typeof import('vue').watchEffect
   const watchPostEffect: typeof import('vue').watchPostEffect

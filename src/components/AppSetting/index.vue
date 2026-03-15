@@ -9,7 +9,7 @@ defineOptions({
   name: 'AppSetting',
 })
 
-const settingsStore = useSettingsStore()
+const appSettingsStore = useAppSettingsStore()
 
 const isShow = ref(false)
 
@@ -21,10 +21,10 @@ onMounted(() => {
 
 const appRadius = computed<number[]>({
   get() {
-    return [settingsStore.settings.theme.radius]
+    return [appSettingsStore.settings.theme.radius]
   },
   set(value) {
-    settingsStore.settings.theme.radius = value[0]
+    appSettingsStore.settings.theme.radius = value[0]
   },
 })
 
@@ -39,7 +39,7 @@ watch(copied, (val) => {
 })
 
 function handleCopy() {
-  copy(JSON.stringify(diffTwoObj(settingsDefault, settingsStore.settings), null, 2))
+  copy(JSON.stringify(diffTwoObj(settingsDefault, appSettingsStore.settings), null, 2))
 }
 </script>
 
@@ -52,7 +52,7 @@ function handleCopy() {
       <FmDivider>颜色主题风格</FmDivider>
       <div class="flex items-center justify-center pb-4">
         <FmTabs
-          v-model="settingsStore.settings.theme.colorScheme"
+          v-model="appSettingsStore.settings.theme.colorScheme"
           :list="[
             { icon: 'i-ri:sun-line', label: '明亮', value: 'light' },
             { icon: 'i-ri:moon-line', label: '暗黑', value: 'dark' },
@@ -74,25 +74,25 @@ function handleCopy() {
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           是否启用
         </div>
-        <FmSwitch v-model="settingsStore.settings.copyright.enable" />
+        <FmSwitch v-model="appSettingsStore.settings.copyright.enable" />
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           日期
         </div>
-        <FmInput v-model="settingsStore.settings.copyright.dates" :disabled="!settingsStore.settings.copyright.enable" />
+        <FmInput v-model="appSettingsStore.settings.copyright.dates" :disabled="!appSettingsStore.settings.copyright.enable" />
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           公司
         </div>
-        <FmInput v-model="settingsStore.settings.copyright.company" :disabled="!settingsStore.settings.copyright.enable" />
+        <FmInput v-model="appSettingsStore.settings.copyright.company" :disabled="!appSettingsStore.settings.copyright.enable" />
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           网址
         </div>
-        <FmInput v-model="settingsStore.settings.copyright.website" :disabled="!settingsStore.settings.copyright.enable" />
+        <FmInput v-model="appSettingsStore.settings.copyright.website" :disabled="!appSettingsStore.settings.copyright.enable" />
       </div>
     </div>
     <div>
@@ -101,37 +101,37 @@ function handleCopy() {
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           是否启用权限
         </div>
-        <FmSwitch v-model="settingsStore.settings.app.enablePermission" />
+        <FmSwitch v-model="appSettingsStore.settings.app.enablePermission" />
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           载入进度条
         </div>
-        <FmSwitch v-model="settingsStore.settings.page.progress" />
+        <FmSwitch v-model="appSettingsStore.settings.page.progress" />
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           哀悼模式
         </div>
-        <FmSwitch v-model="settingsStore.settings.app.rip" />
+        <FmSwitch v-model="appSettingsStore.settings.app.rip" />
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           色弱模式
         </div>
-        <FmSwitch v-model="settingsStore.settings.theme.colorAmblyopia" />
+        <FmSwitch v-model="appSettingsStore.settings.theme.colorAmblyopia" />
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           返回顶部
         </div>
-        <FmSwitch v-model="settingsStore.settings.page.backTop" />
+        <FmSwitch v-model="appSettingsStore.settings.page.backTop" />
       </div>
       <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
         <div class="flex flex-shrink-0 items-center gap-2 text-sm">
           动态标题
         </div>
-        <FmSwitch v-model="settingsStore.settings.app.dynamicTitle" />
+        <FmSwitch v-model="appSettingsStore.settings.app.dynamicTitle" />
       </div>
     </div>
     <template #footer>

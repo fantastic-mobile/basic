@@ -1,9 +1,8 @@
 import type { Settings } from '#/global'
 import settingsDefault from '@/settings'
 
-export const useSettingsStore = defineStore(
-  // 唯一ID
-  'settings',
+export const useAppSettingsStore = defineStore(
+  'appSettings',
   () => {
     const settings = ref(settingsDefault)
 
