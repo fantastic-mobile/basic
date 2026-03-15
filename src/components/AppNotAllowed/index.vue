@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'FmNotAllowed',
+  name: 'AppNotAllowed',
 })
 
 const router = useRouter()

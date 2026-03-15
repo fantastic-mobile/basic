@@ -93,42 +93,42 @@ function permissionCheck2(permissions: string[]) {
         <div class="text-sm space-y-2">
           <div>
             你
-            <FmAuth value="permission.browse">
+            <AppAuth value="permission.browse">
               <b>有</b>
               <template #no-auth>
                 <b>没有</b>
               </template>
-            </FmAuth>
+            </AppAuth>
             permission.browse 权限
           </div>
           <div>
             你
-            <FmAuth value="permission.create">
+            <AppAuth value="permission.create">
               <b>有</b>
               <template #no-auth>
                 <b>没有</b>
               </template>
-            </FmAuth>
+            </AppAuth>
             permission.create 权限
           </div>
           <div>
             你
-            <FmAuth :value="['permission.browse', 'permission.create']">
+            <AppAuth :value="['permission.browse', 'permission.create']">
               <b>有</b>
               <template #no-auth>
                 <b>没有</b>
               </template>
-            </FmAuth>
+            </AppAuth>
             permission.browse 或 permission.create 权限
           </div>
           <div>
             你
-            <FmAuth :value="['permission.browse', 'permission.create']" all>
+            <AppAuth :value="['permission.browse', 'permission.create']" all>
               <b>有</b>
               <template #no-auth>
                 <b>没有</b>
               </template>
-            </FmAuth>
+            </AppAuth>
             permission.browse 和 permission.create 权限
           </div>
         </div>

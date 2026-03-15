@@ -6,7 +6,7 @@ import eventBus from '@/utils/eventBus'
 import { diffTwoObj } from '@/utils/object'
 
 defineOptions({
-  name: 'FmAppSetting',
+  name: 'AppSetting',
 })
 
 const settingsStore = useSettingsStore()

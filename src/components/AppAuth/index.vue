@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'FmAuth',
+  name: 'AppAuth',
 })
 
 const props = defineProps<{
