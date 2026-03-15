@@ -6,11 +6,11 @@ export default {
     account: string
     password: string
   }) => api.post('user/login', data, {
-    baseURL: '/mock/',
+    fake: true,
   }),
 
   // 获取权限
   permission: () => api.get('user/permission', {
-    baseURL: '/mock/',
+    fake: true,
   }),
 }

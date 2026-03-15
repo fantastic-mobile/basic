@@ -8,7 +8,7 @@ for (let i = 0; i < 50; i++) {
 
 export default defineFakeRoute([
   {
-    url: '/mock/page/loadmore',
+    url: '/fake/page/loadmore',
     method: 'get',
     response: ({ query }) => {
       const { from, limit } = query

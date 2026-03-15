@@ -3,7 +3,7 @@ import { defineFakeRoute } from 'vite-plugin-fake-server/client'
 
 export default defineFakeRoute([
   {
-    url: '/mock/user/login',
+    url: '/fake/user/login',
     method: 'post',
     response: ({ body }) => {
       return {
@@ -18,7 +18,7 @@ export default defineFakeRoute([
     },
   },
   {
-    url: '/mock/user/permission',
+    url: '/fake/user/permission',
     method: 'get',
     response: ({ headers }) => {
       let permissions: string[] = []

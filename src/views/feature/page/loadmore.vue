@@ -15,7 +15,7 @@ const list = ref<any>([])
 
 function loadMore() {
   api.get('page/loadmore', {
-    baseURL: '/mock',
+    fake: true,
     params: {
       from: pageNumber.value * pageSize.value,
       limit: pageSize.value,
