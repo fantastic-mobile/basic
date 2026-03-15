@@ -12,8 +12,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    FmAppSetting: typeof import('./../ui/components/FmAppSetting/index.vue')['default']
-    FmAuth: typeof import('./../ui/components/FmAuth/index.vue')['default']
+    AppAuth: typeof import('./../components/AppAuth/index.vue')['default']
+    AppNotAllowed: typeof import('./../components/AppNotAllowed/index.vue')['default']
+    AppSetting: typeof import('./../components/AppSetting/index.vue')['default']
     FmAvatar: typeof import('./../ui/components/FmAvatar/index.vue')['default']
     FmBadge: typeof import('./../ui/components/FmBadge/index.vue')['default']
     FmButton: typeof import('./../ui/components/FmButton/index.vue')['default']
@@ -25,7 +26,6 @@ declare module 'vue' {
     FmInput: typeof import('./../ui/components/FmInput/index.vue')['default']
     FmLoading: typeof import('./../ui/components/FmLoading/index.vue')['default']
     FmModal: typeof import('./../ui/components/FmModal/index.vue')['default']
-    FmNotAllowed: typeof import('./../ui/components/FmNotAllowed/index.vue')['default']
     FmPageLayout: typeof import('./../ui/components/FmPageLayout/index.vue')['default']
     FmPageMain: typeof import('./../ui/components/FmPageMain/index.vue')['default']
     FmScrollArea: typeof import('./../ui/components/FmScrollArea/index.vue')['default']
@@ -45,8 +45,9 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
-  const FmAppSetting: typeof import('./../ui/components/FmAppSetting/index.vue')['default']
-  const FmAuth: typeof import('./../ui/components/FmAuth/index.vue')['default']
+  const AppAuth: typeof import('./../components/AppAuth/index.vue')['default']
+  const AppNotAllowed: typeof import('./../components/AppNotAllowed/index.vue')['default']
+  const AppSetting: typeof import('./../components/AppSetting/index.vue')['default']
   const FmAvatar: typeof import('./../ui/components/FmAvatar/index.vue')['default']
   const FmBadge: typeof import('./../ui/components/FmBadge/index.vue')['default']
   const FmButton: typeof import('./../ui/components/FmButton/index.vue')['default']
@@ -58,7 +59,6 @@ declare global {
   const FmInput: typeof import('./../ui/components/FmInput/index.vue')['default']
   const FmLoading: typeof import('./../ui/components/FmLoading/index.vue')['default']
   const FmModal: typeof import('./../ui/components/FmModal/index.vue')['default']
-  const FmNotAllowed: typeof import('./../ui/components/FmNotAllowed/index.vue')['default']
   const FmPageLayout: typeof import('./../ui/components/FmPageLayout/index.vue')['default']
   const FmPageMain: typeof import('./../ui/components/FmPageMain/index.vue')['default']
   const FmScrollArea: typeof import('./../ui/components/FmScrollArea/index.vue')['default']

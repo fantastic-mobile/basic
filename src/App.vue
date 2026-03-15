@@ -41,7 +41,7 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
       <Transition name="fade" mode="out-in" appear>
         <KeepAlive :include="keepAliveStore.list">
           <component :is="Component" v-if="isAuth" :key="route.fullPath" />
-          <FmNotAllowed v-else />
+          <AppNotAllowed v-else />
         </KeepAlive>
       </Transition>
     </RouterView>
@@ -49,7 +49,7 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
       <div class="app-setting" @click="eventBus.emit('global-app-setting-toggle')">
         <FmIcon name="i-uiw:setting-o" class="icon" />
       </div>
-      <FmAppSetting />
+      <AppSetting />
     </template>
     <FmToast />
   </Provider>
