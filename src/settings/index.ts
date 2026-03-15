@@ -1,10 +1,6 @@
-import type { Settings } from '#/global'
-import type { RequiredDeep } from 'type-fest'
-import { cloneDeep } from 'es-toolkit'
-import settingsDefault from '@/settings.default'
-import { merge } from '@/utils/object'
+import { setSettings } from './utils'
 
-const globalSettings: Settings.all = {
+export default setSettings({
   // 请在此处编写或粘贴配置代码
   tabbar: {
     list: [
@@ -22,6 +18,4 @@ const globalSettings: Settings.all = {
       },
     ],
   },
-}
-
-export default merge(globalSettings, cloneDeep(settingsDefault)) as RequiredDeep<Settings.all>
+})

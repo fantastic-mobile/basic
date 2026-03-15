@@ -1,4 +1,7 @@
+import type { Settings } from '#/global'
 import { createDefu } from 'defu'
+import { cloneDeep } from 'es-toolkit'
+import settingsDefault from './default'
 
 /** 合并对象 */
 const merge = createDefu((obj, key, value) => {
@@ -47,8 +50,13 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
   return diff
 }
 
+function setSettings(settings: Settings.all) {
+  return merge(settings, cloneDeep(settingsDefault))
+}
+
 export {
   diffTwoObj,
   merge,
   mergeWithoutUndefinedProps,
+  setSettings,
 }

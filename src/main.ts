@@ -5,7 +5,7 @@ import App from './App.vue'
 import router from './router'
 import pinia from './store'
 import ui from './ui/provider'
-import './utils/system.copyright'
+import './utils/systemCopyright'
 
 // 加载 svg 图标
 import 'virtual:svg-icons-register'
