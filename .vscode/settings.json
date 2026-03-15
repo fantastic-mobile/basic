@@ -1,7 +1,6 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.preferences.autoImportFileExcludePatterns": ["vue-router$"],
-  "eslint.useFlatConfig": true,
+  "npm.packageManager": "pnpm",
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
   "prettier.enable": false,
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
@@ -9,12 +8,7 @@
     "source.fixAll.stylelint": "explicit",
     "source.organizeImports": "never"
   },
-  "stylelint.validate": [
-    "css",
-    "postcss",
-    "scss",
-    "vue"
-  ],
+  "eslint.useFlatConfig": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -26,5 +20,11 @@
     "json",
     "jsonc",
     "yaml"
+  ],
+  "stylelint.validate": [
+    "css",
+    "postcss",
+    "scss",
+    "vue"
   ]
 }
