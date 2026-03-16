@@ -36,7 +36,7 @@ function onSelect(item: any) {
       </FmButton>
       <van-action-sheet v-model:show="show" :actions="actions" @select="onSelect" />
     </template>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <div>
         Switch: {{ checked }}
       </div>

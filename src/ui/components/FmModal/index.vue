@@ -19,10 +19,12 @@ const props = withDefaults(
   defineProps<ModalProps>(),
   {
     modelValue: false,
+    zIndex: 2000,
     loading: false,
     closable: true,
     center: false,
     border: true,
+    alignCenter: false,
     overlay: true,
     overlayBlur: false,
     showConfirmButton: true,
@@ -36,6 +38,7 @@ const props = withDefaults(
     closeOnClickOverlay: true,
     closeOnPressEscape: true,
     destroyOnClose: true,
+    openAutoFocus: false,
   },
 )
 
@@ -47,13 +50,10 @@ const slots = defineSlots<{
   footer?: () => VNode
 }>()
 
-const dialogAreaRef = useTemplateRef('dialogAreaRef')
+const dialogContentRef = useTemplateRef('dialogContentRef')
+const dialogRef = ref()
 
-defineExpose({
-  areaRef: dialogAreaRef,
-})
-
-const modalId = useId()
+const modalId = shallowRef(props.id ?? useId())
 const isOpen = ref(props.modelValue)
 
 watch(() => props.modelValue, (newValue) => {
@@ -63,9 +63,16 @@ watch(() => props.modelValue, (newValue) => {
 const hasOpened = ref(false)
 const isClosed = ref(true)
 
-watch(() => isOpen.value, (value) => {
+watch(isOpen, (val) => {
+  emits('update:modelValue', val)
+  if (val) {
+    emits('open')
+  }
+  else {
+    emits('close')
+  }
   isClosed.value = false
-  if (value && !hasOpened.value) {
+  if (val && !hasOpened.value) {
     hasOpened.value = true
   }
 }, {
@@ -75,12 +82,12 @@ watch(() => isOpen.value, (value) => {
 const forceMount = computed(() => !props.destroyOnClose && hasOpened.value)
 
 watch(isOpen, (val) => {
-  emits('update:modelValue', val)
   if (val) {
-    emits('open')
-  }
-  else {
-    emits('close')
+    nextTick(() => {
+      if (dialogContentRef.value) {
+        dialogRef.value = dialogContentRef.value.el?.$el
+      }
+    })
   }
 })
 
@@ -142,13 +149,20 @@ async function onCancel() {
   }
 }
 
+function handleOpenAutoFocus(e: Event) {
+  if (!props.openAutoFocus) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+}
+
 function handleFocusOutside(e: Event) {
   e.preventDefault()
   e.stopPropagation()
 }
 
 function handleClickOutside(e: Event) {
-  if (!props.closeOnClickOverlay || (e.target as HTMLElement).dataset.modalId !== modalId) {
+  if (!props.closeOnClickOverlay || (e.target as HTMLElement).dataset.modalId !== modalId.value) {
     e.preventDefault()
     e.stopPropagation()
   }
@@ -173,18 +187,21 @@ function handleAnimationEnd() {
 </script>
 
 <template>
-  <Dialog :modal="false" :open="isOpen" @update:open="updateOpen">
+  <Dialog :open="isOpen" @update:open="updateOpen">
     <DialogContent
+      ref="dialogContentRef"
       :modal-id="modalId"
       :open="isOpen"
+      :z-index="props.zIndex"
       :closable="props.closable"
       :overlay="props.overlay"
       :overlay-blur="props.overlayBlur"
       :force-mount="forceMount"
-      :class="cn('left-0 right-0 top-1/2 flex flex-col p-0 gap-0 mx-auto h-[calc-size(auto,size)] w-[90vw] min-h-auto max-h-[90vh] translate-x-0 -translate-y-1/2', props.class, {
-        hidden: isClosed,
+      :class="cn('z-2000 top-0 sm:top-[5vh] translate-y-0 flex flex-col p-0 gap-0 mx-auto overflow-hidden max-w-full h-[calc-size(auto,size)] min-h-full max-h-full sm:min-h-auto sm:max-h-[90vh]', props.class, {
+        'top-1/2 -translate-y-1/2 min-h-auto sm:top-1/2 sm:-translate-y-1/2': props.alignCenter,
+        'hidden': isClosed,
       })"
-      @open-auto-focus="handleFocusOutside"
+      @open-auto-focus="handleOpenAutoFocus"
       @close-auto-focus="handleFocusOutside"
       @focus-outside="handleFocusOutside"
       @pointer-down-outside="handleClickOutside"
@@ -202,7 +219,7 @@ function handleAnimationEnd() {
           <DialogDescription />
         </VisuallyHidden>
         <slot name="header">
-          <DialogTitle class="flex-center justify-start gap-x-2" :class="{ 'justify-center': props.center }">
+          <DialogTitle class="flex-center gap-x-2 sm:justify-start" :class="{ 'sm:justify-center': props.center }">
             <FmIcon
               v-if="props.icon" :name="{
                 info: 'i-ant-design:info-circle-filled',
@@ -216,32 +233,35 @@ function handleAnimationEnd() {
                 'text-red-600 dark:text-red-400': props.icon === 'error',
               }"
             />
-            {{ title }}
+            {{ typeof title === 'function' ? title() : title }}
           </DialogTitle>
-          <DialogDescription class="text-left empty:hidden" :class="{ 'text-center': props.center }">
-            {{ description }}
+          <DialogDescription :class="cn('text-center md:text-start empty:hidden', { 'md:text-center': props.center })">
+            {{ typeof description === 'function' ? description() : description }}
           </DialogDescription>
         </slot>
       </DialogHeader>
-      <FmScrollArea v-if="!!slots.default" ref="dialogAreaRef" class="flex-1">
-        <div :class="cn('min-h-40 p-4', props.contentClass)">
-          <slot />
-        </div>
-        <div v-show="props.loading" class="absolute inset-0 z-1000 size-full flex-center bg-popover/75">
-          <FmIcon name="i-line-md:loading-twotone-loop" class="size-10" />
-        </div>
-      </FmScrollArea>
+      <VisuallyHidden v-else>
+        <DialogTitle />
+        <DialogDescription />
+      </VisuallyHidden>
+      <div v-if="!!slots.default" :class="cn('relative flex-1 min-h-40 p-4 overflow-y-auto', props.contentClass)">
+        <slot />
+      </div>
+      <div v-show="props.loading" class="bg-popover/75 flex-center size-full inset-0 absolute z-1000">
+        <FmIcon name="i-line-md:loading-twotone-loop" class="size-10" />
+      </div>
       <DialogFooter
-        v-if="footer" :class="cn('p-2', props.footerClass, {
+        v-if="footer" :class="cn('p-3 gap-y-2', props.footerClass, {
+          'md:justify-center': props.center,
           'border-t': props.border,
         })"
       >
         <slot name="footer">
-          <FmButton v-if="showCancelButton" variant="outline" class="w-full" @click="onCancel">
-            {{ cancelButtonText }}
+          <FmButton v-if="showCancelButton" variant="outline" @click="onCancel">
+            {{ typeof cancelButtonText === 'function' ? cancelButtonText() : cancelButtonText }}
           </FmButton>
-          <FmButton v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="confirmButtonLoading || isConfirmButtonLoading" class="w-full" @click="onConfirm">
-            {{ confirmButtonText }}
+          <FmButton v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="confirmButtonLoading || isConfirmButtonLoading" @click="onConfirm">
+            {{ typeof confirmButtonText === 'function' ? confirmButtonText() : confirmButtonText }}
           </FmButton>
         </slot>
       </DialogFooter>

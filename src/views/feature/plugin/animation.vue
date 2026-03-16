@@ -145,11 +145,11 @@ const flag = ref(true)
 <template>
   <FmPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
-      <div class="h-full flex-center px-1" @click="show = true">
+      <div class="px-1 flex-center h-full" @click="show = true">
         <FmIcon name="i-mdi:information" class="text-4" />
       </div>
       <van-action-sheet v-model:show="show" teleport="body">
-        <div class="whitespace-break-spaces p-4 space-y-2">
+        <div class="p-4 whitespace-break-spaces space-y-2">
           <div>
             「插件」栏目下均为第三方插件的演示页面，框架默认并不包含这些插件。如需使用，请先安装对应插件。
           </div>
@@ -162,7 +162,7 @@ const flag = ref(true)
         </div>
       </van-action-sheet>
     </template>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <div>
         <van-field is-link readonly label="进入动画（显示）" label-width="8em" @click="showPicker1 = true">
           <template #input>
@@ -186,7 +186,7 @@ const flag = ref(true)
           {{ flag ? '隐藏' : '显示' }}
         </FmButton>
         <Transition :enter-active-class="`animate__animated ${animateIn}`" :leave-active-class="`animate__animated ${animateOut}`">
-          <div v-if="flag" class="mt-2 h-100px w-100px bg-blue" />
+          <div v-if="flag" class="mt-2 bg-blue h-100px w-100px" />
         </Transition>
       </FmPageMain>
     </div>

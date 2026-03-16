@@ -27,14 +27,14 @@ const mask = ref(false)
             <FmSwitch v-model="mask" />
           </div>
         </div>
-        <FmScrollArea :scrollbar :mask class="h-72 w-full border rounded-md">
-          <div v-for="tag in 20" :key="tag" class="p-4 text-sm">
+        <FmScrollArea :scrollbar :mask class="border rounded-md h-72 w-full">
+          <div v-for="tag in 20" :key="tag" class="text-sm p-4">
             {{ tag }}
           </div>
         </FmScrollArea>
-        <FmScrollArea horizontal :scrollbar :mask class="w-full border rounded-md">
+        <FmScrollArea horizontal :scrollbar :mask class="border rounded-md w-full">
           <div class="flex-center-start">
-            <div v-for="tag in 20" :key="tag" class="h-16 w-16 flex-center text-sm">
+            <div v-for="tag in 20" :key="tag" class="text-sm flex-center h-16 w-16">
               {{ tag }}
             </div>
           </div>

@@ -1,22 +1,42 @@
 <script setup lang="ts">
 import type { ToasterProps } from 'vue-sonner'
+import { CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon, XIcon } from 'lucide-vue-next'
 import { Toaster as Sonner } from 'vue-sonner'
+import { cn } from '@/utils'
 
 const props = defineProps<ToasterProps>()
 </script>
 
 <template>
   <Sonner
-    class="toaster group"
-    v-bind="props"
-    :toast-options="{
-      classes: {
-        toast: 'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border group-[.toaster]:shadow-lg',
-        description: 'group-[.toast]:text-muted-foreground',
-        actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
-        cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
-        icon: 'group-[.toast]:scale-120 group-[.toast[data-type=info]]:text-blue-600 dark:group-[.toast[data-type=info]]:text-blue-400 group-[.toast[data-type=error]]:text-red-600 dark:group-[.toast[data-type=error]]:text-red-400 group-[.toast[data-type=success]]:text-green-600 dark:group-[.toast[data-type=success]]:text-green-400 group-[.toast[data-type=warning]]:text-yellow-600 dark:group-[.toast[data-type=warning]]:text-yellow-400',
-      },
+    :class="cn('toaster group', props.class)"
+    :style="{
+      '--normal-bg': 'oklch(var(--popover))',
+      '--normal-text': 'oklchvar(--popover-foreground))',
+      '--normal-border': 'oklchvar(--border))',
+      '--border-radius': 'oklchvar(--radius))',
     }"
-  />
+    v-bind="props"
+  >
+    <template #success-icon>
+      <CircleCheckIcon class="size-4" />
+    </template>
+    <template #info-icon>
+      <InfoIcon class="size-4" />
+    </template>
+    <template #warning-icon>
+      <TriangleAlertIcon class="size-4" />
+    </template>
+    <template #error-icon>
+      <OctagonXIcon class="size-4" />
+    </template>
+    <template #loading-icon>
+      <div>
+        <Loader2Icon class="size-4 animate-spin" />
+      </div>
+    </template>
+    <template #close-icon>
+      <XIcon class="size-4" />
+    </template>
+  </Sonner>
 </template>

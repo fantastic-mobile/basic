@@ -7,43 +7,39 @@ definePage({
 
 const router = useRouter()
 
-const data = ref({
-  inter: Number.NaN,
-  countdown: 5,
-})
-
-onUnmounted(() => {
-  data.value.inter && window.clearInterval(data.value.inter)
-})
-
-onMounted(() => {
-  data.value.inter = window.setInterval(() => {
-    data.value.countdown--
-    if (data.value.countdown === 0) {
-      data.value.inter && window.clearInterval(data.value.inter)
-      goBack()
-    }
-  }, 1000)
-})
-
 function goBack() {
   router.push('/')
 }
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center">
-    <FmIcon name="404" class="text-[300px] -mt-9xl" />
-    <div class="flex flex-col items-center gap-4">
-      <h1 class="m-0 text-6xl font-sans">
-        404
-      </h1>
-      <div class="mx-0 text-xl text-stone-5">
-        抱歉，你访问的页面不存在
+  <div class="bg-background flex flex-col h-vh">
+    <div class="flex h-[5%]">
+      <div class="w-[10%]" />
+      <div class="border-inline border-dashed flex-1" />
+      <div class="w-[10%]" />
+    </div>
+    <div class="border-block border-dashed flex flex-1">
+      <div class="w-[10%]" />
+      <div class="border-inline border-dashed flex-center flex-1">
+        <div class="p-4 flex-col-center gap-4 lg:p-12">
+          <h1 class="text-6xl font-bold m-0">
+            404
+          </h1>
+          <div class="text-xl text-secondary-foreground/50 mx-0 text-center">
+            哎呀，页面不存在
+          </div>
+          <FmButton variant="link" class="text-unset" @click="goBack">
+            返回首页
+          </FmButton>
+        </div>
       </div>
-      <FmButton @click="goBack">
-        {{ data.countdown }} 秒后，返回首页
-      </FmButton>
+      <div class="w-[10%]" />
+    </div>
+    <div class="flex h-[5%]">
+      <div class="w-[10%]" />
+      <div class="border-inline border-dashed flex-1" />
+      <div class="w-[10%]" />
     </div>
   </div>
 </template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { TabsContentProps, TabsRootProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@/utils'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs'
@@ -8,11 +9,11 @@ defineOptions({
 })
 
 const props = defineProps<{
-  modelValue?: string | number
+  modelValue?: TabsRootProps['modelValue']
   list: {
     icon?: string
     label: string
-    value: string | number
+    value: TabsContentProps['value']
     class?: HTMLAttributes['class']
   }[]
   class?: HTMLAttributes['class']

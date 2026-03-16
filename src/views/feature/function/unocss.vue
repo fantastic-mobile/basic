@@ -8,9 +8,9 @@ definePage({
 
 <template>
   <FmPageLayout navbar>
-    <div flex flex-1 flex-col select-none text-center all:transition-400>
+    <div text-center flex flex-1 flex-col select-none all:transition-400>
       <div ma>
-        <div animate-bounce-alt animate-duration-1s animate-count-infinite text-5xl fw100>
+        <div text-5xl fw100 animate-bounce-alt animate-duration-1s animate-count-infinite>
           UnoCSS
         </div>
       </div>

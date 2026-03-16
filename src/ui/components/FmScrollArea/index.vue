@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { useElementSize, useScroll } from '@vueuse/core'
+import { useElementSize } from '@vueuse/core'
 import { cn } from '@/utils'
 import { ScrollArea, ScrollBar } from './scroll-area'
 
 defineOptions({
-  name: 'FaScrollArea',
+  name: 'FmScrollArea',
 })
 
 const props = withDefaults(
@@ -21,7 +21,7 @@ const props = withDefaults(
     horizontal: false,
     scrollbar: true,
     mask: false,
-    gradientColor: 'hsl(var(--background))',
+    gradientColor: 'oklch(var(--background))',
   },
 )
 
@@ -30,25 +30,6 @@ const emits = defineEmits<{
 }>()
 
 const scrollAreaRef = useTemplateRef('scrollAreaRef')
-
-const arrivedState = ref<{
-  left: boolean
-  right: boolean
-  top: boolean
-  bottom: boolean
-}>()
-const showMaskStart = computed(() => {
-  if (props.horizontal) {
-    return !arrivedState.value?.left
-  }
-  return !arrivedState.value?.top
-})
-const showMaskEnd = computed(() => {
-  if (props.horizontal) {
-    return !arrivedState.value?.right
-  }
-  return !arrivedState.value?.bottom
-})
 
 function onScroll(event: Event) {
   emits('onScroll', event)
@@ -65,12 +46,6 @@ function onWheel(event: WheelEvent) {
 const scrollContainerRef = useTemplateRef('scrollContainerRef')
 
 onMounted(() => {
-  const { arrivedState: arrivedStateValue } = useScroll(scrollAreaRef.value?.el?.viewportElement)
-  watch(arrivedStateValue, (value) => {
-    arrivedState.value = value
-  }, {
-    immediate: true,
-  })
   const { width, height } = useElementSize(scrollContainerRef.value)
   watch([width, height], () => {
     scrollAreaRef.value?.el?.viewportElement?.dispatchEvent(new Event('scroll'))
@@ -79,17 +54,17 @@ onMounted(() => {
   })
 })
 
-function scrollTo(scrollNumber: number) {
+function scrollTo(scrollNumber: number, behavior: ScrollBehavior = 'auto') {
   if (props.horizontal) {
     scrollAreaRef.value?.el?.viewportElement?.scrollTo({
       left: scrollNumber,
-      behavior: 'smooth',
+      behavior,
     })
   }
   else {
     scrollAreaRef.value?.el?.viewportElement?.scrollTo({
       top: scrollNumber,
-      behavior: 'smooth',
+      behavior,
     })
   }
 }
@@ -101,17 +76,8 @@ defineExpose({
 </script>
 
 <template>
-  <div
-    ref="scrollContainerRef" :class="cn('relative flex overflow-hidden after:(pointer-events-none absolute z-1 from-transparent to-[var(--mask-scroll-container-gradient-color)] opacity-0 transition-opacity content-empty) before:(pointer-events-none absolute z-1 from-transparent to-[var(--mask-scroll-container-gradient-color)] opacity-0 transition-opacity content-empty)', {
-      'after:(bg-gradient-to-r rtl:bg-gradient-to-l h-full w-12 end-0) before:(bg-gradient-to-l rtl:bg-gradient-to-r h-full w-12 start-0)': props.horizontal,
-      'after:(bg-gradient-to-b h-12 w-full bottom-0) before:(bg-gradient-to-t h-12 w-full)': !props.horizontal,
-      'before:(opacity-100!)': props.mask && showMaskStart,
-      'after:(opacity-100!)': props.mask && showMaskEnd,
-    }, props.class)" :style="props.mask ? {
-      '--mask-scroll-container-gradient-color': props.gradientColor,
-    } : {}"
-  >
-    <ScrollArea ref="scrollAreaRef" :class="cn('relative z-0 flex-1', props.contentClass)" :scrollbar="props.scrollbar" :on-scroll="onScroll" :on-wheel="onWheel">
+  <div ref="scrollContainerRef" :class="cn('relative flex overflow-hidden', props.class)">
+    <ScrollArea ref="scrollAreaRef" :class="cn('relative z-0 flex-1', props.contentClass)" :horizontal="props.horizontal" :scrollbar="props.scrollbar" :mask="props.mask" :style="{ '--scroll-area-mask-gradient-color': props.gradientColor }" :on-scroll="onScroll" :on-wheel="onWheel">
       <slot />
       <ScrollBar v-if="props.horizontal" orientation="horizontal" :class="{ 'opacity-0 pointer-events-none': !props.scrollbar }" />
     </ScrollArea>

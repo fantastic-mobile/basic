@@ -49,10 +49,10 @@ onMounted(() => {
 <template>
   <FmPageLayout ref="layoutRef" navbar navbar-start-side="back" @reach-bottom="onReachBottom">
     <div class="m-4 flex flex-col gap-4">
-      <div v-for="(item, index) in list" :key="index" class="bg-[var(--g-container-bg)] p-4">
+      <div v-for="(item, index) in list" :key="index" class="p-4 bg-[var(--g-container-bg)]">
         {{ item }}
       </div>
-      <div class="flex items-center justify-between gap-4 whitespace-nowrap text-sm text-stone-4 font-500 after:h-[1px] after:w-full before:h-[1px] before:w-full after:bg-stone-2 before:bg-stone-2 dark-text-stone-6 after:content-empty before:content-empty after:dark-bg-stone-6 before:dark-bg-stone-6">
+      <div class="text-stone-4 after:bg-stone-2 before:bg-stone-2 dark-text-stone-6 after:dark-bg-stone-6 before:dark-bg-stone-6 text-sm font-500 flex gap-4 whitespace-nowrap items-center justify-between after:h-[1px] after:w-full before:h-[1px] before:w-full after:content-empty before:content-empty">
         {{ list.length < pageTotal ? '加载更多' : '已经到底啦' }}
       </div>
     </div>

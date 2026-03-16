@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { DialogContentEmits, DialogContentProps } from 'reka-ui'
-import type { ComponentPublicInstance, HTMLAttributes } from 'vue'
-import { reactiveOmit, useScrollLock } from '@vueuse/core'
-import { Maximize, Minimize, X } from 'lucide-vue-next'
+import type { HTMLAttributes } from 'vue'
+import { reactiveOmit } from '@vueuse/core'
+import { X } from 'lucide-vue-next'
 import {
   DialogClose,
   DialogContent,
@@ -10,29 +10,28 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { cn } from '@/utils'
+import DialogOverlay from './DialogOverlay.vue'
+
+defineOptions({
+  inheritAttrs: false,
+})
 
 const props = defineProps<DialogContentProps & {
   modalId: string
-  class?: HTMLAttributes['class']
   open?: boolean
-  maximize?: boolean
-  maximizable?: boolean
+  zIndex?: number
   closable?: boolean
   overlay?: boolean
   overlayBlur?: boolean
+  class?: HTMLAttributes['class']
 }>()
 const emits = defineEmits<DialogContentEmits & {
-  toggleMaximize: [val: boolean]
   animationEnd: []
 }>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
-
-function handleMaximize() {
-  emits('toggleMaximize', !props.maximize)
-}
 
 const dialogContentRef = useTemplateRef<ComponentPublicInstance<typeof DialogContent>>('dialogContentRef')
 
@@ -41,15 +40,6 @@ defineExpose({
 })
 
 const showOverlay = computed(() => props.open && props.overlay)
-const isLocked = useScrollLock(document.body)
-watch(showOverlay, (val) => {
-  if (val) {
-    isLocked.value = true
-  }
-  else {
-    isLocked.value = false
-  }
-})
 </script>
 
 <template>
@@ -68,32 +58,35 @@ watch(showOverlay, (val) => {
       <div
         v-if="showOverlay"
         :data-modal-id="props.modalId"
-        :class="cn('fixed inset-0 z-2000 data-[state=closed]:animate-out data-[state=open]:animate-in bg-black/50 data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0', {
+        :class="cn('fixed inset-0 pointer-events-auto data-[state=closed]:animate-out data-[state=open]:animate-in bg-black/50 data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0', {
           'backdrop-blur-sm': props.overlayBlur,
         })"
+        :style="{
+          zIndex: props.zIndex,
+        }"
       />
     </Transition>
+    <DialogOverlay class="hidden" />
     <DialogContent
       ref="dialogContentRef"
       v-bind="forwarded"
       :class="
         cn(
-          'fixed left-1/2 top-1/2 z-2000 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-0 data-[state=closed]:slide-out-to-top-1/5 data-[state=open]:slide-in-from-left-0 data-[state=open]:slide-in-from-top-1/5 sm:rounded-lg',
+          'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg',
           props.class,
         )"
+      :style="{
+        zIndex: props.zIndex,
+      }"
       @animationend="emits('animationEnd')"
     >
       <slot />
-      <div class="absolute inset-e-4 top-4 flex-center gap-2">
-        <button v-if="props.maximizable" class="hidden rounded-sm bg-transparent opacity-70 ring-offset-background transition-opacity disabled:pointer-events-none sm:inline-block data-[state=open]:bg-accent data-[state=open]:text-muted-foreground hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring" @click="handleMaximize">
-          <Maximize v-if="!props.maximize" class="h-4 w-4" />
-          <Minimize v-else class="h-4 w-4" />
-        </button>
+      <div class="flex-center gap-2 inset-e-4 inset-t-4 absolute">
         <DialogClose
           v-if="closable"
-          class="rounded-sm bg-transparent opacity-70 ring-offset-background transition-opacity disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
+          class="rounded-xs opacity-70 ring-offset-background transition-opacity right-4 top-4 data-[state=open]:text-muted-foreground focus:outline-hidden data-[state=open]:bg-accent hover:opacity-100 [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4 [&_svg]:pointer-events-none disabled:pointer-events-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
-          <X class="h-4 w-4" />
+          <X />
           <span class="sr-only">Close</span>
         </DialogClose>
       </div>

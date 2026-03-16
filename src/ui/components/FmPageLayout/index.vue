@@ -119,7 +119,7 @@ function handleBackTopClick() {
 
 <template>
   <div
-    ref="layoutRef" class="relative h-vh flex flex-col overflow-auto overscroll-none supports-[(height:100dvh)]:h-dvh" :style="{
+    ref="layoutRef" class="overscroll-none flex flex-col h-vh relative overflow-auto supports-[(height:100dvh)]:h-dvh" :style="{
       '--g-navbar-height': `max(${navbarHeight}px, var(--g-navbar-min-height))`,
       '--g-tabbar-height': `max(${tabbarHeight}px, var(--g-tabbar-min-height))`,
     }" @scroll="handleMainScroll($event)"
@@ -130,23 +130,23 @@ function handleBackTopClick() {
       ref="navbarRef"
       :class="cn('navbar relative w-full flex-col-center bg-[var(--g-navbar-bg)] text-[var(--g-navbar-color)] transition-all pt-safe min-h+safe-t-[var(--g-navbar-min-height)]', {
         // 边框
-        'shadow-[0_1px_0_0_hsl(var(--border))]': navbarBorder,
+        'shadow-[0_1px_0_0_oklch(var(--border))]': navbarBorder,
       }, navbarClass)"
     >
-      <div class="min-h-[var(--g-navbar-min-height)] w-full flex-center">
+      <div class="flex-center min-h-[var(--g-navbar-min-height)] w-full">
         <div
-          class="h-full flex items-center justify-start" :style="{
+          class="flex h-full items-center justify-start" :style="{
             ...(titleCenter && sideWidth && { width: isSupprotRound ? `round(up, ${sideWidth}px, 1px)` : `${Math.ceil(sideWidth)}px` }),
           }"
         >
-          <div ref="startSideRef" class="h-full flex-center whitespace-nowrap">
-            <div class="h-full flex-center whitespace-nowrap px-2 empty:hidden">
+          <div ref="startSideRef" class="flex-center h-full whitespace-nowrap">
+            <div class="px-2 flex-center h-full whitespace-nowrap empty:hidden">
               <slot name="navbar-start" />
             </div>
           </div>
         </div>
         <div
-          class="min-w-0 flex-1 text-sm" :class="{
+          class="text-sm flex-1 min-w-0" :class="{
             'text-center': titleCenter,
           }"
         >
@@ -157,12 +157,12 @@ function handleBackTopClick() {
           </div>
         </div>
         <div
-          class="h-full flex items-center justify-end" :style="{
+          class="flex h-full items-center justify-end" :style="{
             ...(titleCenter && sideWidth && { width: isSupprotRound ? `round(up, ${sideWidth}px, 1px)` : `${Math.ceil(sideWidth)}px` }),
           }"
         >
-          <div ref="endSideRef" class="h-full flex-center whitespace-nowrap">
-            <div class="h-full flex-center whitespace-nowrap px-2 empty:hidden">
+          <div ref="endSideRef" class="flex-center h-full whitespace-nowrap">
+            <div class="px-2 flex-center h-full whitespace-nowrap empty:hidden">
               <slot name="navbar-end" />
             </div>
           </div>
@@ -191,7 +191,7 @@ function handleBackTopClick() {
           leaveToClass: 'opacity-0',
         }"
       >
-        <div v-if="copyright ?? appSettingsStore.settings.copyright.enable" class="copyright relative flex flex-wrap items-center justify-center p-4 text-sm text-primary/50">
+        <div v-if="copyright ?? appSettingsStore.settings.copyright.enable" class="copyright text-sm text-primary/50 p-4 flex flex-wrap items-center justify-center relative">
           <span class="px-1">Copyright</span>
           <FmIcon name="i-ri:copyright-line" class="text-lg" />
           <span v-if="appSettingsStore.settings.copyright.dates" class="px-1">{{ appSettingsStore.settings.copyright.dates }}</span>
@@ -208,14 +208,14 @@ function handleBackTopClick() {
       ref="tabbarRef"
       :class="cn('tabbar flex-col-center bg-[var(--g-tabbar-bg)] transition-all pb-safe min-h+safe-b-[calc(var(--g-tabbar-min-height))]', {
         // 边框
-        'shadow-[0_-1px_0_0_hsl(var(--border))]': tabbarBorder,
+        'shadow-[0_-1px_0_0_oklch(var(--border))]': tabbarBorder,
       }, tabbarClass)"
     >
-      <div class="min-h-[var(--g-tabbar-min-height)] w-full flex-center px-4">
+      <div class="px-4 flex-center min-h-[var(--g-tabbar-min-height)] w-full">
         <slot name="tabbar">
           <template v-for="item in tabbarList" :key="JSON.stringify(item)">
             <RouterLink
-              class="flex flex-1 flex-col items-center text-[var(--g-tabbar-color)] no-underline transition-all" :class="{
+              class="text-[var(--g-tabbar-color)] no-underline flex flex-1 flex-col transition-all items-center" :class="{
                 'text-[var(--g-tabbar-active-color)]!': route.fullPath === item.path,
               }" :to="item.path" replace
             >
@@ -241,7 +241,7 @@ function handleBackTopClick() {
     >
       <div
         v-if="(backTop ?? appSettingsStore.settings.page.backTop) && y >= 200"
-        class="back-top size-12 flex-center cursor-pointer border rounded-full bg-background shadow-lg transition-all active:bg-border"
+        class="back-top border rounded-full bg-background flex-center size-12 cursor-pointer shadow-lg transition-all active:bg-border"
         :class="{
           ...((tabbar ?? appSettingsStore.settings.tabbar.enable) && {
             'bottom+safe-[calc(var(--g-tabbar-height)+16px)]!': true,

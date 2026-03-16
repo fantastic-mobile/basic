@@ -13,7 +13,7 @@ const toggle = ref(true)
 
 <template>
   <FmPageLayout navbar navbar-start-side="back">
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <FmPageMain class="m-0">
         框架内置 Vant 组件库，本页仅展示部分组件，更多组件及使用说明请查看 Vant 官网
       </FmPageMain>

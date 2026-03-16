@@ -23,7 +23,7 @@ const checked = ref(false)
         <FmIcon name="https://one-step-admin.hurui.me/logo.png" class="text-8" />
       </div>
     </template>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <div>可以根据业务逻辑做更精细化的处理，比如动态切换显示内容。</div>
       <div>
         <FmSwitch v-model="checked" size="16px" />

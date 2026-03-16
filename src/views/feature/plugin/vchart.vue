@@ -419,11 +419,11 @@ function initChart4() {
 <template>
   <FmPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
-      <div class="h-full flex-center px-1" @click="show = true">
+      <div class="px-1 flex-center h-full" @click="show = true">
         <FmIcon name="i-mdi:information" class="text-4" />
       </div>
       <van-action-sheet v-model:show="show" teleport="body">
-        <div class="whitespace-break-spaces p-4 space-y-2">
+        <div class="p-4 whitespace-break-spaces space-y-2">
           <div>
             「插件」栏目下均为第三方插件的演示页面，框架默认并不包含这些插件。如需使用，请先安装对应插件。
           </div>
@@ -436,7 +436,7 @@ function initChart4() {
         </div>
       </van-action-sheet>
     </template>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <FmPageMain title="柱状图" class="m-0">
         <div ref="chart1Ref" class="h-[400px] w-full" />
       </FmPageMain>

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { toast } from 'vue-sonner'
-import { useFmModal } from '@/ui/components/FmModal'
-
 definePage({
   meta: {
     title: '弹窗',
@@ -45,7 +42,7 @@ function showModalInfo() {
     title: '温馨提醒',
     content: '这是 info 弹窗',
     onConfirm: () => {
-      toast.info('你点了确定')
+      fmToast.info('你点了确定')
     },
   })
 }
@@ -54,7 +51,7 @@ function showModalSuccess() {
     title: '温馨提醒',
     content: '这是 success 弹窗',
     onConfirm: () => {
-      toast.info('你点了确定')
+      fmToast.info('你点了确定')
     },
   })
 }
@@ -63,7 +60,7 @@ function showModalWarning() {
     title: '温馨提醒',
     content: '这是 warning 弹窗',
     onConfirm: () => {
-      toast.info('你点了确定')
+      fmToast.info('你点了确定')
     },
   })
 }
@@ -72,7 +69,7 @@ function showModalError() {
     title: '温馨提醒',
     content: '这是 confirm 弹窗',
     onConfirm: () => {
-      toast.info('你点了确定')
+      fmToast.info('你点了确定')
     },
   })
 }
@@ -81,7 +78,7 @@ function showModalConfirm() {
     title: '温馨提醒',
     content: '这是 confirm 弹窗',
     onConfirm: () => {
-      toast.info('你点了确定')
+      fmToast.info('你点了确定')
     },
   })
 }
@@ -94,11 +91,11 @@ function showModalPromiseConfirm() {
       if (action === 'confirm') {
         await new Promise(resolve => setTimeout(resolve, 1000))
         if (Math.random() > 0.5) {
-          toast.success('成功了！')
+          fmToast.success('成功了！')
           done()
         }
         else {
-          toast.error('失败了！')
+          fmToast.error('失败了！')
         }
       }
       else {

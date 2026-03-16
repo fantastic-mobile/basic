@@ -62,9 +62,6 @@ importers:
       pinia:
         specifier: ^3.0.4
         version: 3.0.4(typescript@5.9.3)(vue@3.5.30(typescript@5.9.3))
-      qrcode:
-        specifier: ^1.5.4
-        version: 1.5.4
       qs:
         specifier: ^6.15.0
         version: 6.15.0
@@ -126,21 +123,12 @@ importers:
       '@types/nprogress':
         specifier: ^0.2.3
         version: 0.2.3
-      '@types/qrcode':
-        specifier: ^1.5.6
-        version: 1.5.6
       '@types/qs':
         specifier: ^6.15.0
         version: 6.15.0
       '@unocss/eslint-plugin':
         specifier: ^66.6.6
         version: 66.6.6(eslint@10.0.3(jiti@2.6.1))(typescript@5.9.3)
-      '@unocss/preset-legacy-compat':
-        specifier: ^66.6.6
-        version: 66.6.6
-      '@unocss/preset-rem-to-px':
-        specifier: ^66.6.6
-        version: 66.6.6
       '@unocss/reset':
         specifier: ^66.6.6
         version: 66.6.6
@@ -3011,9 +2999,6 @@ packages:
   '@types/picomatch@4.0.2':
     resolution: {integrity: sha512-qHHxQ+P9PysNEGbALT8f8YOSHW0KJu6l2xU8DYY0fu/EmGxXdVnuTLvFUvBgPJMSqXq29SYHveejeAha+4AYgA==}
 
-  '@types/qrcode@1.5.6':
-    resolution: {integrity: sha512-te7NQcV2BOvdj2b1hCAHzAoMNuj65kNBMz0KBaxM6c3VGBOhU0dURQKOtH8CFNI/dsKkwlv32p26qYQTWoB5bw==}
-
   '@types/qs@6.15.0':
     resolution: {integrity: sha512-JawvT8iBVWpzTrz3EGw9BTQFg3BQNmwERdKE22vlTxawwtbyUSlMppvZYKLZzB5zgACXdXxbD3m1bXaMqP/9ow==}
 
@@ -3180,14 +3165,8 @@ packages:
   '@unocss/preset-icons@66.6.6':
     resolution: {integrity: sha512-HfIEEqf3jyKexOB2Sux556n0NkPoUftb2H4+Cf7prJvKHopMkZ/OUkXjwvUlxt1e5UpAEaIa0A2Ir7+ApxXoGA==}
 
-  '@unocss/preset-legacy-compat@66.6.6':
-    resolution: {integrity: sha512-95/cCFtPOccyIL93QrmsNx50VEEFkl66q2pIKBJUtu/cs13J5nhnswYRKBUxlvJZgtD3uB5qK2pH5JGRMfZmQw==}
-
   '@unocss/preset-mini@66.6.6':
     resolution: {integrity: sha512-k+/95PKMPOK57cJcSmz34VkIFem8BlujRRx6/L0Yusw7vLJMh98k0rPhC5s+NomZ/d9ZPgbNylskLhItJlak3w==}
-
-  '@unocss/preset-rem-to-px@66.6.6':
-    resolution: {integrity: sha512-QUHoFFB2u699T4gcKm8vwDeg5cQjUEGcMypagjSG2JtDwUn9D/I+RGzfl12k7tH29yANoN82OhO8dChlYhXqfA==}
 
   '@unocss/preset-tagify@66.6.6':
     resolution: {integrity: sha512-KgBXYPYS0g4TVC3NLiIB78YIqUlvDLanz1EHIDo34rOTUfMgY8Uf5VuDJAzMu4Sc0LiwwBJbk6nIG9/Zm7ufWg==}
@@ -11851,10 +11830,6 @@ snapshots:
 
   '@types/picomatch@4.0.2': {}
 
-  '@types/qrcode@1.5.6':
-    dependencies:
-      '@types/node': 22.15.30
-
   '@types/qs@6.15.0': {}
 
   '@types/resolve@1.20.2':
@@ -12117,19 +12092,11 @@ snapshots:
       '@unocss/core': 66.6.6
       ofetch: 1.5.1
 
-  '@unocss/preset-legacy-compat@66.6.6':
-    dependencies:
-      '@unocss/core': 66.6.6
-
   '@unocss/preset-mini@66.6.6':
     dependencies:
       '@unocss/core': 66.6.6
       '@unocss/extractor-arbitrary-variants': 66.6.6
       '@unocss/rule-utils': 66.6.6
-
-  '@unocss/preset-rem-to-px@66.6.6':
-    dependencies:
-      '@unocss/core': 66.6.6
 
   '@unocss/preset-tagify@66.6.6':
     dependencies:
@@ -13168,7 +13135,8 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  camelcase@5.3.1: {}
+  camelcase@5.3.1:
+    optional: true
 
   camelcase@8.0.0: {}
 
@@ -13271,6 +13239,7 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 6.2.0
+    optional: true
 
   cliui@8.0.1:
     dependencies:
@@ -13628,7 +13597,8 @@ snapshots:
       callsite: 1.0.0
     optional: true
 
-  decamelize@1.2.0: {}
+  decamelize@1.2.0:
+    optional: true
 
   decode-named-character-reference@1.1.0:
     dependencies:
@@ -13781,7 +13751,8 @@ snapshots:
   diff@8.0.2:
     optional: true
 
-  dijkstrajs@1.0.3: {}
+  dijkstrajs@1.0.3:
+    optional: true
 
   dlv@1.1.3: {}
 
@@ -14602,6 +14573,7 @@ snapshots:
     dependencies:
       locate-path: 5.0.0
       path-exists: 4.0.0
+    optional: true
 
   find-up@5.0.0:
     dependencies:
@@ -14747,7 +14719,8 @@ snapshots:
       node-source-walk: 7.0.1
     optional: true
 
-  get-caller-file@2.0.5: {}
+  get-caller-file@2.0.5:
+    optional: true
 
   get-east-asian-width@1.3.0: {}
 
@@ -15649,6 +15622,7 @@ snapshots:
   locate-path@5.0.0:
     dependencies:
       p-locate: 4.1.0
+    optional: true
 
   locate-path@6.0.0:
     dependencies:
@@ -16867,6 +16841,7 @@ snapshots:
   p-limit@2.3.0:
     dependencies:
       p-try: 2.2.0
+    optional: true
 
   p-limit@3.1.0:
     dependencies:
@@ -16880,6 +16855,7 @@ snapshots:
   p-locate@4.1.0:
     dependencies:
       p-limit: 2.3.0
+    optional: true
 
   p-locate@5.0.0:
     dependencies:
@@ -16896,7 +16872,8 @@ snapshots:
   p-timeout@6.1.4:
     optional: true
 
-  p-try@2.2.0: {}
+  p-try@2.2.0:
+    optional: true
 
   p-wait-for@5.0.2:
     dependencies:
@@ -17064,7 +17041,8 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  pngjs@5.0.0: {}
+  pngjs@5.0.0:
+    optional: true
 
   pnpm-workspace-yaml@1.6.0:
     dependencies:
@@ -17431,6 +17409,7 @@ snapshots:
       dijkstrajs: 1.0.3
       pngjs: 5.0.0
       yargs: 15.4.1
+    optional: true
 
   qs@6.15.0:
     dependencies:
@@ -17624,11 +17603,13 @@ snapshots:
 
   repeat-string@1.6.1: {}
 
-  require-directory@2.1.1: {}
+  require-directory@2.1.1:
+    optional: true
 
   require-from-string@2.0.2: {}
 
-  require-main-filename@2.0.0: {}
+  require-main-filename@2.0.0:
+    optional: true
 
   require-package-name@2.0.1:
     optional: true
@@ -17925,7 +17906,8 @@ snapshots:
       - supports-color
     optional: true
 
-  set-blocking@2.0.0: {}
+  set-blocking@2.0.0:
+    optional: true
 
   set-function-length@1.2.2:
     dependencies:
@@ -19427,7 +19409,8 @@ snapshots:
       is-weakmap: 2.0.2
       is-weakset: 2.0.4
 
-  which-module@2.0.1: {}
+  which-module@2.0.1:
+    optional: true
 
   which-typed-array@1.1.19:
     dependencies:
@@ -19528,7 +19511,8 @@ snapshots:
 
   xml-name-validator@4.0.0: {}
 
-  y18n@4.0.3: {}
+  y18n@4.0.3:
+    optional: true
 
   y18n@5.0.8:
     optional: true
@@ -19549,6 +19533,7 @@ snapshots:
     dependencies:
       camelcase: 5.3.1
       decamelize: 1.2.0
+    optional: true
 
   yargs-parser@21.1.1:
     optional: true
@@ -19566,6 +19551,7 @@ snapshots:
       which-module: 2.0.1
       y18n: 4.0.3
       yargs-parser: 18.1.3
+    optional: true
 
   yargs@17.7.2:
     dependencies:

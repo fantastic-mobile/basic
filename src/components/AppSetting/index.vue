@@ -19,7 +19,7 @@ onMounted(() => {
   })
 })
 
-const appRadius = computed<number[]>({
+const themeRadius = computed<number[]>({
   get() {
     return [appSettingsStore.settings.theme.radius]
   },
@@ -44,101 +44,119 @@ function handleCopy() {
 </script>
 
 <template>
-  <FmDrawer v-model="isShow" title="应用配置" description="在生产环境中应关闭该模块" :footer="isSupported" :destroy-on-close="false">
-    <div class="rounded-2 bg-rose/20 px-4 py-2 text-sm/6 c-rose">
-      应用配置可实时预览效果，但只是临时生效，要想真正应用于项目，可以点击下方的「复制配置」按钮，并将配置粘贴到 src/settings.ts 文件中。
-    </div>
+  <FmModal v-model="isShow" title="应用配置" description="在生产环境中应关闭该模块" :footer="isSupported" :destroy-on-close="false" content-class="bg-[var(--g-bg)] transition-background-color">
     <div>
-      <FmDivider>颜色主题风格</FmDivider>
-      <div class="flex items-center justify-center pb-4">
-        <FmTabs
-          v-model="appSettingsStore.settings.theme.colorScheme"
-          :list="[
-            { icon: 'i-ri:sun-line', label: '明亮', value: 'light' },
-            { icon: 'i-ri:moon-line', label: '暗黑', value: 'dark' },
-            { icon: 'i-codicon:color-mode', label: '系统', value: '' },
-          ]"
-          class="w-60"
-        />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          圆角系数
+      <FmPageMain title="主题" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="pb-0 border-none font-bold text-base" main-class="space-y-4">
+        <div class="setting-item">
+          <div class="label">
+            颜色方案
+          </div>
+          <FmButtonGroup>
+            <FmButton
+              v-for="(item, index) in [
+                { icon: 'i-ri:sun-line', value: 'light' },
+                { icon: 'i-ri:moon-line', value: 'dark' },
+                { icon: 'i-codicon:color-mode', value: '' },
+              ]" :key="index" :variant="appSettingsStore.settings.theme.colorScheme === item.value ? 'default' : 'outline'" size="sm" :class="{ 'z-1': appSettingsStore.settings.theme.colorScheme === item.value }" @click="appSettingsStore.settings.theme.colorScheme = (item.value as any)"
+            >
+              <FmIcon :name="item.icon" />
+            </FmButton>
+          </FmButtonGroup>
         </div>
-        <FmSlider v-model="appRadius" :min="0" :max="1" :step="0.25" class="w-1/2" />
-      </div>
-    </div>
-    <div>
-      <FmDivider>底部版权</FmDivider>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          是否启用
+        <div class="setting-item">
+          <div class="label">
+            圆角
+          </div>
+          <FmSlider v-model="themeRadius" :min="0" :max="1" :step="0.25" class="w-1/2" />
         </div>
-        <FmSwitch v-model="appSettingsStore.settings.copyright.enable" />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          日期
+        <div class="setting-item">
+          <div class="label">
+            色弱模式
+          </div>
+          <FmSwitch v-model="appSettingsStore.settings.theme.colorAmblyopia" />
         </div>
-        <FmInput v-model="appSettingsStore.settings.copyright.dates" :disabled="!appSettingsStore.settings.copyright.enable" />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          公司
+      </FmPageMain>
+      <FmPageMain title="页面" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="pb-0 border-none font-bold text-base" main-class="space-y-4">
+        <div class="setting-item">
+          <div class="label">
+            进度条
+          </div>
+          <FmSwitch v-model="appSettingsStore.settings.page.progress" />
         </div>
-        <FmInput v-model="appSettingsStore.settings.copyright.company" :disabled="!appSettingsStore.settings.copyright.enable" />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          网址
+        <div class="setting-item">
+          <div class="label">
+            返回顶部
+          </div>
+          <FmSwitch v-model="appSettingsStore.settings.page.backTop" />
         </div>
-        <FmInput v-model="appSettingsStore.settings.copyright.website" :disabled="!appSettingsStore.settings.copyright.enable" />
-      </div>
-    </div>
-    <div>
-      <FmDivider>其它</FmDivider>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          是否启用权限
+      </FmPageMain>
+      <FmPageMain title="版权" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="pb-0 border-none font-bold text-base" main-class="space-y-4">
+        <div class="setting-item">
+          <div class="label">
+            启用
+          </div>
+          <FmSwitch v-model="appSettingsStore.settings.copyright.enable" />
         </div>
-        <FmSwitch v-model="appSettingsStore.settings.app.enablePermission" />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          载入进度条
+        <div class="setting-item">
+          <div class="label">
+            日期
+          </div>
+          <FmInput v-model="appSettingsStore.settings.copyright.dates" :disabled="!appSettingsStore.settings.copyright.enable" />
         </div>
-        <FmSwitch v-model="appSettingsStore.settings.page.progress" />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          哀悼模式
+        <div class="setting-item">
+          <div class="label">
+            公司
+          </div>
+          <FmInput v-model="appSettingsStore.settings.copyright.company" :disabled="!appSettingsStore.settings.copyright.enable" />
         </div>
-        <FmSwitch v-model="appSettingsStore.settings.app.rip" />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          色弱模式
+        <div class="setting-item">
+          <div class="label">
+            网址
+          </div>
+          <FmInput v-model="appSettingsStore.settings.copyright.website" :disabled="!appSettingsStore.settings.copyright.enable" />
         </div>
-        <FmSwitch v-model="appSettingsStore.settings.theme.colorAmblyopia" />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          返回顶部
+      </FmPageMain>
+      <FmPageMain title="应用" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="pb-0 border-none font-bold text-base" main-class="space-y-4">
+        <div class="setting-item">
+          <div class="label">
+            启用权限
+          </div>
+          <FmSwitch v-model="appSettingsStore.settings.app.enablePermission" />
         </div>
-        <FmSwitch v-model="appSettingsStore.settings.page.backTop" />
-      </div>
-      <div class="flex items-center justify-between gap-4 rounded-2 px-4 py-2">
-        <div class="flex flex-shrink-0 items-center gap-2 text-sm">
-          动态标题
+        <div class="setting-item">
+          <div class="label">
+            动态标题
+          </div>
+          <FmSwitch v-model="appSettingsStore.settings.app.dynamicTitle" />
         </div>
-        <FmSwitch v-model="appSettingsStore.settings.app.dynamicTitle" />
-      </div>
+        <div class="setting-item">
+          <div class="label">
+            哀悼模式
+          </div>
+          <FmSwitch v-model="appSettingsStore.settings.app.rip" />
+        </div>
+      </FmPageMain>
     </div>
     <template #footer>
-      <FmButton class="w-full" @click="handleCopy">
-        <FmIcon name="i-ep:document-copy" />
-        复制配置
-      </FmButton>
+      <div class="w-full">
+        <div class="text-sm/6 c-rose mb-2 px-4 py-2 text-center rounded-lg bg-rose/20">
+          在此处调整配置只是临时生效，要想真正应用于项目，请点击「 复制配置 」按钮，并粘贴到 <code class="text-sm font-mono font-semibold px-[0.3rem] py-[0.2rem] rounded bg-muted relative">src/settings/index.ts</code> 文件中。
+        </div>
+        <FmButton class="w-full" @click="handleCopy">
+          <FmIcon :name="copied ? 'i-tabler:clipboard-check' : 'i-tabler:clipboard'" class="size-5" />
+          复制配置
+        </FmButton>
+      </div>
     </template>
-  </FmDrawer>
+  </FmModal>
 </template>
+
+<style scoped>
+.setting-item {
+  --uno: flex items-center justify-between gap-4;
+
+  .label {
+    --uno: flex items-center flex-shrink-0 gap-2 text-sm;
+  }
+}
+</style>

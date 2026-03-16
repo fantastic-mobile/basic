@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { Icon } from '@iconify/vue'
 import { UseImage } from '@vueuse/components'
+import { Transition } from 'vue'
 import { cn } from '@/utils'
 
 defineOptions({
@@ -10,14 +11,27 @@ defineOptions({
 
 const props = defineProps<{
   name: string
+  transition?: boolean
   class?: HTMLAttributes['class']
 }>()
 
+const IconWrapper = defineComponent({
+  render() {
+    const content = this.$slots.default?.()
+    return props.transition
+      ? h(Transition, { name: 'icon-flip' }, () => content)
+      : content
+  },
+})
+
 const outputType = computed(() => {
+  if (!props.name) {
+    return
+  }
   const hasPathFeatures = (str: string) => {
     return /^\.{1,2}\//.test(str) || str.startsWith('/') || str.includes('/')
   }
-  if (/^https?:\/\//.test(props.name) || hasPathFeatures(props.name) || !props.name) {
+  if (/^https?:\/\//.test(props.name) || hasPathFeatures(props.name)) {
     return 'img'
   }
   else if (/i-[^:]+:[^:]+/.test(props.name)) {
@@ -34,18 +48,44 @@ const outputType = computed(() => {
 
 <template>
   <i :class="cn('relative size-[1em] flex-inline items-center justify-center fill-current leading-[1em]', props.class)">
-    <i v-if="outputType === 'unocss'" class="size-inherit shrink-0" :class="name" />
-    <Icon v-else-if="outputType === 'iconify'" :icon="name" class="shrink-0 size-inherit!" />
-    <svg v-else-if="outputType === 'svg'" class="size-inherit shrink-0" aria-hidden="true">
-      <use :xlink:href="`#icon-${name}`" />
-    </svg>
-    <UseImage v-else-if="outputType === 'img'" :src="name" class="size-inherit shrink-0">
-      <template #loading>
-        <i class="i-line-md:loading-loop size-inherit" />
-      </template>
-      <template #error>
-        <i class="i-tdesign:image-error size-inherit" />
-      </template>
-    </UseImage>
+    <IconWrapper>
+      <i v-if="outputType === 'unocss'" :key="`unocss-${name}`" class="shrink-0 size-inherit inset-0 absolute" :class="name" />
+      <span v-else-if="outputType === 'iconify'" :key="`iconify-${name}`" class="flex shrink-0 size-inherit items-center inset-0 justify-center absolute">
+        <Icon :icon="name" class="shrink-0 size-inherit!" />
+      </span>
+      <svg v-else-if="outputType === 'svg'" :key="`svg-${name}`" class="shrink-0 size-inherit inset-0 absolute" aria-hidden="true">
+        <use :xlink:href="`#icon-${name}`" />
+      </svg>
+      <span v-else-if="outputType === 'img'" :key="`img-${name}`" class="flex shrink-0 size-inherit items-center inset-0 justify-center absolute">
+        <UseImage :src="name" class="shrink-0 size-inherit">
+          <template #loading>
+            <i class="i-line-md:loading-loop size-inherit" />
+          </template>
+          <template #error>
+            <i class="i-ph:image-broken-duotone size-inherit" />
+          </template>
+        </UseImage>
+      </span>
+    </IconWrapper>
   </i>
 </template>
+
+<style scoped>
+.icon-flip-enter-active {
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.icon-flip-leave-active {
+  transition: all 0.2s cubic-bezier(0.36, 0, 0.66, -0.56);
+}
+
+.icon-flip-enter-from {
+  opacity: 0;
+  transform: scale(0.5) rotate(90deg);
+}
+
+.icon-flip-leave-to {
+  opacity: 0;
+  transform: scale(0.5) rotate(-90deg);
+}
+</style>

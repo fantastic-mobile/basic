@@ -91,7 +91,6 @@ const data: {
     title: '插件',
     icon: 'i-clarity:plugin-outline-alerted',
     routes: [
-      { path: '/feature/plugin/qrcode', title: '二维码', icon: 'i-material-symbols:qr-code' },
       { path: '/feature/plugin/esign', title: '电子签名', icon: 'i-mdi:draw' },
       { path: '/feature/plugin/animation', title: '过渡动画', icon: 'i-clarity:animation-line' },
       { path: '/feature/plugin/swiper', title: '轮播动画', icon: 'i-carbon:carousel-horizontal' },
@@ -113,18 +112,18 @@ const data: {
   <FmPageLayout :navbar="false" tabbar saved-position>
     <div class="p-4">
       <div v-for="(item, index) in data" :key="index" class="mb-4">
-        <div class="inline-flex items-center gap-2 text-gray-7 dark-text-gray-3">
+        <div class="text-gray-7 dark-text-gray-3 inline-flex gap-2 items-center">
           <FmIcon v-if="item.icon" :name="item.icon" class="text-6" />
-          <div class="relative z-0 inline-block text-2xl font-bold after:(absolute bottom-0 left-0 h-2 w-full bg-yellow content-[''] -z-1 dark-bg-yellow-9)">
+          <div class="after:dark-bg-yellow-9 text-2xl font-bold inline-block relative z-0 after:(bg-yellow h-2 w-full content-[''] bottom-0 left-0 absolute -z-1)">
             {{ item.title }}
           </div>
         </div>
-        <div class="grid grid-cols-2 mt-4 gap-3">
-          <router-link v-for="route in item.routes" :key="route.path" :to="route.path" class="relative flex of-hidden border rounded-lg bg-card text-sm text-card-foreground/80 shadow-sm">
-            <div v-if="route.icon" class="z-1 flex-center border-r px-3 py-2 pe-2">
+        <div class="mt-4 gap-3 grid grid-cols-2">
+          <router-link v-for="route in item.routes" :key="route.path" :to="route.path" class="text-sm text-card-foreground/80 border rounded-lg bg-card flex shadow-sm relative of-hidden">
+            <div v-if="route.icon" class="px-3 py-2 pe-2 border-r flex-center z-1">
               <FmIcon :name="route.icon" />
             </div>
-            <div class="z-1 flex-1 truncate px-3 py-2" :class="{ 'ps-2': route.icon }">
+            <div class="px-3 py-2 flex-1 truncate z-1" :class="{ 'ps-2': route.icon }">
               {{ route.title }}
             </div>
           </router-link>

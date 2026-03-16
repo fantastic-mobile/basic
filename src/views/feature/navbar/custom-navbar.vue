@@ -11,11 +11,11 @@ const router = useRouter()
 <template>
   <FmPageLayout navbar :style="{ scrollTimelineName: '--navbar-timeline' }" class="pt+safe-[200px]" content-class="mt+safe!">
     <template #navbar>
-      <div class="custom-navbar flex flex-center gap-2 bg-[url('https://picsum.photos/375/200')] bg-cover bg-center bg-no-repeat text-light text-shadow text-shadow-color-dark shadow transition-all-500">
+      <div class="custom-navbar text-shadow text-light text-shadow-color-dark bg-[url('https://picsum.photos/375/200')] flex flex-center gap-2 shadow transition-all-500 bg-cover bg-center bg-no-repeat">
         头部导航
       </div>
     </template>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       使用自定义导航可以满足更复杂的业务场景，例如当前页面，你可以滚动页面试试。
       <FmButton @click="router.back()">
         返回

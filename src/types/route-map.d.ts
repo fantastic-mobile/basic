@@ -278,13 +278,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/feature/plugin/qrcode': RouteRecordInfo<
-      '/feature/plugin/qrcode',
-      '/feature/plugin/qrcode',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/feature/plugin/swiper': RouteRecordInfo<
       '/feature/plugin/swiper',
       '/feature/plugin/swiper',
@@ -560,12 +553,6 @@ declare module 'vue-router/auto-routes' {
     'src/views/feature/plugin/esign.vue': {
       routes:
         | '/feature/plugin/esign'
-      views:
-        | never
-    }
-    'src/views/feature/plugin/qrcode.vue': {
-      routes:
-        | '/feature/plugin/qrcode'
       views:
         | never
     }

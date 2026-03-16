@@ -51,11 +51,11 @@ function handleDownload() {
 <template>
   <FmPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
-      <div class="h-full flex-center px-1" @click="show = true">
+      <div class="px-1 flex-center h-full" @click="show = true">
         <FmIcon name="i-mdi:information" class="text-4" />
       </div>
       <van-action-sheet v-model:show="show" teleport="body">
-        <div class="whitespace-break-spaces p-4 space-y-2">
+        <div class="p-4 whitespace-break-spaces space-y-2">
           <div>
             「插件」栏目下均为第三方插件的演示页面，框架默认并不包含这些插件。如需使用，请先安装对应插件。
           </div>
@@ -68,7 +68,7 @@ function handleDownload() {
         </div>
       </van-action-sheet>
     </template>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <FmPageMain class="m-0">
         <VueEsign ref="esignRef" v-model:bg-color="options.bgColor" :width="800" :height="400" :is-crop="options.isCrop" :line-width="options.lineWidth" :line-color="options.lineColor" />
         <div class="mt-2 space-x-2">
@@ -84,7 +84,7 @@ function handleDownload() {
         </div>
       </FmPageMain>
       <FmPageMain v-if="result" class="m-0">
-        <img :src="result" class="aspect-ratio-[800/400] w-full">
+        <img :src="result" class="w-full aspect-ratio-[800/400]">
       </FmPageMain>
     </div>
   </FmPageLayout>

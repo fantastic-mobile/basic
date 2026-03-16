@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { loadingHide, loadingShow } from '@/ui/components/FmLoading'
-
 definePage({
   meta: {
     title: '加载遮罩',
@@ -13,13 +11,13 @@ const text = ref('加载中...')
 
 function loading() {
   // 提供 3 个参数
-  loadingShow({
+  const { close } = useFmLoading({
     type: type.value,
     size: size.value,
     text: text.value,
   })
   setTimeout(() => {
-    loadingHide()
+    close()
   }, 2000)
 }
 </script>
