@@ -13,7 +13,6 @@ const props = withDefaults(
     horizontal?: boolean
     scrollbar?: boolean
     mask?: boolean
-    gradientColor?: string
     class?: HTMLAttributes['class']
     contentClass?: HTMLAttributes['class']
   }>(),
@@ -21,7 +20,6 @@ const props = withDefaults(
     horizontal: false,
     scrollbar: true,
     mask: false,
-    gradientColor: 'oklch(var(--background))',
   },
 )
 
@@ -77,7 +75,7 @@ defineExpose({
 
 <template>
   <div ref="scrollContainerRef" :class="cn('relative flex overflow-hidden', props.class)">
-    <ScrollArea ref="scrollAreaRef" :class="cn('relative z-0 flex-1', props.contentClass)" :horizontal="props.horizontal" :scrollbar="props.scrollbar" :mask="props.mask" :style="{ '--scroll-area-mask-gradient-color': props.gradientColor }" :on-scroll="onScroll" :on-wheel="onWheel">
+    <ScrollArea ref="scrollAreaRef" :class="cn('relative z-0 flex-1', props.contentClass)" :horizontal="props.horizontal" :scrollbar="props.scrollbar" :mask="props.mask" :on-scroll="onScroll" :on-wheel="onWheel">
       <slot />
       <ScrollBar v-if="props.horizontal" orientation="horizontal" :class="{ 'opacity-0 pointer-events-none': !props.scrollbar }" />
     </ScrollArea>
