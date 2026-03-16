@@ -46,27 +46,27 @@ function testAccount(account: string) {
 
 <template>
   <FmPageLayout :navbar="false" copyright>
-    <div class="mx-4 flex flex-1 flex-col justify-center gap-8">
+    <div class="mx-4 flex flex-1 flex-col gap-8 justify-center">
       <img src="@/assets/images/logo.png" class="mx-auto h-24 w-24">
       <form @submit="onSubmit">
-        <div class="mx-4 overflow-hidden border rounded-xl bg-card divide-y">
+        <div class="mx-4 border rounded-xl bg-card overflow-hidden divide-y">
           <FormField v-slot="{ componentField }" name="account">
             <FormItem class="p-1 space-y-0">
               <FormControl>
-                <FmInput type="text" placeholder="用户名" class="w-full border-none focus-visible:ring-0 focus-visible:ring-offset-0" v-bind="componentField" />
+                <FmInput type="text" placeholder="用户名" class="border-none w-full shadow-none has-[[data-slot=input-group-control]:focus-visible]:ring-0" input-class="shadow-none" v-bind="componentField" />
               </FormControl>
               <Transition enter-active-class="transition-opacity" enter-from-class="opacity-0" leave-active-class="transition-opacity" leave-to-class="opacity-0">
-                <FormMessage class="pb-2 pl-3 text-xs" />
+                <FormMessage class="text-xs pb-2 pl-3" />
               </Transition>
             </FormItem>
           </FormField>
           <FormField v-slot="{ componentField }" name="password">
             <FormItem class="p-1 space-y-0">
               <FormControl>
-                <FmInput type="password" placeholder="密码" class="w-full border-none focus-visible:ring-0 focus-visible:ring-offset-0" v-bind="componentField" />
+                <FmInput type="password" placeholder="密码" class="border-none w-full shadow-none has-[[data-slot=input-group-control]:focus-visible]:ring-0" input-class="shadow-none" v-bind="componentField" />
               </FormControl>
               <Transition enter-active-class="transition-opacity" enter-from-class="opacity-0" leave-active-class="transition-opacity" leave-to-class="opacity-0">
-                <FormMessage class="pb-2 pl-3 text-xs" />
+                <FormMessage class="text-xs pb-2 pl-3" />
               </Transition>
             </FormItem>
           </FormField>

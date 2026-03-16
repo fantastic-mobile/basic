@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { DrawerEmits, DrawerProps } from '.'
+import { VisuallyHidden } from 'reka-ui'
 import { cn } from '@/utils'
 import {
   Sheet,
@@ -15,34 +16,10 @@ defineOptions({
 })
 
 const props = withDefaults(
-  defineProps<{
-    modelValue?: boolean
-    side?: 'top' | 'bottom' | 'left' | 'right'
-    title: string
-    description?: string
-    loading?: boolean
-    closable?: boolean
-    centered?: boolean
-    bordered?: boolean
-    overlay?: boolean
-    overlayBlur?: boolean
-    showConfirmButton?: boolean
-    showCancelButton?: boolean
-    confirmButtonText?: string
-    cancelButtonText?: string
-    confirmButtonDisabled?: boolean
-    confirmButtonLoading?: boolean
-    header?: boolean
-    footer?: boolean
-    closeOnClickOverlay?: boolean
-    closeOnPressEscape?: boolean
-    destroyOnClose?: boolean
-    contentClass?: HTMLAttributes['class']
-    headerClass?: HTMLAttributes['class']
-    footerClass?: HTMLAttributes['class']
-  }>(),
+  defineProps<DrawerProps>(),
   {
     modelValue: false,
+    zIndex: 2000,
     side: 'right',
     loading: false,
     closable: true,
@@ -61,22 +38,19 @@ const props = withDefaults(
     closeOnClickOverlay: true,
     closeOnPressEscape: true,
     destroyOnClose: true,
+    openAutoFocus: false,
   },
 )
 
-const emits = defineEmits<{
-  'update:modelValue': [value: boolean]
-  'open': []
-  'opened': []
-  'close': []
-  'closed': []
-  'confirm': []
-  'cancel': []
+const emits = defineEmits<DrawerEmits>()
+
+const slots = defineSlots<{
+  header?: () => VNode
+  default?: () => VNode
+  footer?: () => VNode
 }>()
 
-const id = useId()
-provide('DrawerId', id)
-
+const drawerId = shallowRef(props.id ?? useId())
 const isOpen = ref(props.modelValue)
 
 watch(() => props.modelValue, (newValue) => {
@@ -86,9 +60,16 @@ watch(() => props.modelValue, (newValue) => {
 const hasOpened = ref(false)
 const isClosed = ref(true)
 
-watch(() => isOpen.value, (value) => {
+watch(isOpen, (val) => {
+  emits('update:modelValue', val)
+  if (val) {
+    emits('open')
+  }
+  else {
+    emits('close')
+  }
   isClosed.value = false
-  if (value && !hasOpened.value) {
+  if (val && !hasOpened.value) {
     hasOpened.value = true
   }
 }, {
@@ -97,25 +78,69 @@ watch(() => isOpen.value, (value) => {
 
 const forceMount = computed(() => !props.destroyOnClose && hasOpened.value)
 
-function updateOpen(value: boolean) {
-  isOpen.value = value
-  emits('update:modelValue', value)
+async function updateOpen(value: boolean) {
   if (value) {
+    isOpen.value = value
     emits('open')
   }
   else {
-    emits('close')
+    if (props.beforeClose) {
+      await props.beforeClose(
+        'close',
+        () => {
+          isOpen.value = value
+          emits('close')
+        },
+      )
+    }
+    else {
+      isOpen.value = value
+      emits('close')
+    }
   }
 }
 
-function onConfirm() {
-  updateOpen(false)
-  emits('confirm')
+const isConfirmButtonLoading = ref(false)
+
+async function onConfirm() {
+  if (props.beforeClose) {
+    isConfirmButtonLoading.value = true
+    await props.beforeClose(
+      'confirm',
+      () => {
+        isOpen.value = false
+        emits('confirm')
+      },
+    )
+    isConfirmButtonLoading.value = false
+  }
+  else {
+    isOpen.value = false
+    emits('confirm')
+  }
 }
 
-function onCancel() {
-  updateOpen(false)
-  emits('cancel')
+async function onCancel() {
+  if (props.beforeClose) {
+    await props.beforeClose(
+      'cancel',
+      () => {
+        isOpen.value = false
+        emits('cancel')
+      },
+    )
+  }
+  else {
+    isOpen.value = false
+    emits('cancel')
+  }
+}
+
+function handleOpenAutoFocus(e: Event) {
+  if (!props.openAutoFocus) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
 }
 
 function handleFocusOutside(e: Event) {
@@ -124,7 +149,7 @@ function handleFocusOutside(e: Event) {
 }
 
 function handleClickOutside(e: Event) {
-  if (!props.closeOnClickOverlay || (e.target as HTMLElement).dataset.drawerId !== id) {
+  if (!props.closeOnClickOverlay || (e.target as HTMLElement).dataset.drawerId !== drawerId.value) {
     e.preventDefault()
     e.stopPropagation()
   }
@@ -149,18 +174,20 @@ function handleAnimationEnd() {
 </script>
 
 <template>
-  <Sheet :modal="false" :open="isOpen" @update:open="updateOpen">
+  <Sheet :open="isOpen" @update:open="updateOpen">
     <SheetContent
-      :closable="props.closable"
+      :drawer-id="drawerId"
       :open="isOpen"
+      :z-index="props.zIndex"
+      :closable="props.closable"
       :overlay="props.overlay"
       :overlay-blur="props.overlayBlur"
-      :class="cn('w-full flex flex-col gap-0 p-0', props.contentClass, {
+      :class="cn('z-2000 w-full flex flex-col gap-0 p-0', props.contentClass, {
         hidden: isClosed,
       })"
       :side="props.side"
       :force-mount="forceMount"
-      @open-auto-focus="handleFocusOutside"
+      @open-auto-focus="handleOpenAutoFocus"
       @close-auto-focus="handleFocusOutside"
       @focus-outside="handleFocusOutside"
       @pointer-down-outside="handleClickOutside"
@@ -173,37 +200,41 @@ function handleAnimationEnd() {
           'border-b': props.bordered,
         })"
       >
+        <VisuallyHidden v-if="!!slots.header">
+          <SheetTitle />
+          <SheetDescription />
+        </VisuallyHidden>
         <slot name="header">
           <SheetTitle :class="{ 'text-center': props.centered }">
-            {{ title }}
+            {{ typeof props.title === 'function' ? props.title() : props.title }}
           </SheetTitle>
           <SheetDescription class="empty:hidden" :class="{ 'text-center': props.centered }">
-            {{ description }}
+            {{ typeof props.description === 'function' ? props.description() : props.description }}
           </SheetDescription>
         </slot>
       </SheetHeader>
-      <div class="m-0 flex-1 of-y-hidden">
-        <FmScrollArea class="h-full">
-          <div class="p-4">
-            <slot />
-          </div>
-        </FmScrollArea>
-        <div v-show="props.loading" class="absolute inset-0 z-1000 size-full flex-center bg-popover/75">
-          <FmIcon name="i-line-md:loading-twotone-loop" class="size-10" />
-        </div>
+      <VisuallyHidden v-else>
+        <SheetTitle />
+        <SheetDescription />
+      </VisuallyHidden>
+      <div v-if="!!slots.default" class="m-0 p-4 flex-1 relative overflow-y-auto">
+        <slot />
+      </div>
+      <div v-show="props.loading" class="bg-popover/75 flex-center size-full inset-0 absolute z-1000">
+        <FmIcon name="i-line-md:loading-twotone-loop" class="size-10" />
       </div>
       <SheetFooter
-        v-if="footer" :class="cn('p-2 gap-y-2', props.footerClass, {
+        v-if="footer" :class="cn('p-3 gap-y-2', props.footerClass, {
           'sm:justify-center': props.centered,
           'border-t': props.bordered,
         })"
       >
         <slot name="footer">
           <FmButton v-if="showCancelButton" variant="outline" @click="onCancel">
-            {{ cancelButtonText }}
+            {{ typeof props.cancelButtonText === 'function' ? props.cancelButtonText() : props.cancelButtonText }}
           </FmButton>
           <FmButton v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="confirmButtonLoading" @click="onConfirm">
-            {{ confirmButtonText }}
+            {{ typeof props.confirmButtonText === 'function' ? props.confirmButtonText() : props.confirmButtonText }}
           </FmButton>
         </slot>
       </SheetFooter>

@@ -7,8 +7,13 @@ export const useAppSettingsStore = defineStore(
     const settings = ref(settingsDefault)
 
     const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)')
-    const currentColorScheme = ref<Exclude<Settings.theme['colorScheme'], ''>>()
     watch(() => settings.value.theme.colorScheme, (val) => {
+      document.documentElement.classList.add('disable-color-scheme-transition-duration')
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.documentElement.classList.remove('disable-color-scheme-transition-duration')
+        })
+      })
       if (val === '') {
         prefersColorScheme.addEventListener('change', updateTheme)
       }
@@ -18,6 +23,8 @@ export const useAppSettingsStore = defineStore(
     }, {
       immediate: true,
     })
+
+    const currentColorScheme = ref<Exclude<Settings.theme['colorScheme'], ''>>()
     watch(() => settings.value.theme.colorScheme, updateTheme, {
       immediate: true,
     })

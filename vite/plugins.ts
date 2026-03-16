@@ -64,6 +64,10 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       dirs: [
         './src/store/modules/**/*',
         './src/composables/**/*',
+        './src/ui/components/FmDrawer/index.ts',
+        './src/ui/components/FmModal/index.ts',
+        './src/ui/components/FmLoading/index.ts',
+        './src/ui/components/FmToast/index.ts',
       ],
     }),
 

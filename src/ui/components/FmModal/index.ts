@@ -3,15 +3,14 @@ import { createVNode, isVNode, render } from 'vue'
 import Modal from './index.vue'
 
 export interface ModalProps {
+  id?: string
   modelValue?: boolean
-  title?: string
-  description?: string
+  zIndex?: number
+  title?: string | (() => string)
+  description?: string | (() => string)
   icon?: 'info' | 'success' | 'warning' | 'error'
   loading?: boolean
   closable?: boolean
-  maximize?: boolean
-  maximizable?: boolean
-  draggable?: boolean
   center?: boolean
   border?: boolean
   alignCenter?: boolean
@@ -19,8 +18,8 @@ export interface ModalProps {
   overlayBlur?: boolean
   showConfirmButton?: boolean
   showCancelButton?: boolean
-  confirmButtonText?: string
-  cancelButtonText?: string
+  confirmButtonText?: string | (() => string)
+  cancelButtonText?: string | (() => string)
   confirmButtonDisabled?: boolean
   confirmButtonLoading?: boolean
   beforeClose?: (
@@ -32,6 +31,7 @@ export interface ModalProps {
   closeOnClickOverlay?: boolean
   closeOnPressEscape?: boolean
   destroyOnClose?: boolean
+  openAutoFocus?: boolean
   class?: HTMLAttributes['class']
   headerClass?: HTMLAttributes['class']
   contentClass?: HTMLAttributes['class']
@@ -65,28 +65,28 @@ export function useFmModal() {
   function create(initialOptions: BaseOptions) {
     const container = document.createElement('div')
     const visible = ref(false)
-    const options = reactive({ ...initialOptions })
+    const options = shallowRef<BaseOptions>({ ...initialOptions })
     const instance = getCurrentInstance()
     let vnode: VNode | null = null
 
     const updateVNode = () => {
       vnode = createVNode(Modal, Object.assign({
-        'id': instance && instance.uid ? `FaModal-${instance.uid}` : undefined,
+        'id': instance && instance.uid ? `FmModal-${instance.uid}` : undefined,
         'modelValue': visible.value,
         'onUpdate:modelValue': (val: boolean) => {
           visible.value = val
         },
-        ...options,
+        ...options.value,
       }), {
         default: () => {
-          if (typeof options.content === 'string') {
-            return options.content
+          if (typeof options.value.content === 'string') {
+            return options.value.content
           }
-          else if (isVNode(options.content)) {
-            return options.content
+          else if (isVNode(options.value.content)) {
+            return options.value.content
           }
-          else if (options.content) {
-            return h(options.content)
+          else if (options.value.content) {
+            return h(options.value.content)
           }
           return null
         },
@@ -99,11 +99,8 @@ export function useFmModal() {
     }
 
     // 监听 visible 和 options 变化，自动重新渲染
-    watch([visible, options as object], () => {
+    watchEffect(() => {
       updateVNode()
-    }, {
-      immediate: true,
-      deep: true,
     })
 
     // 挂载到当前实例
@@ -129,7 +126,7 @@ export function useFmModal() {
       visible.value = false
     }
     const update = (newOptions: BaseOptions) => {
-      Object.assign(options, newOptions)
+      options.value = { ...options.value, ...newOptions }
     }
     return {
       open,
@@ -145,7 +142,9 @@ export function useFmModal() {
       alignCenter: true,
       closeOnClickOverlay: false,
       destroyOnClose: true,
-      contentClass: 'py-0 min-h-auto',
+      openAutoFocus: true,
+      class: 'min-h-auto max-w-[calc(100%-2rem)]',
+      contentClass: 'py-0 min-h-auto text-center sm:text-start',
       footerClass: 'p-4',
     }
     const { open } = create(Object.assign(defaultOptions, options))
@@ -159,7 +158,9 @@ export function useFmModal() {
       alignCenter: true,
       closeOnClickOverlay: false,
       destroyOnClose: true,
-      contentClass: 'py-0 min-h-auto',
+      openAutoFocus: true,
+      class: 'min-h-auto max-w-[calc(100%-2rem)]',
+      contentClass: 'py-0 min-h-auto text-center sm:text-start',
       footerClass: 'p-4',
     }
     const { open } = create(Object.assign(defaultOptions, options))
@@ -173,7 +174,9 @@ export function useFmModal() {
       alignCenter: true,
       closeOnClickOverlay: false,
       destroyOnClose: true,
-      contentClass: 'py-0 min-h-auto',
+      openAutoFocus: true,
+      class: 'min-h-auto max-w-[calc(100%-2rem)]',
+      contentClass: 'py-0 min-h-auto text-center sm:text-start',
       footerClass: 'p-4',
     }
     const { open } = create(Object.assign(defaultOptions, options))
@@ -187,7 +190,9 @@ export function useFmModal() {
       alignCenter: true,
       closeOnClickOverlay: false,
       destroyOnClose: true,
-      contentClass: 'py-0 min-h-auto',
+      openAutoFocus: true,
+      class: 'min-h-auto max-w-[calc(100%-2rem)]',
+      contentClass: 'py-0 min-h-auto text-center sm:text-start',
       footerClass: 'p-4',
     }
     const { open } = create(Object.assign(defaultOptions, options))
@@ -201,7 +206,9 @@ export function useFmModal() {
       showCancelButton: true,
       closeOnClickOverlay: false,
       destroyOnClose: true,
-      contentClass: 'py-0 min-h-auto',
+      openAutoFocus: true,
+      class: 'min-h-auto max-w-[calc(100%-2rem)]',
+      contentClass: 'py-0 min-h-auto text-center sm:text-start',
       footerClass: 'p-4',
     }
     const { open, update } = create(Object.assign(defaultOptions, options))

@@ -17,6 +17,7 @@ declare global {
   const definePage: typeof import('vue-router/experimental').definePage
   const defineStore: typeof import('pinia').defineStore
   const effectScope: typeof import('vue').effectScope
+  const fmToast: typeof import('../ui/components/FmToast/index').fmToast
   const getActivePinia: typeof import('pinia').getActivePinia
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
@@ -76,6 +77,9 @@ declare global {
   const useAttrs: typeof import('vue').useAttrs
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
+  const useFmDrawer: typeof import('../ui/components/FmDrawer/index').useFmDrawer
+  const useFmLoading: typeof import('../ui/components/FmLoading/index').useFmLoading
+  const useFmModal: typeof import('../ui/components/FmModal/index').useFmModal
   const useId: typeof import('vue').useId
   const useLink: typeof import('vue-router/auto').useLink
   const useModel: typeof import('vue').useModel
@@ -93,4 +97,10 @@ declare global {
   // @ts-ignore
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, ShallowRef, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { DrawerProps, DrawerEmits } from '../ui/components/FmDrawer/index'
+  import('../ui/components/FmDrawer/index')
+  // @ts-ignore
+  export type { ModalProps, ModalEmits } from '../ui/components/FmModal/index'
+  import('../ui/components/FmModal/index')
 }

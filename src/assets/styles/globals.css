@@ -1,17 +1,18 @@
 :root {
+  color-scheme: light;
+
   --g-navbar-min-height: 50px;
   --g-tabbar-min-height: 60px;
-
-  color-scheme: light;
 
   &.dark {
     color-scheme: dark;
   }
 }
 
-* {
-  scrollbar-color: hsl(var(--scrollbar-color)) transparent;
-  scrollbar-width: thin;
+.disable-color-scheme-transition-duration *,
+.disable-color-scheme-transition-duration *::before,
+.disable-color-scheme-transition-duration *::after {
+  transition-duration: 0ms !important;
 }
 
 html {

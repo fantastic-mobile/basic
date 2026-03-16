@@ -1,13 +1,12 @@
 import { entriesToCss } from '@unocss/core'
-import presetLegacyCompat from '@unocss/preset-legacy-compat'
-import presetRemToPx from '@unocss/preset-rem-to-px'
+import { createRemToPxProcessor } from '@unocss/preset-wind4/utils'
 import presetSafeArea from '@yeungkc/unocss-preset-safe-area'
 import {
   defineConfig,
   presetAttributify,
   presetIcons,
   presetTypography,
-  presetWind3,
+  presetWind4,
   transformerCompileClass,
   transformerDirectives,
   transformerVariantGroup,
@@ -55,7 +54,13 @@ export default defineConfig({
     }],
   ],
   presets: [
-    presetWind3(),
+    presetWind4({
+      preflights: {
+        theme: {
+          process: createRemToPxProcessor(),
+        },
+      },
+    }),
     presetAnimations(),
     presetAttributify(),
     presetIcons({
@@ -65,11 +70,7 @@ export default defineConfig({
       },
     }),
     presetTypography(),
-    presetRemToPx(),
     presetSafeArea(),
-    presetLegacyCompat({
-      legacyColorSpace: true,
-    }),
     {
       name: 'unocss-preset-shadcn',
       preflights: [
@@ -85,13 +86,25 @@ export default defineConfig({
             return `
 ${returnCss.join('\n')}
 
+::selection {
+  color: oklch(var(--primary-foreground));
+  background-color: oklch(var(--primary));
+}
+
 * {
-  border-color: hsl(var(--border));
+  border-color: oklch(var(--border));
+  scrollbar-color: oklch(var(--border)) transparent;
+  scrollbar-width: thin;
 }
 
 body {
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
+  color: oklch(var(--foreground));
+  background: oklch(var(--background));
+}
+
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
 }
 `
           },
@@ -99,41 +112,38 @@ body {
       ],
       theme: {
         colors: {
-          border: 'hsl(var(--border))',
-          input: 'hsl(var(--input))',
-          ring: 'hsl(var(--ring))',
-          background: 'hsl(var(--background))',
-          foreground: 'hsl(var(--foreground))',
-          primary: {
-            DEFAULT: 'hsl(var(--primary))',
-            foreground: 'hsl(var(--primary-foreground))',
-          },
-          secondary: {
-            DEFAULT: 'hsl(var(--secondary))',
-            foreground: 'hsl(var(--secondary-foreground))',
-          },
-          destructive: {
-            DEFAULT: 'hsl(var(--destructive))',
-            foreground: 'hsl(var(--destructive-foreground))',
-          },
-          muted: {
-            DEFAULT: 'hsl(var(--muted))',
-            foreground: 'hsl(var(--muted-foreground))',
-          },
-          accent: {
-            DEFAULT: 'hsl(var(--accent))',
-            foreground: 'hsl(var(--accent-foreground))',
+          background: 'oklch(var(--background))',
+          foreground: 'oklch(var(--foreground))',
+          card: {
+            DEFAULT: 'oklch(var(--card))',
+            foreground: 'oklch(var(--card-foreground))',
           },
           popover: {
-            DEFAULT: 'hsl(var(--popover))',
-            foreground: 'hsl(var(--popover-foreground))',
+            DEFAULT: 'oklch(var(--popover))',
+            foreground: 'oklch(var(--popover-foreground))',
           },
-          card: {
-            DEFAULT: 'hsl(var(--card))',
-            foreground: 'hsl(var(--card-foreground))',
+          primary: {
+            DEFAULT: 'oklch(var(--primary))',
+            foreground: 'oklch(var(--primary-foreground))',
           },
+          secondary: {
+            DEFAULT: 'oklch(var(--secondary))',
+            foreground: 'oklch(var(--secondary-foreground))',
+          },
+          muted: {
+            DEFAULT: 'oklch(var(--muted))',
+            foreground: 'oklch(var(--muted-foreground))',
+          },
+          accent: {
+            DEFAULT: 'oklch(var(--accent))',
+            foreground: 'oklch(var(--accent-foreground))',
+          },
+          destructive: 'oklch(var(--destructive))',
+          border: 'oklch(var(--border))',
+          input: 'oklch(var(--input))',
+          ring: 'oklch(var(--ring))',
         },
-        borderRadius: {
+        radius: {
           xl: 'calc(var(--radius) + 4px)',
           lg: 'var(--radius)',
           md: 'calc(var(--radius) - 2px)',
@@ -141,6 +151,9 @@ body {
         },
       },
     },
+  ],
+  postprocess: [
+    createRemToPxProcessor(),
   ],
   transformers: [
     transformerDirectives(),
