@@ -121,7 +121,7 @@ function handleCopy() {
           <div class="label">
             启用权限
           </div>
-          <FmSwitch v-model="appSettingsStore.settings.app.enablePermission" />
+          <FmSwitch v-model="appSettingsStore.settings.app.auth" />
         </div>
         <div class="setting-item">
           <div class="label">

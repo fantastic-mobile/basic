@@ -49,7 +49,7 @@ function permissionCheck2(permissions: string[]) {
 <template>
   <FmPageLayout navbar navbar-start-side="back">
     <div class="p-4 flex flex-col gap-4">
-      <FmPageMain v-if="!appSettingsStore.settings.app.enablePermission" class="m-0">
+      <FmPageMain v-if="!appSettingsStore.settings.app.auth" class="m-0">
         请到 settings.ts 里设置并开启权限功能，再进入该页面查看演示
       </FmPageMain>
       <FmPageMain v-else title="切换账号" class="m-0">
@@ -68,12 +68,12 @@ function permissionCheck2(permissions: string[]) {
           <div>当前账号权限：{{ appAuthStore.permissions }}</div>
         </div>
       </FmPageMain>
-      <FmPageMain v-if="appSettingsStore.settings.app.enablePermission" title="路由鉴权" class="m-0">
+      <FmPageMain v-if="appSettingsStore.settings.app.auth" title="路由鉴权" class="m-0">
         <FmButton @click="goTest">
           跳转页面
         </FmButton>
       </FmPageMain>
-      <FmPageMain v-if="appSettingsStore.settings.app.enablePermission" title="鉴权指令" class="m-0">
+      <FmPageMain v-if="appSettingsStore.settings.app.auth" title="鉴权指令" class="m-0">
         <div class="flex-col-start space-y-2">
           <div v-auth="'permission.browse'">
             如果你有 permission.browse 权限则能看到这句话
@@ -89,7 +89,7 @@ function permissionCheck2(permissions: string[]) {
           </div>
         </div>
       </FmPageMain>
-      <FmPageMain v-if="appSettingsStore.settings.app.enablePermission" title="鉴权组件" class="m-0">
+      <FmPageMain v-if="appSettingsStore.settings.app.auth" title="鉴权组件" class="m-0">
         <div class="text-sm space-y-2">
           <div>
             你
@@ -133,7 +133,7 @@ function permissionCheck2(permissions: string[]) {
           </div>
         </div>
       </FmPageMain>
-      <FmPageMain v-if="appSettingsStore.settings.app.enablePermission" title="鉴权函数" class="m-0" main-class="flex flex-col gap-2">
+      <FmPageMain v-if="appSettingsStore.settings.app.auth" title="鉴权函数" class="m-0" main-class="flex flex-col gap-2">
         <FmButton variant="outline" @click="permissionCheck('permission.browse')">
           校验 browse 权限
         </FmButton>

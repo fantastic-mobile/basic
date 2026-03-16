@@ -5,7 +5,7 @@ import type { RequiredDeep } from 'type-fest'
 
 const globalSettingsDefault: RequiredDeep<Settings.all> = {
   app: {
-    enablePermission: false,
+    auth: false,
     dynamicTitle: false,
     rip: false,
   },

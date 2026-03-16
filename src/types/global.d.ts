@@ -6,7 +6,7 @@ declare namespace Settings {
      * 是否开启权限功能
      * @默认值 `false`
      */
-    enablePermission?: boolean
+    auth?: boolean
     /**
      * 动态标题
      * @默认值 `false`

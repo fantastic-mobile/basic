@@ -39,9 +39,8 @@ defineExpose({
       data-slot="scroll-area-viewport"
       class="scroll-area-viewport outline-none rounded-[inherit] size-full transition-[color,box-shadow] focus-visible:outline-1 focus-visible:ring-[3px] focus-visible:ring-ring/50"
       :class="{
-        'after:(opacity-0 pointer-events-none content-empty transition-opacity absolute z-10 from-transparent to-[var(--scroll-area-mask-gradient-color)]) before:(opacity-0 pointer-events-none content-empty transition-opacity absolute z-10 from-transparent to-[var(--scroll-area-mask-gradient-color)])': props.mask,
-        'after:(h-full w-12 end-0 top-0 bg-gradient-to-r rtl:bg-gradient-to-l) before:(h-full w-12 start-0 bg-gradient-to-l rtl:bg-gradient-to-r)': props.mask && props.horizontal,
-        'after:(h-12 w-full bottom-0 bg-gradient-to-b) before:(h-12 w-full top-0 bg-gradient-to-t)': props.mask && !props.horizontal,
+        'scroll-area-mask-vertical': props.mask && !props.horizontal,
+        'scroll-area-mask-horizontal': props.mask && props.horizontal,
       }"
       :style="{ scrollTimelineName: '--scroll-area-mask-timeline', scrollTimelineAxis: props.horizontal ? 'x' : 'y' }"
       @scroll="onScroll"
@@ -55,27 +54,72 @@ defineExpose({
 </template>
 
 <style scoped>
+/* @property 必须定义在 @supports 外部才能生效 */
+@property --mask-start {
+  syntax: "<length-percentage>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --mask-end {
+  syntax: "<length-percentage>";
+  initial-value: 40px;
+  inherits: false;
+}
+
 @supports (animation-timeline: auto) {
-  @keyframes scroll-area-mask-visible {
+  @keyframes scroll-area-mask-start-in {
     from {
-      opacity: 0;
+      --mask-start: 0;
     }
 
     to {
-      opacity: 1;
+      --mask-start: 40px;
     }
   }
 
-  :deep(.scroll-area-viewport::before) {
-    animation: scroll-area-mask-visible linear forwards;
-    animation-range: 0 40px;
-    animation-timeline: --scroll-area-mask-timeline;
+  @keyframes scroll-area-mask-end-out {
+    from {
+      --mask-end: 40px;
+    }
+
+    to {
+      --mask-end: 0;
+    }
   }
 
-  :deep(.scroll-area-viewport::after) {
-    animation: scroll-area-mask-visible linear reverse backwards;
-    animation-range: calc(100% - 40px) 100%;
-    animation-timeline: --scroll-area-mask-timeline;
+  /* 垂直滚动遮罩 */
+  :deep(.scroll-area-mask-vertical) {
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent,
+        black var(--mask-start),
+        black calc(100% - var(--mask-end)),
+        transparent
+      );
+    animation:
+      scroll-area-mask-start-in linear forwards,
+      scroll-area-mask-end-out linear forwards;
+    animation-range: 0 40px, calc(100% - 40px) 100%;
+    animation-timeline: --scroll-area-mask-timeline, --scroll-area-mask-timeline;
+  }
+
+  /* 水平滚动遮罩 */
+  :deep(.scroll-area-mask-horizontal) {
+    mask-image:
+      linear-gradient(
+        to right,
+        transparent,
+        black var(--mask-start),
+        black calc(100% - var(--mask-end)),
+        transparent
+      );
+    animation:
+      scroll-area-mask-start-in linear forwards,
+      scroll-area-mask-end-out linear forwards;
+    animation-range: 0 40px, calc(100% - 40px) 100%;
+    animation-timeline: --scroll-area-mask-timeline, --scroll-area-mask-timeline;
   }
 }
 

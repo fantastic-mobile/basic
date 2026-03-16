@@ -2,7 +2,7 @@ import { setSettings } from './utils'
 
 export default setSettings({
   app: {
-    enablePermission: true,
+    auth: true,
     dynamicTitle: true,
   },
   tabbar: {

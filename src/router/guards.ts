@@ -11,7 +11,7 @@ function setupAuth(router: Router) {
       if (appAuthStore.isLogin) {
         try {
           // 获取用户权限
-          if (appSettingsStore.settings.app.enablePermission) {
+          if (appSettingsStore.settings.app.auth) {
             !appAuthStore.isGetPermissions && await appAuthStore.getPermissions()
           }
         }

@@ -2,7 +2,7 @@ export function useAppAuth() {
   function hasPermission(permission: string) {
     const appSettingsStore = useAppSettingsStore()
     const appAuthStore = useAppAuthStore()
-    if (appSettingsStore.settings.app.enablePermission) {
+    if (appSettingsStore.settings.app.auth) {
       return appAuthStore.permissions.includes(permission)
     }
     else {
