@@ -35,6 +35,7 @@
     "mitt": "catalog:",
     "nprogress": "catalog:",
     "pinia": "catalog:",
+    "pinia-plugin-persistedstate": "catalog:",
     "qs": "catalog:",
     "reka-ui": "catalog:",
     "spinkit": "catalog:",

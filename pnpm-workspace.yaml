@@ -94,3 +94,4 @@ catalog:
   "@visactor/vchart": ^2.0.19
   swiper: ^12.1.2
   vue-esign: ^1.1.4
+  pinia-plugin-persistedstate: ^4.7.1
