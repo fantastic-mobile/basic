@@ -1,0 +1,36 @@
+<script setup lang="ts">
+definePage({
+  meta: {
+    title: '自定义区域',
+  },
+})
+
+const router = useRouter()
+
+const checked = ref(false)
+</script>
+
+<template>
+  <FmPageLayout :navbar="false" tabbar>
+    <template #tabbar>
+      <div class="flex-center flex-1">
+        <FmIcon name="https://fantastic-admin.hurui.me/logo.svg" class="text-8" />
+      </div>
+      <div v-show="checked" class="flex-center flex-1">
+        <FmIcon name="https://fantastic-mobile.hurui.me/logo.png" class="text-8" />
+      </div>
+      <div class="flex-center flex-1">
+        <FmIcon name="https://one-step-admin.hurui.me/logo.png" class="text-8" />
+      </div>
+    </template>
+    <div class="p-4 flex flex-col gap-4">
+      <div>可以根据业务逻辑做更精细化的处理，比如动态切换显示内容。</div>
+      <div>
+        <FmSwitch v-model="checked" size="16px" />
+      </div>
+      <FmButton @click="router.back()">
+        返回
+      </FmButton>
+    </div>
+  </FmPageLayout>
+</template>

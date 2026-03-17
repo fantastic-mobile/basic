@@ -27,6 +27,6 @@ export default {
   allowEmptyInput: true,
   ignoreFiles: [
     'node_modules/**/*',
-    'dist*/**/*',
+    'apps/*/dist*/**/*',
   ],
 }

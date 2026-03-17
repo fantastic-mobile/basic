@@ -1,4 +1,4 @@
-name: repo-sync
+name: Repo Sync
 
 on:
   # 每天 00:10 自动同步
