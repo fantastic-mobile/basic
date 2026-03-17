@@ -24,6 +24,7 @@
     "@types/node": "catalog:",
     "@unocss/core": "catalog:",
     "@unocss/eslint-plugin": "catalog:",
+    "bumpp": "catalog:",
     "cz-git": "catalog:",
     "eslint": "catalog:",
     "lint-staged": "catalog:",
