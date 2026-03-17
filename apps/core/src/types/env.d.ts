@@ -20,7 +20,7 @@ interface ImportMetaEnv {
   /**
    * 是否开启代理
    */
-  readonly VITE_OPEN_PROXY: boolean
+  readonly VITE_ENABLE_PROXY: boolean
   /**
    * 是否开启开发者工具
    */

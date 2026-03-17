@@ -93,7 +93,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
     vitePluginFakeServer({
       logger: !isBuild,
       include: 'src/api/modules',
-      enableProd: isBuild && viteEnv.VITE_BUILD_MOCK,
+      enableProd: isBuild && viteEnv.VITE_BUILD_FAKE,
     }),
 
     // https://github.com/nonzzz/vite-plugin-compression

@@ -8,7 +8,7 @@ defineOptions({
 definePage({
   meta: {
     title: '特色',
-    cache: true,
+    keepAlive: true,
   },
 })
 

@@ -6,7 +6,7 @@ defineOptions({
 definePage({
   meta: {
     title: '页面缓存',
-    cache: true,
+    keepAlive: true,
   },
 })
 

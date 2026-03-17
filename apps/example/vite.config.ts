@@ -24,7 +24,7 @@ export default defineConfig(({ mode, command }) => {
       proxy: {
         '/proxy': {
           target: env.VITE_APP_API_BASEURL,
-          changeOrigin: command === 'serve' && env.VITE_OPEN_PROXY === 'true',
+          changeOrigin: command === 'serve' && env.VITE_ENABLE_PROXY === 'true',
           rewrite: path => path.replace(/\/proxy/, ''),
         },
       },

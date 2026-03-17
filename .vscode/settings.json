@@ -1,6 +1,9 @@
 {
   "npm.packageManager": "pnpm",
   "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "search.exclude": {
+    "**/dist*": true
+  },
   "prettier.enable": false,
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
