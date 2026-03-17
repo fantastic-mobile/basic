@@ -130,7 +130,7 @@ function handleBackTopClick() {
       ref="navbarRef"
       :class="cn('navbar relative w-full flex-col-center bg-[var(--g-navbar-bg)] text-[var(--g-navbar-color)] transition-all pt-safe min-h+safe-t-[var(--g-navbar-min-height)]', {
         // 边框
-        'shadow-[0_1px_0_0_oklch(var(--border))]': navbarBorder,
+        'shadow-[0_1px_0_0_hsl(var(--border))]': navbarBorder,
       }, navbarClass)"
     >
       <div class="flex-center min-h-[var(--g-navbar-min-height)] w-full">
@@ -208,7 +208,7 @@ function handleBackTopClick() {
       ref="tabbarRef"
       :class="cn('tabbar flex-col-center bg-[var(--g-tabbar-bg)] transition-all pb-safe min-h+safe-b-[calc(var(--g-tabbar-min-height))]', {
         // 边框
-        'shadow-[0_-1px_0_0_oklch(var(--border))]': tabbarBorder,
+        'shadow-[0_-1px_0_0_hsl(var(--border))]': tabbarBorder,
       }, tabbarClass)"
     >
       <div class="px-4 flex-center min-h-[var(--g-tabbar-min-height)] w-full">
