@@ -9,7 +9,7 @@ const router = useRouter()
 </script>
 
 <template>
-  <FmPageLayout navbar :style="{ scrollTimelineName: '--navbar-timeline' }" class="pt+safe-[200px]" content-class="mt+safe!">
+  <AppPageLayout navbar :style="{ scrollTimelineName: '--navbar-timeline' }" class="pt+safe-[200px]" content-class="mt+safe!">
     <template #navbar>
       <div class="custom-navbar text-shadow text-light text-shadow-color-dark bg-[url('https://picsum.photos/375/200')] flex flex-center gap-2 shadow transition-all-500 bg-cover bg-center bg-no-repeat">
         头部导航
@@ -24,7 +24,7 @@ const router = useRouter()
         {{ i }}
       </div>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>
 
 <style scoped>

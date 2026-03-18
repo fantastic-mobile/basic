@@ -9,7 +9,7 @@ const checked = ref(false)
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <div class="flex gap-4">
         <FmCheckbox v-model="checked">
@@ -18,5 +18,5 @@ const checked = ref(false)
         {{ checked }}
       </div>
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

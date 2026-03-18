@@ -53,7 +53,7 @@ function showToast(type?: 'success' | 'error' | 'info' | 'warning' | 'loading1' 
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <div class="flex flex-col gap-2">
         <FmButton @click="showToast()">
@@ -79,5 +79,5 @@ function showToast(type?: 'success' | 'error' | 'info' | 'warning' | 'loading1' 
         </FmButton>
       </div>
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

@@ -7,7 +7,7 @@ definePage({
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <div class="flex gap-4">
         <FmAvatar src="https://fantastic-mobile.hurui.me/logo.png" />
@@ -15,5 +15,5 @@ definePage({
         <FmAvatar src="" fallback="Hooray" />
       </div>
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

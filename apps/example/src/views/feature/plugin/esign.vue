@@ -49,7 +49,7 @@ function handleDownload() {
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
       <div class="px-1 flex-center h-full" @click="show = true">
         <FmIcon name="i-mdi:information" class="text-4" />
@@ -87,5 +87,5 @@ function handleDownload() {
         <img :src="result" class="w-full aspect-ratio-[800/400]">
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

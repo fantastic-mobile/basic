@@ -7,7 +7,7 @@ definePage({
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <div class="flex gap-8">
         <FmBadge :value="true">
@@ -27,5 +27,5 @@ definePage({
         </FmBadge>
       </div>
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

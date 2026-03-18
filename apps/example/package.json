@@ -16,6 +16,8 @@
     "lint:stylelint": "stylelint \"src/**/*.{css,scss,vue}\" --cache --fix"
   },
   "dependencies": {
+    "@fantastic-mobile/components": "workspace:*",
+    "@fantastic-mobile/themes": "workspace:*",
     "@vant/touch-emulator": "catalog:",
     "@vee-validate/zod": "catalog:",
     "@visactor/vchart": "catalog:",

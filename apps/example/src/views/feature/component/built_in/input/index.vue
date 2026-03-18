@@ -9,9 +9,9 @@ const value = ref('')
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <FmInput v-model="value" placeholder="请输入内容" />
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

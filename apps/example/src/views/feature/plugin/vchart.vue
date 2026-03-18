@@ -417,7 +417,7 @@ function initChart4() {
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
       <div class="px-1 flex-center h-full" @click="show = true">
         <FmIcon name="i-mdi:information" class="text-4" />
@@ -450,5 +450,5 @@ function initChart4() {
         <div ref="chart4Ref" style="width: 100%; height: 400px;" />
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

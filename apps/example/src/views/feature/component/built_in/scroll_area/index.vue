@@ -10,7 +10,7 @@ const mask = ref(false)
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <div class="flex-col-start gap-4">
         <div class="flex-col-start gap-4">
@@ -41,5 +41,5 @@ const mask = ref(false)
         </FmScrollArea>
       </div>
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

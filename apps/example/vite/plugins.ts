@@ -1,6 +1,7 @@
 import type { PluginOption } from 'vite'
 import path from 'node:path'
 import process from 'node:process'
+import { FantasticAutoImports, FantasticComponentsResolver, FantasticComponentsType } from '@fantastic-mobile/components/resolver'
 import vueLegacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -59,25 +60,27 @@ export default function createVitePlugins(mode: string, isBuild = false) {
         {
           'vue-router/auto': ['useLink'],
         },
+        FantasticAutoImports,
       ],
       dts: './src/types/auto-imports.d.ts',
       dirs: [
         './src/store/modules/**/*',
         './src/composables/**/*',
-        './src/ui/components/FmDrawer/index.ts',
-        './src/ui/components/FmModal/index.ts',
-        './src/ui/components/FmLoading/index.ts',
-        './src/ui/components/FmToast/index.ts',
       ],
     }),
 
     // https://github.com/unplugin/unplugin-vue-components
     components({
       globs: [
-        'src/ui/components/*/index.vue',
         'src/components/*/index.vue',
       ],
       dts: './src/types/components.d.ts',
+      resolvers: [
+        FantasticComponentsResolver(),
+      ],
+      types: [
+        FantasticComponentsType,
+      ],
     }),
 
     Unocss(),

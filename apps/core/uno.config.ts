@@ -1,3 +1,6 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { darkTheme, lightTheme } from '@fantastic-mobile/themes'
 import { entriesToCss } from '@unocss/core'
 import { createRemToPxProcessor } from '@unocss/preset-wind4/utils'
 import presetSafeArea from '@yeungkc/unocss-preset-safe-area'
@@ -12,7 +15,8 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 import { presetAnimations } from 'unocss-preset-animations'
-import { darkTheme, lightTheme } from './themes'
+
+const appRoot = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   content: {
@@ -20,6 +24,7 @@ export default defineConfig({
       include: [
         /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
         'src/**/*.{js,ts}',
+        path.resolve(appRoot, '../../packages/components/**/*.{vue,js,ts}'),
       ],
     },
   },
@@ -161,6 +166,6 @@ button:not(:disabled),
     transformerCompileClass(),
   ],
   configDeps: [
-    'themes/index.ts',
+    path.resolve(appRoot, '../../packages/themes/index.ts'),
   ],
 })

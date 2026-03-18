@@ -109,7 +109,7 @@ const data: {
 </script>
 
 <template>
-  <FmPageLayout :navbar="false" tabbar saved-position>
+  <AppPageLayout :navbar="false" tabbar saved-position>
     <div class="p-4">
       <div v-for="(item, index) in data" :key="index" class="mb-4">
         <div class="text-gray-7 dark-text-gray-3 inline-flex gap-2 items-center">
@@ -130,5 +130,5 @@ const data: {
         </div>
       </div>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

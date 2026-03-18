@@ -21,7 +21,7 @@ const fieldCalendarValue2 = ref('')
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <div class="p-4 flex flex-col gap-4">
       <FmPageMain class="m-0">
         Vant 提供的组件大多数比较原子化，在实际业务开发中，往往一个功能需要通过多个组件结合使用才能实现。本框架则将一些常用的功能封装成复合组件，方便开发者使用。
@@ -47,5 +47,5 @@ const fieldCalendarValue2 = ref('')
         选中值: {{ fieldCalendarValue2 }}
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

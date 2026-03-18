@@ -17,7 +17,7 @@ watch(() => appAuthStore.avatar, () => {
 </script>
 
 <template>
-  <FmPageLayout :navbar="false" tabbar>
+  <AppPageLayout :navbar="false" tabbar>
     <div class="p-4 flex flex-1 flex-col gap-8">
       <div class="flex flex-1 flex-col gap-4">
         <div class="flex gap-4 items-center justify-end">
@@ -145,5 +145,5 @@ watch(() => appAuthStore.avatar, () => {
         登出
       </FmButton>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

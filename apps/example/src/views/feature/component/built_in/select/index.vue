@@ -9,7 +9,7 @@ const select = ref('1')
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <FmSelect
         v-model="select"
@@ -20,5 +20,5 @@ const select = ref('1')
         ]"
       />
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

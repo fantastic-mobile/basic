@@ -9,7 +9,7 @@ const tabs = ref(1)
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <FmTabs v-model="tabs" :list="[{ label: '标签1', value: 1 }, { label: '标签2', value: 2 }, { label: '标签3', value: 3 }]">
         <template #1>
@@ -29,5 +29,5 @@ const tabs = ref(1)
         </template>
       </FmTabs>
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

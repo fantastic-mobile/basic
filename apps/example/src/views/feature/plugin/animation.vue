@@ -143,7 +143,7 @@ const flag = ref(true)
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
       <div class="px-1 flex-center h-full" @click="show = true">
         <FmIcon name="i-mdi:information" class="text-4" />
@@ -190,5 +190,5 @@ const flag = ref(true)
         </Transition>
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

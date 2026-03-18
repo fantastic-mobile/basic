@@ -11,7 +11,7 @@ const checked = ref(false)
 </script>
 
 <template>
-  <FmPageLayout :navbar="false" tabbar>
+  <AppPageLayout :navbar="false" tabbar>
     <template #tabbar>
       <div class="flex-center flex-1">
         <FmIcon name="https://fantastic-admin.hurui.me/logo.svg" class="text-8" />
@@ -32,5 +32,5 @@ const checked = ref(false)
         返回
       </FmButton>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

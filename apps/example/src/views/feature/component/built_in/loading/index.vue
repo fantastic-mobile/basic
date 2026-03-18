@@ -23,7 +23,7 @@ function loading() {
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <VanForm>
         <VanCellGroup>
@@ -57,5 +57,5 @@ function loading() {
         加载 Loading（演示控制在 2 秒后关闭）
       </FmButton>
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

@@ -347,6 +347,12 @@ importers:
 
   apps/core:
     dependencies:
+      '@fantastic-mobile/components':
+        specifier: workspace:*
+        version: link:../../packages/components
+      '@fantastic-mobile/themes':
+        specifier: workspace:*
+        version: link:../../packages/themes
       '@vant/touch-emulator':
         specifier: 'catalog:'
         version: 1.5.0
@@ -558,6 +564,12 @@ importers:
 
   apps/example:
     dependencies:
+      '@fantastic-mobile/components':
+        specifier: workspace:*
+        version: link:../../packages/components
+      '@fantastic-mobile/themes':
+        specifier: workspace:*
+        version: link:../../packages/themes
       '@vant/touch-emulator':
         specifier: 'catalog:'
         version: 1.5.0
@@ -772,6 +784,59 @@ importers:
       vue-tsc:
         specifier: 'catalog:'
         version: 3.2.6(typescript@5.9.3)
+
+  packages/components:
+    dependencies:
+      '@iconify/vue':
+        specifier: 'catalog:'
+        version: 5.0.0(vue@3.5.30(typescript@5.9.3))
+      '@vueuse/components':
+        specifier: 'catalog:'
+        version: 14.2.1(vue@3.5.30(typescript@5.9.3))
+      '@vueuse/core':
+        specifier: 'catalog:'
+        version: 14.2.1(vue@3.5.30(typescript@5.9.3))
+      class-variance-authority:
+        specifier: 'catalog:'
+        version: 0.7.1
+      clsx:
+        specifier: 'catalog:'
+        version: 2.1.1
+      es-toolkit:
+        specifier: 'catalog:'
+        version: 1.45.1
+      lucide-vue-next:
+        specifier: 'catalog:'
+        version: 0.577.0(vue@3.5.30(typescript@5.9.3))
+      reka-ui:
+        specifier: 'catalog:'
+        version: 2.9.2(vue@3.5.30(typescript@5.9.3))
+      spinkit:
+        specifier: 'catalog:'
+        version: 2.0.1
+      tailwind-merge:
+        specifier: 'catalog:'
+        version: 3.5.0
+      unplugin-auto-import:
+        specifier: 'catalog:'
+        version: 21.0.0(@vueuse/core@14.2.1(vue@3.5.30(typescript@5.9.3)))
+      unplugin-vue-components:
+        specifier: 'catalog:'
+        version: 31.0.0(vue@3.5.30(typescript@5.9.3))
+      vite:
+        specifier: 'catalog:'
+        version: 7.3.1(@types/node@25.5.0)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)(tsx@4.21.0)(yaml@2.8.2)
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.30(typescript@5.9.3)
+      vue-router:
+        specifier: 'catalog:'
+        version: 5.0.3(@vue/compiler-sfc@3.5.30)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.30(typescript@5.9.3)))(vue@3.5.30(typescript@5.9.3))
+      vue-sonner:
+        specifier: 'catalog:'
+        version: 2.0.9
+
+  packages/themes: {}
 
 packages:
 

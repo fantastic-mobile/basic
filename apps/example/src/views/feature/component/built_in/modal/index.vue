@@ -107,7 +107,7 @@ function showModalPromiseConfirm() {
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <div>
       <FmPageMain title="弹窗">
         <FmButton @click="modal = true">
@@ -161,5 +161,5 @@ function showModalPromiseConfirm() {
         </div>
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

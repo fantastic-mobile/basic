@@ -47,7 +47,7 @@ function permissionCheck2(permissions: string[]) {
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <div class="p-4 flex flex-col gap-4">
       <FmPageMain v-if="!appSettingsStore.settings.app.auth" class="m-0">
         请到 settings.ts 里设置并开启权限功能，再进入该页面查看演示
@@ -148,5 +148,5 @@ function permissionCheck2(permissions: string[]) {
         </FmButton>
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

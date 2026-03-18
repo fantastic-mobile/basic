@@ -26,7 +26,7 @@ function onSelect(item: any) {
 </script>
 
 <template>
-  <FmPageLayout navbar>
+  <AppPageLayout navbar>
     <template #navbar-start>
       <FmSwitch v-model="checked" size="16px" />
     </template>
@@ -44,5 +44,5 @@ function onSelect(item: any) {
         返回
       </FmButton>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

@@ -15,7 +15,7 @@ const fm = new URL('@/assets/images/logo.png', import.meta.url).href
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <p>单色 Icon</p>
       <div>
@@ -48,5 +48,5 @@ const fm = new URL('@/assets/images/logo.png', import.meta.url).href
       <p>本地图片</p>
       <FmIcon :name="fm" class="size-12" />
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

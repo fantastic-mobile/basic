@@ -7,7 +7,7 @@ definePage({
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <div>
       <FmPageMain>
         <div class="space-y-4">
@@ -110,5 +110,5 @@ definePage({
         </div>
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

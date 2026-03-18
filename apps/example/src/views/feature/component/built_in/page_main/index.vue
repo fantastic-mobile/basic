@@ -7,7 +7,7 @@ definePage({
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <div>
       <FmPageMain>
         PageMain 是最常用的页面组件，几乎所有页面都会使用到
@@ -33,5 +33,5 @@ definePage({
         <img src="@/assets/images/logo.png" class="w-40">
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>

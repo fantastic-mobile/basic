@@ -23,7 +23,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <template #navbar-end>
       <div class="px-1 flex-center h-full" @click="show = true">
         <FmIcon name="i-mdi:information" class="text-4" />
@@ -128,7 +128,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
         </Swiper>
       </FmPageMain>
     </div>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>
 
 <style scoped>

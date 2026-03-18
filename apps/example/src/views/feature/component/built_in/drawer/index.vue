@@ -24,7 +24,7 @@ watch(() => drawerInfo.value.loading, (loading) => {
 </script>
 
 <template>
-  <FmPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar navbar-start-side="back">
     <FmPageMain>
       <FmButton @click="drawer = true">
         打开
@@ -54,5 +54,5 @@ watch(() => drawerInfo.value.loading, (loading) => {
         </div>
       </FmDrawer>
     </FmPageMain>
-  </FmPageLayout>
+  </AppPageLayout>
 </template>
