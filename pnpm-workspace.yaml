@@ -18,7 +18,7 @@ catalog:
   '@vant/touch-emulator': ^1.5.0
   '@vee-validate/zod': ^4.15.1
   '@visactor/vchart': ^2.0.19
-  '@vitejs/plugin-legacy': ^7.2.1
+  '@vitejs/plugin-legacy': ^8.0.0
   '@vitejs/plugin-vue': ^6.0.5
   '@vitejs/plugin-vue-jsx': ^5.1.5
   '@vue/tsconfig': ^0.9.0
@@ -79,12 +79,12 @@ catalog:
   vant: ^4.9.22
   vconsole: ^3.15.1
   vee-validate: ^4.15.1
-  vite: ^7.3.1
+  vite: ^8.0.0
   vite-plugin-archiver: ^0.2.0
   vite-plugin-banner: ^0.8.1
   vite-plugin-compression2: ^2.5.2
   vite-plugin-env-parse: ^1.0.15
-  vite-plugin-fake-server: ^2.2.2
+  vite-plugin-fake-server: ^2.2.3
   vite-plugin-pages: ^0.33.3
   vite-plugin-qrcode: ^0.3.0
   vite-plugin-svg-icons: ^2.0.1
