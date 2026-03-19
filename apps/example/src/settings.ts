@@ -1,4 +1,4 @@
-import { setSettings } from './utils'
+import { setSettings } from '@fantastic-mobile/settings'
 
 export default setSettings({
   app: {

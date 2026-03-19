@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue-sonner'
-import settingsDefault from '@/settings/default'
-import { diffTwoObj } from '@/settings/utils'
+import { setSettings } from '@fantastic-mobile/settings'
 import eventBus from '@/utils/eventBus'
 
 defineOptions({
@@ -10,6 +9,7 @@ defineOptions({
 })
 
 const appSettingsStore = useAppSettingsStore()
+const settingsDefault = setSettings({})
 
 const isShow = ref(false)
 
@@ -40,6 +40,33 @@ watch(copied, (val) => {
 
 function handleCopy() {
   copy(JSON.stringify(diffTwoObj(settingsDefault, appSettingsStore.settings), null, 2))
+}
+
+function isObject(value: unknown): value is Record<string, any> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, any>) {
+  if (!isObject(originalObj) || !isObject(diffObj)) {
+    return diffObj
+  }
+  const diff: Record<string, any> = {}
+  for (const key in diffObj) {
+    const originalValue = originalObj[key]
+    const diffValue = diffObj[key]
+    if (JSON.stringify(originalValue) !== JSON.stringify(diffValue)) {
+      if (isObject(originalValue) && isObject(diffValue)) {
+        const nestedDiff = diffTwoObj(originalValue, diffValue)
+        if (Object.keys(nestedDiff).length > 0) {
+          diff[key] = nestedDiff
+        }
+      }
+      else {
+        diff[key] = diffValue
+      }
+    }
+  }
+  return diff
 }
 </script>
 

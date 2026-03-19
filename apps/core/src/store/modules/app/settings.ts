@@ -1,4 +1,4 @@
-import type { Settings } from '#/global'
+import type { ThemeSettings } from '@fantastic-mobile/settings'
 import settingsDefault from '@/settings'
 
 export const useAppSettingsStore = defineStore(
@@ -24,7 +24,7 @@ export const useAppSettingsStore = defineStore(
       immediate: true,
     })
 
-    const currentColorScheme = ref<Exclude<Settings.theme['colorScheme'], ''>>()
+    const currentColorScheme = ref<Exclude<Required<ThemeSettings>['colorScheme'], ''>>()
     watch(() => settings.value.theme.colorScheme, updateTheme, {
       immediate: true,
     })

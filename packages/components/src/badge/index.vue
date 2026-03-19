@@ -17,7 +17,7 @@ const props = defineProps<{
 }>()
 
 const badgeDotVariant = cva(
-  'absolute start-[100%] h-1.5 w-1.5 rounded-full px-0 ring-1 ring-background before:(absolute inset-0 bg-inherit block h-full w-full animate-ping rounded-full content-empty) -translate-x-[50%] -translate-y-[50%] rtl:(translate-x-[50%]) -indent-9999',
+  'absolute start-[100%] h-1.5 w-1.5 rounded-full px-0 ring-1 ring-background before:(absolute inset-0 bg-inherit block h-full w-full animate-ping rounded-full content-empty) -translate-x-[50%] -translate-y-[50%] -indent-9999',
   {
     variants: {
       variant: {

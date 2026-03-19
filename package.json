@@ -20,10 +20,13 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
     "@clack/prompts": "catalog:",
+    "@fantastic-mobile/themes": "workspace:*",
     "@stylistic/stylelint-config": "catalog:",
     "@types/node": "catalog:",
     "@unocss/core": "catalog:",
     "@unocss/eslint-plugin": "catalog:",
+    "@unocss/preset-wind4": "catalog:",
+    "@yeungkc/unocss-preset-safe-area": "catalog:",
     "bumpp": "catalog:",
     "cz-git": "catalog:",
     "eslint": "catalog:",
@@ -36,7 +39,9 @@
     "stylelint-scss": "catalog:",
     "taze": "catalog:",
     "tsx": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "unocss": "catalog:",
+    "unocss-preset-animations": "catalog:"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",

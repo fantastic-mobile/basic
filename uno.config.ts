@@ -16,7 +16,7 @@ import {
 } from 'unocss'
 import { presetAnimations } from 'unocss-preset-animations'
 
-const appRoot = path.dirname(fileURLToPath(import.meta.url))
+const projectRoot = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   content: {
@@ -24,7 +24,7 @@ export default defineConfig({
       include: [
         /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
         'src/**/*.{js,ts}',
-        path.resolve(appRoot, '../../packages/components/**/*.{vue,js,ts}'),
+        path.resolve(projectRoot, 'packages/components/**/*.{vue,js,ts}'),
       ],
     },
   },
@@ -166,6 +166,6 @@ button:not(:disabled),
     transformerCompileClass(),
   ],
   configDeps: [
-    path.resolve(appRoot, '../../packages/themes/index.ts'),
+    path.resolve(projectRoot, 'packages/themes/index.ts'),
   ],
 })
