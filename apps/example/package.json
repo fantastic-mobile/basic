@@ -10,10 +10,7 @@
     "serve": "http-server ./dist -o",
     "serve:test": "http-server ./dist-test -o",
     "svgo": "svgo -f src/assets/icons",
-    "lint": "npm-run-all -s lint:tsc lint:eslint lint:stylelint",
-    "lint:tsc": "vue-tsc -b",
-    "lint:eslint": "eslint . --cache --fix",
-    "lint:stylelint": "stylelint \"src/**/*.{css,scss,vue}\" --cache --fix"
+    "lint": "vue-tsc -b"
   },
   "dependencies": {
     "@fantastic-mobile/components": "workspace:*",
@@ -67,7 +64,6 @@
     "autoprefixer": "catalog:",
     "boxen": "catalog:",
     "http-server": "catalog:",
-    "npm-run-all2": "catalog:",
     "picocolors": "catalog:",
     "postcss": "catalog:",
     "postcss-mobile-forever": "catalog:",

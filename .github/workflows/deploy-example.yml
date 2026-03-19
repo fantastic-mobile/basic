@@ -5,8 +5,8 @@ on:
     branches: [main]
     paths:
       - 'apps/examples/**'
-      - 'pnpm-lock.yaml'
-      - 'pnpm-workspace.yaml'
+      - pnpm-lock.yaml
+      - pnpm-workspace.yaml
   workflow_dispatch:
 
 jobs:
