@@ -5,13 +5,11 @@ import 'vue-sonner/style.css'
 defineOptions({
   name: 'FmToast',
 })
-
-const appSettingsStore = useAppSettingsStore()
 </script>
 
 <template>
   <Toaster
-    position="top-center" :theme="appSettingsStore.currentColorScheme" rich-colors :toast-options="{
+    position="top-center" rich-colors :toast-options="{
       classes: {
         toast: 'group toast group-[.toaster]:text-foreground',
         description: 'group-[.toast]:text-muted-foreground',

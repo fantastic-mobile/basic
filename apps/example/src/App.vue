@@ -51,7 +51,7 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
       </div>
       <AppSetting />
     </template>
-    <FmToast />
+    <FmToast :theme="appSettingsStore.currentColorScheme" />
   </Provider>
 </template>
 
