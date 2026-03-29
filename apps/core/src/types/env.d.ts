@@ -24,5 +24,5 @@ interface ImportMetaEnv {
   /**
    * 是否开启开发者工具
    */
-  readonly VITE_OPEN_DEVTOOLS: boolean
+  readonly VITE_ENABLE_VUE_DEVTOOLS: boolean
 }

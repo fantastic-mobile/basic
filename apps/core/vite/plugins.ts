@@ -1,7 +1,7 @@
 import type { PluginOption } from 'vite'
-import path from 'node:path'
 import process from 'node:process'
 import { FantasticAutoImports, FantasticComponentsResolver, FantasticComponentsType } from '@fantastic-mobile/components/resolver'
+import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap'
 import vueLegacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -18,7 +18,6 @@ import { compression } from 'vite-plugin-compression2'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import { vitePluginFakeServer } from 'vite-plugin-fake-server'
 import { qrcode } from 'vite-plugin-qrcode'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { VueRouterAutoImports } from 'vue-router/unplugin'
 import VueRouter from 'vue-router/vite'
@@ -42,7 +41,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
     }),
 
     // https://github.com/vuejs/devtools-next
-    viteEnv.VITE_OPEN_DEVTOOLS && VueDevTools(),
+    viteEnv.VITE_ENABLE_VUE_DEVTOOLS && VueDevTools(),
 
     envParse({
       dtsPath: 'src/types/env.d.ts',
@@ -85,12 +84,8 @@ export default function createVitePlugins(mode: string, isBuild = false) {
 
     Unocss(),
 
-    // https://github.com/vbenjs/vite-plugin-svg-icons
-    createSvgIconsPlugin({
-      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons/')],
-      symbolId: 'icon-[dir]-[name]',
-      svgoOptions: isBuild,
-    }),
+    // https://github.com/SpiriitLabs/vite-plugin-svg-spritemap
+    VitePluginSvgSpritemap('./src/assets/icons/*.svg'),
 
     // https://github.com/condorheroblog/vite-plugin-fake-server
     vitePluginFakeServer({

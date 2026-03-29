@@ -8,11 +8,15 @@
       "#/*": ["./src/types/*"]
     },
     "resolveJsonModule": true,
-    "types": ["vite/client"],
+    "types": [
+      "vite/client",
+      "@spiriit/vite-plugin-svg-spritemap/client"
+    ],
     "allowJs": false,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": false,
+    "noUncheckedSideEffectImports": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,

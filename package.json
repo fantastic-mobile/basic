@@ -3,13 +3,14 @@
   "type": "module",
   "version": "1.6.0",
   "private": true,
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"
   },
   "scripts": {
     "dev": "tsx scripts/dev.ts",
     "build": "tsx scripts/build.ts",
+    "serve": "tsx scripts/serve.ts",
     "lint": "run-s lint:tsc lint:eslint lint:stylelint",
     "lint:tsc": "pnpm --filter './apps/*' -r run lint",
     "lint:eslint": "eslint . --cache --fix",

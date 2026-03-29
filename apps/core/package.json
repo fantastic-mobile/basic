@@ -53,6 +53,7 @@
     "@faker-js/faker": "catalog:",
     "@iconify/json": "catalog:",
     "@iconify/vue": "catalog:",
+    "@spiriit/vite-plugin-svg-spritemap": "catalog:",
     "@types/nprogress": "catalog:",
     "@types/qs": "catalog:",
     "@vitejs/plugin-legacy": "catalog:",
@@ -79,7 +80,6 @@
     "vite-plugin-fake-server": "catalog:",
     "vite-plugin-pages": "catalog:",
     "vite-plugin-qrcode": "catalog:",
-    "vite-plugin-svg-icons": "catalog:",
     "vite-plugin-vue-devtools": "catalog:",
     "vue-tsc": "catalog:"
   }

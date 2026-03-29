@@ -7,8 +7,6 @@ import pinia from './store'
 import ui from './ui/provider'
 import './utils/systemCopyright'
 
-// 加载 svg 图标
-import 'virtual:svg-icons-register'
 // UnoCSS
 import 'virtual:uno.css'
 // 全局样式
