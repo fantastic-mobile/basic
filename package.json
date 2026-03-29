@@ -14,7 +14,7 @@
     "lint": "run-s lint:tsc lint:eslint lint:stylelint",
     "lint:tsc": "pnpm --filter './apps/*' -r run lint",
     "lint:eslint": "eslint . --cache --fix",
-    "lint:stylelint": "stylelint \"{apps,packages,docs}/**/*.{css,scss,vue}\" --cache --fix",
+    "lint:stylelint": "stylelint \"{apps,packages}/**/*.{css,scss,vue}\" --cache --fix",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
     "taze": "taze minor -wIr",
