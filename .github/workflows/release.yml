@@ -42,7 +42,7 @@ jobs:
         with:
           type: zip
           filename: fantastic-mobile-basic.${{ steps.last_release.outputs.tag_name }}.zip
-          exclusions: '/.git/* /.github/*'
+          exclusions: '/.git/* /.github/* /apps/example-nut/* /apps/example-varlet/*'
 
       - name: Upload Archive To Release
         uses: xresloader/upload-to-github-release@v1

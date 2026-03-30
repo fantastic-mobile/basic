@@ -1,0 +1,75 @@
+import apiApp from '@/api/modules/app'
+import router from '@/router'
+
+export const useAppAuthStore = defineStore(
+  'appAuth',
+  () => {
+    // 账号信息
+    const account = ref(localStorage.account ?? '')
+    const token = ref(localStorage.token ?? '')
+    const avatar = ref(localStorage.avatar ?? '')
+
+    // 权限信息
+    const isGetPermissions = ref(false)
+    const permissions = ref<string[]>([])
+
+    // 登录状态
+    const isLogin = computed(() => {
+      if (token.value) {
+        return true
+      }
+      return false
+    })
+
+    // 登录
+    function login(data: {
+      account: string
+      password: string
+    }) {
+      return new Promise((resolve, reject) => {
+        apiApp.login(data).then((res) => {
+          localStorage.setItem('account', res.data.account)
+          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('avatar', res.data.avatar)
+          account.value = res.data.account
+          token.value = res.data.token
+          avatar.value = res.data.avatar
+          resolve(res)
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    }
+
+    // 登出
+    function logout() {
+      // 模拟退出登录，清除 token 信息
+      localStorage.removeItem('account')
+      localStorage.removeItem('token')
+      localStorage.removeItem('avatar')
+      account.value = ''
+      token.value = ''
+      avatar.value = ''
+      router.push('/')
+    }
+
+    // 获取权限
+    async function getPermissions() {
+      const res = await apiApp.permission()
+      permissions.value = res.data.permissions
+      isGetPermissions.value = true
+    }
+
+    return {
+      account,
+      token,
+      avatar,
+      isLogin,
+      isGetPermissions,
+      permissions,
+      login,
+      logout,
+      getPermissions,
+    }
+  },
+)

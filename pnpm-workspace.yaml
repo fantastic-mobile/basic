@@ -96,3 +96,5 @@ catalog:
   vue-sonner: ^2.0.9
   vue-tsc: ^3.2.6
   zod: ^4.3.6
+  "@varlet/ui": ^3.14.1
+  "@varlet/touch-emulator": ^3.14.1

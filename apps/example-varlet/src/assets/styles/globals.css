@@ -1,0 +1,34 @@
+:root {
+  color-scheme: light;
+
+  --g-navbar-min-height: 50px;
+  --g-tabbar-min-height: 60px;
+
+  &.dark {
+    color-scheme: dark;
+  }
+}
+
+.disable-color-scheme-transition-duration *,
+.disable-color-scheme-transition-duration *::before,
+.disable-color-scheme-transition-duration *::after {
+  transition-duration: 0ms !important;
+}
+
+html {
+  overscroll-behavior: none;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  text-autospace: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 全局样式 */
+#app {
+  overflow: hidden auto;
+  font-size: 14px;
+  background-color: var(--g-bg);
+}

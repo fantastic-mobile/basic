@@ -1,7 +1,6 @@
 {
   "name": "@fantastic-mobile/core",
   "type": "module",
-  "version": "1.6.0",
   "private": true,
   "scripts": {
     "dev": "vite",
