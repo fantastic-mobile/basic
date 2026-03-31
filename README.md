@@ -31,10 +31,7 @@
 
 > 本仓库为基础版
 
-**直接拉取源码可能会包含未发布的内容，推荐去 [Github Releases](https://github.com/fantastic-mobile/basic/releases) 页面下载稳定版本的压缩包**。如果确定需要拉取源码，请参考下列分支说明：
-
-- `main` Vue3 版本框架源码分支，不含示例代码，可直接用于实际开发
-- `example` Vue3 版本演示源码分支，同线上演示站，包含大量示例，可用于参考学习
+**直接拉取源码可能会包含未发布的内容，推荐去 [Github Releases](https://github.com/fantastic-mobile/basic/releases) 页面下载稳定版本的压缩包**。
 
 ## 预览
 

@@ -1,4 +1,12 @@
+autoInstallPeers: true
+catalogMode: prefer
 cleanupUnusedCatalogs: true
+engineStrict: true
+ignoreWorkspaceRootCheck: true
+shamefullyHoist: true
+shellEmulator: true
+verifyDepsBeforeRun: prompt
+
 packages:
   - packages/*
   - apps/*
@@ -18,6 +26,8 @@ catalog:
   '@unocss/eslint-plugin': ^66.6.7
   '@unocss/preset-wind4': ^66.6.7
   '@vant/touch-emulator': ^1.5.0
+  '@varlet/touch-emulator': ^3.14.1
+  '@varlet/ui': ^3.14.1
   '@vee-validate/zod': ^4.15.1
   '@visactor/vchart': ^2.0.20
   '@vitejs/plugin-legacy': ^8.0.1
@@ -96,5 +106,3 @@ catalog:
   vue-sonner: ^2.0.9
   vue-tsc: ^3.2.6
   zod: ^4.3.6
-  "@varlet/ui": ^3.14.1
-  "@varlet/touch-emulator": ^3.14.1
