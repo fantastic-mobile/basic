@@ -5,7 +5,6 @@ import App from './App.vue'
 import router from './router'
 import pinia from './store'
 import ui from './ui/provider'
-import './utils/systemCopyright'
 
 // UnoCSS
 import 'virtual:uno.css'

@@ -6,7 +6,6 @@ import router from './router'
 import pinia from './store'
 import ui from './ui/provider'
 import '@/utils/baidu'
-import './utils/systemCopyright'
 
 // UnoCSS
 import 'virtual:uno.css'

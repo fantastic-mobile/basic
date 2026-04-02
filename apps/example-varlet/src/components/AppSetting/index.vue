@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { setSettings } from '@fantastic-mobile/settings'
 import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue-sonner'
-import { setSettings } from '@fantastic-mobile/settings'
 import eventBus from '@/utils/eventBus'
 
 defineOptions({

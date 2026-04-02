@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { ButtonGroupVariants } from '.'
-import { cn } from '../../../utils'
 import { buttonGroupVariants } from '.'
+import { cn } from '../../../utils'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
