@@ -36,9 +36,6 @@ declare module 'vue' {
     FmTabs: typeof import('@fantastic-mobile/components')['FmTabs']
     FmToast: typeof import('@fantastic-mobile/components')['FmToast']
     FmTrend: typeof import('@fantastic-mobile/components')['FmTrend']
-    VanFieldCalendar: typeof import('./../components/VanFieldCalendar/index.vue')['default']
-    VanFieldDatePicker: typeof import('./../components/VanFieldDatePicker/index.vue')['default']
-    VanFieldPicker: typeof import('./../components/VanFieldPicker/index.vue')['default']
   }
 }
 
@@ -68,7 +65,4 @@ declare global {
   const FmTabs: typeof import('@fantastic-mobile/components')['FmTabs']
   const FmToast: typeof import('@fantastic-mobile/components')['FmToast']
   const FmTrend: typeof import('@fantastic-mobile/components')['FmTrend']
-  const VanFieldCalendar: typeof import('./../components/VanFieldCalendar/index.vue')['default']
-  const VanFieldDatePicker: typeof import('./../components/VanFieldDatePicker/index.vue')['default']
-  const VanFieldPicker: typeof import('./../components/VanFieldPicker/index.vue')['default']
 }

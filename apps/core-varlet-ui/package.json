@@ -1,5 +1,5 @@
 {
-  "name": "@fantastic-mobile/example-varlet",
+  "name": "@fantastic-mobile/core-varlet-ui",
   "type": "module",
   "private": true,
   "scripts": {
@@ -16,8 +16,8 @@
     "@fantastic-mobile/copyright": "workspace:*",
     "@fantastic-mobile/settings": "workspace:*",
     "@fantastic-mobile/themes": "workspace:*",
-    "@varlet/touch-emulator": "catalog:",
-    "@varlet/ui": "catalog:",
+    "@varlet/touch-emulator": "catalog:varlet-ui",
+    "@varlet/ui": "catalog:varlet-ui",
     "@vee-validate/zod": "catalog:",
     "@vueuse/components": "catalog:",
     "@vueuse/core": "catalog:",

@@ -1,5 +1,5 @@
 {
-  "name": "@fantastic-mobile/example-nut",
+  "name": "@fantastic-mobile/core-nut-ui",
   "type": "module",
   "private": true,
   "scripts": {
@@ -16,8 +16,8 @@
     "@fantastic-mobile/copyright": "workspace:*",
     "@fantastic-mobile/settings": "workspace:*",
     "@fantastic-mobile/themes": "workspace:*",
-    "@nutui/nutui": "catalog:",
-    "@nutui/touch-emulator": "catalog:",
+    "@nutui/nutui": "catalog:nut-ui",
+    "@nutui/touch-emulator": "catalog:nut-ui",
     "@vee-validate/zod": "catalog:",
     "@vueuse/components": "catalog:",
     "@vueuse/core": "catalog:",
