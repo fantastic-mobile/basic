@@ -1,6 +1,5 @@
 import axios from 'axios'
 // import qs from 'qs'
-import { toast } from 'vue-sonner'
 
 // 请求重试配置
 const MAX_RETRY_COUNT = 3 // 最大重试次数
@@ -61,7 +60,7 @@ function handleError(error: any) {
   else if (message.includes('Request failed with status code')) {
     message = `接口${message.substr(message.length - 3)}异常`
   }
-  toast.error('Error', {
+  fmToast.error('Error', {
     description: message,
   })
   return Promise.reject(error)
@@ -71,20 +70,23 @@ api.interceptors.response.use(
   (response) => {
     /**
      * 全局拦截请求发送后返回的数据，如果数据有报错则在这做全局的错误提示
-     * 假设返回数据格式为：{ status: 1, error: '', data: {} }
-     * 规则是当 status 为 1 时表示请求成功，为 0 时表示接口需要登录或者登录状态失效，需要重新登录
-     * 请求出错时 error 会返回错误信息
+     * 约定的数据格式：{ status: 1 | 0, error: string, data: object }
+     * status 只有两种状态，1 表示请求成功，0 表示接口需要登录或者登录状态失效，需要重新登录
+     * error 只有在请求出错时才会有值，表示错误信息
+     * data 只有在请求成功时才会有值，表示请求返回的数据
      */
-    if (response.data.status === 1) {
-      if (response.data.error !== '') {
-        toast.warning('Warning', {
-          description: response.data.error,
-        })
-        return Promise.reject(response.data)
+    if (typeof response.data === 'object') {
+      if (response.data.status === 1) {
+        if (response.data.error) {
+          fmToast.warning('Warning', {
+            description: response.data.error,
+          })
+          return Promise.reject(response.data)
+        }
       }
-    }
-    else {
-      useAppAuthStore().logout()
+      else {
+        useAppAuthStore().logout()
+      }
     }
     return Promise.resolve(response.data)
   },
