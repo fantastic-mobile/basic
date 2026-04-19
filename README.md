@@ -1,4 +1,4 @@
-<img src="https://fantastic-mobile.hurui.me/logo.png" align="right" width="80" height="80" alt="logo" />
+<a href="https://fantastic-mobile.hurui.me" target="_blank"><img src="https://fantastic-mobile.hurui.me/logo.png" align="right" height="80" alt="logo" /></a>
 
 # Fantastic-mobile
 
