@@ -1,7 +1,7 @@
 import type { PluginOption } from 'vite'
 import process from 'node:process'
-import { FantasticAutoImports, FantasticComponentsResolver, FantasticComponentsType } from '@fantastic-mobile/components/resolver'
-import { createFantasticMobileCopyrightPlugins } from '@fantastic-mobile/copyright'
+import { AutoImports as FantasticMobileAutoImports, ComponentsResolver as FantasticMobileComponentsResolver, ComponentsType as FantasticMobileComponentsType } from '@fantastic-mobile/components/resolver'
+import { createCopyrightPlugins as createFantasticMobileCopyrightPlugins } from '@fantastic-mobile/copyright'
 import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap'
 import vueLegacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
@@ -57,7 +57,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
         {
           'vue-router/auto': ['useLink'],
         },
-        FantasticAutoImports,
+        FantasticMobileAutoImports,
       ],
       dts: './src/types/auto-imports.d.ts',
       dirs: [
@@ -73,10 +73,10 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       ],
       dts: './src/types/components.d.ts',
       resolvers: [
-        FantasticComponentsResolver(),
+        FantasticMobileComponentsResolver(),
       ],
       types: [
-        FantasticComponentsType,
+        FantasticMobileComponentsType,
       ],
     }),
 

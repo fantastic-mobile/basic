@@ -37,10 +37,10 @@ const AUTO_IMPORT_NAMES = [
 ] as const
 
 /**
- * unplugin-auto-import 静态导入配置
+ * unplugin-auto-import 静态导入
  * 用于脚本中自动导入 package 暴露的工具方法
  */
-export const FantasticAutoImports: ImportsMap = {
+export const AutoImports: ImportsMap = {
   [PACKAGE_NAME]: [...AUTO_IMPORT_NAMES],
 }
 
@@ -48,7 +48,7 @@ export const FantasticAutoImports: ImportsMap = {
  * unplugin-vue-components resolver
  * 用于模板中自动导入组件
  */
-export function FantasticComponentsResolver(): ComponentResolver {
+export function ComponentsResolver(): ComponentResolver {
   const names = new Set<string>(COMPONENT_NAMES)
   return {
     type: 'component',
@@ -64,20 +64,10 @@ export function FantasticComponentsResolver(): ComponentResolver {
 }
 
 /**
- * unplugin-vue-components types 配置
+ * unplugin-vue-components types
  * 用于在生成的 components.d.ts 中声明全局组件类型
- *
- * @example 在 vite 配置中使用：
- * ```ts
- * import { FantasticComponentsResolver, FantasticComponentsType } from '@fantastic-mobile/components/resolver'
- *
- * components({
- *   resolvers: [FantasticComponentsResolver()],
- *   types: [FantasticComponentsType],
- * })
- * ```
  */
-export const FantasticComponentsType: TypeImport = {
+export const ComponentsType: TypeImport = {
   from: PACKAGE_NAME,
   names: [...COMPONENT_NAMES],
 }

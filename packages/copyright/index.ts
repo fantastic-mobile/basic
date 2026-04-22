@@ -3,19 +3,19 @@ import boxen from 'boxen'
 import picocolors from 'picocolors'
 import banner from 'vite-plugin-banner'
 
-export interface FantasticMobileCopyrightOptions {
+export interface CopyrightOptions {
   edition?: string
   website?: string
 }
 
-function resolveOptions(options: FantasticMobileCopyrightOptions = {}) {
+function resolveOptions(options: CopyrightOptions = {}) {
   return {
     edition: options.edition ?? '基础版',
     website: options.website ?? 'https://fantastic-mobile.hurui.me',
   }
 }
 
-export function createFantasticMobileBannerPlugin(options: FantasticMobileCopyrightOptions = {}): PluginOption {
+function createBannerPlugin(options: CopyrightOptions = {}): PluginOption {
   const { website } = resolveOptions(options)
 
   return banner(`
@@ -27,7 +27,7 @@ export function createFantasticMobileBannerPlugin(options: FantasticMobileCopyri
   `)
 }
 
-export function createFantasticMobileTerminalInfoPlugin(options: FantasticMobileCopyrightOptions = {}): PluginOption {
+function createTerminalInfoPlugin(options: CopyrightOptions = {}): PluginOption {
   const { edition, website } = resolveOptions(options)
 
   return {
@@ -52,7 +52,7 @@ export function createFantasticMobileTerminalInfoPlugin(options: FantasticMobile
   }
 }
 
-export function createFantasticMobileSystemCopyrightPlugin(options: FantasticMobileCopyrightOptions = {}): PluginOption {
+function createSystemCopyrightPlugin(options: CopyrightOptions = {}): PluginOption {
   const { website } = resolveOptions(options)
   const fontFamily = 'font-family: "JetBrains Mono", "SF Mono", "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;'
   const mainStyle = `${fontFamily} font-size: 14px; font-weight: 700; padding: 6px 8px; color: #fff; background: #e24329;`
@@ -86,10 +86,10 @@ ${code}
   }
 }
 
-export function createFantasticMobileCopyrightPlugins(options: FantasticMobileCopyrightOptions = {}): PluginOption[] {
+export function createCopyrightPlugins(options: CopyrightOptions = {}): PluginOption[] {
   return [
-    createFantasticMobileBannerPlugin(options),
-    createFantasticMobileTerminalInfoPlugin(options),
-    createFantasticMobileSystemCopyrightPlugin(options),
+    createBannerPlugin(options),
+    createTerminalInfoPlugin(options),
+    createSystemCopyrightPlugin(options),
   ]
 }
