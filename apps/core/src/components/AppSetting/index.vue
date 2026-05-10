@@ -73,7 +73,7 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
 <template>
   <FmModal v-model="isShow" title="应用配置" description="在生产环境中应关闭该模块" :footer="isSupported" :destroy-on-close="false" content-class="bg-[var(--g-bg)] transition-background-color">
     <div>
-      <FmPageMain title="主题" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="pb-0 border-none font-bold text-base" main-class="space-y-4">
+      <FmPageMain title="主题" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="font-bold text-base" main-class="space-y-4">
         <div class="setting-item">
           <div class="label">
             颜色方案
@@ -103,7 +103,7 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
           <FmSwitch v-model="appSettingsStore.settings.theme.colorAmblyopia" />
         </div>
       </FmPageMain>
-      <FmPageMain title="页面" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="pb-0 border-none font-bold text-base" main-class="space-y-4">
+      <FmPageMain title="页面" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="font-bold text-base" main-class="space-y-4">
         <div class="setting-item">
           <div class="label">
             进度条
@@ -117,7 +117,7 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
           <FmSwitch v-model="appSettingsStore.settings.page.backTop" />
         </div>
       </FmPageMain>
-      <FmPageMain title="版权" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="pb-0 border-none font-bold text-base" main-class="space-y-4">
+      <FmPageMain title="版权" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="font-bold text-base" main-class="space-y-4">
         <div class="setting-item">
           <div class="label">
             启用
@@ -143,7 +143,7 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
           <FmInput v-model="appSettingsStore.settings.copyright.website" :disabled="!appSettingsStore.settings.copyright.enable" />
         </div>
       </FmPageMain>
-      <FmPageMain title="应用" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="pb-0 border-none font-bold text-base" main-class="space-y-4">
+      <FmPageMain title="应用" class="m-0 mb-4 break-inside-avoid light:border-none" title-class="font-bold text-base" main-class="space-y-4">
         <div class="setting-item">
           <div class="label">
             启用权限
