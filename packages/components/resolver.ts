@@ -13,6 +13,7 @@ const COMPONENT_NAMES = [
   'FmButtonGroup',
   'FmCard',
   'FmCheckbox',
+  'FmCheckboxGroup',
   'FmDivider',
   'FmDrawer',
   'FmIcon',

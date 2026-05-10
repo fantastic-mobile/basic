@@ -8,6 +8,7 @@ declare module 'vue' {
     FmButtonGroup: typeof import('./index')['FmButtonGroup']
     FmCard: typeof import('./index')['FmCard']
     FmCheckbox: typeof import('./index')['FmCheckbox']
+    FmCheckboxGroup: typeof import('./index')['FmCheckboxGroup']
     FmDivider: typeof import('./index')['FmDivider']
     FmDrawer: typeof import('./index')['FmDrawer']
     FmIcon: typeof import('./index')['FmIcon']

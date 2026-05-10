@@ -90,6 +90,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/feature/component/built_in/checkbox_group/': RouteRecordInfo<
+      '/feature/component/built_in/checkbox_group/',
+      '/feature/component/built_in/checkbox_group',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/feature/component/built_in/divider/': RouteRecordInfo<
       '/feature/component/built_in/divider/',
       '/feature/component/built_in/divider',
@@ -399,6 +406,12 @@ declare module 'vue-router/auto-routes' {
     'src/views/feature/component/built_in/checkbox/index.vue': {
       routes:
         | '/feature/component/built_in/checkbox/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in/checkbox_group/index.vue': {
+      routes:
+        | '/feature/component/built_in/checkbox_group/'
       views:
         | never
     }

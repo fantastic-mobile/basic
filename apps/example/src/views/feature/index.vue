@@ -72,6 +72,7 @@ const data: {
       { path: '/feature/component/built_in/button/', title: '按钮' },
       { path: '/feature/component/built_in/card/', title: '卡片' },
       { path: '/feature/component/built_in/checkbox/', title: '复选框' },
+      { path: '/feature/component/built_in/checkbox_group/', title: '复选框组' },
       { path: '/feature/component/built_in/divider/', title: '分割线' },
       { path: '/feature/component/built_in/drawer/', title: '抽屉' },
       { path: '/feature/component/built_in/input/', title: '输入框' },

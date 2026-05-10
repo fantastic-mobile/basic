@@ -1,25 +1,23 @@
-# FmCheckbox 复选框组件
+# FmCheckbox 复选框
 
-简洁的复选框组件，支持双向绑定和标签内容插槽。
+单个复选框组件，支持普通选中、禁用和半选状态。
 
-## 基础用法
+## 使用场景
 
-```vue
-<script setup lang="ts">
-const checked = ref(false)
-</script>
-
-<template>
-  <FmCheckbox v-model="checked">同意协议</FmCheckbox>
-</template>
-```
+- 表单中的同意协议选项
+- 单个布尔开关配置
+- 树形结构中的半选状态展示
+- 单项功能启用/禁用
 
 ## Props
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
+| `id` | `string` | 自动生成 | 复选框 id |
 | `disabled` | `boolean` | `false` | 是否禁用 |
-| `class` | `HTMLAttributes['class']` | - | 自定义 CSS 类 |
+| `class` | `HTMLAttributes['class']` | - | 外层容器类名 |
+| `itemClass` | `HTMLAttributes['class']` | - | 复选框本体类名 |
+| `labelClass` | `HTMLAttributes['class']` | - | 标签内容类名 |
 
 ## Slots
 
@@ -29,15 +27,15 @@ const checked = ref(false)
 
 ## Events
 
-通过 `v-model` 双向绑定，无需单独事件
+| 事件名 | 说明 | 回调参数 |
+|--------|------|----------|
+| `change` | 选中值变化时触发 | `value: boolean \| 'indeterminate' \| undefined` |
 
-## Exposed Methods
-
-无
+通过 `v-model` 实现双向绑定。
 
 ## 示例
 
-### 基础复选框
+### 基础用法
 
 ```vue
 <script setup lang="ts">
@@ -45,31 +43,41 @@ const checked = ref(false)
 </script>
 
 <template>
-  <FmCheckbox v-model="checked">选项</FmCheckbox>
+  <FmCheckbox v-model="checked">
+    我已阅读并同意服务条款
+  </FmCheckbox>
+</template>
+```
+
+### 半选状态
+
+```vue
+<script setup lang="ts">
+const checked = ref<boolean | 'indeterminate'>('indeterminate')
+</script>
+
+<template>
+  <FmCheckbox v-model="checked">
+    部分选中
+  </FmCheckbox>
 </template>
 ```
 
 ### 禁用状态
 
 ```vue
-<template>
-  <FmCheckbox disabled>禁用选项</FmCheckbox>
-  <FmCheckbox v-model="checked" disabled>禁用选中</FmCheckbox>
-</template>
-```
-
-### 复选框组
-
-```vue
 <script setup lang="ts">
-const hobbies = ref(['reading', 'music'])
+const checked = ref(true)
 </script>
 
 <template>
   <div class="flex flex-col gap-2">
-    <FmCheckbox v-model="hobbies" value="reading">阅读</FmCheckbox>
-    <FmCheckbox v-model="hobbies" value="music">音乐</FmCheckbox>
-    <FmCheckbox v-model="hobbies" value="sports">运动</FmCheckbox>
+    <FmCheckbox disabled>
+      禁用未选中
+    </FmCheckbox>
+    <FmCheckbox v-model="checked" disabled>
+      禁用已选中
+    </FmCheckbox>
   </div>
 </template>
 ```
@@ -77,6 +85,10 @@ const hobbies = ref(['reading', 'music'])
 ### 无标签复选框
 
 ```vue
+<script setup lang="ts">
+const checked = ref(false)
+</script>
+
 <template>
   <FmCheckbox v-model="checked" />
 </template>
@@ -85,54 +97,26 @@ const hobbies = ref(['reading', 'music'])
 ### 自定义样式
 
 ```vue
-<template>
-  <FmCheckbox v-model="checked" class="gap-4">
-    <span class="text-primary font-medium">自定义样式</span>
-  </FmCheckbox>
-</template>
-```
-
-### 表单中的使用
-
-```vue
 <script setup lang="ts">
-const form = reactive({
-  agreeTerms: false,
-  subscribe: true,
-})
-
-function handleSubmit() {
-  if (!form.agreeTerms) {
-    return
-  }
-  console.log('提交表单')
-}
+const checked = ref(false)
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit">
-    <FmCheckbox v-model="form.agreeTerms">
-      我已阅读并同意服务条款
-    </FmCheckbox>
-    <FmCheckbox v-model="form.subscribe">
-      订阅我们的新闻通讯
-    </FmCheckbox>
-    <FmButton type="submit" :disabled="!form.agreeTerms">提交</FmButton>
-  </form>
+  <FmCheckbox
+    v-model="checked"
+    class="gap-3"
+    item-class="size-5 rounded-md"
+    label-class="text-primary font-medium"
+  >
+    自定义样式
+  </FmCheckbox>
 </template>
 ```
 
 ## 注意事项
 
-1. **v-model 绑定**：支持单个 boolean 值和数组（多选）两种模式
-2. **标签点击**：点击标签文字也能触发复选框状态切换
-3. **空标签隐藏**：当不提供默认插槽内容时，标签元素会自动隐藏
-4. **禁用状态**：禁用状态下复选框和标签都无法点击
-5. **无障碍支持**：原生支持键盘操作（空格键切换状态）
-
-## 典型使用场景
-
-- 表单中的同意协议选项
-- 多选过滤条件
-- 设置选项开关
-- 列表项批量选择
+1. **单个使用**：`FmCheckbox` 只负责单个复选框，不承担组选项逻辑。
+2. **v-model 类型**：支持 `boolean` 和 `'indeterminate'` 两种状态值。
+3. **标签点击**：点击标签文字也能触发复选框状态切换。
+4. **空标签隐藏**：当不提供默认插槽内容时，标签元素会自动隐藏。
+5. **禁用状态**：禁用状态下复选框和标签都无法点击。
