@@ -35,6 +35,9 @@ export default defineConfig(({ mode, command }) => {
       sourcemap: env.VITE_BUILD_SOURCEMAP === 'true',
     },
     plugins: createVitePlugins(mode, command === 'build'),
+    optimizeDeps: {
+      exclude: ['@fantastic-mobile/components'],
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),

@@ -132,6 +132,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/feature/component/built_in/radio_group/': RouteRecordInfo<
+      '/feature/component/built_in/radio_group/',
+      '/feature/component/built_in/radio_group',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/feature/component/built_in/scroll_area/': RouteRecordInfo<
       '/feature/component/built_in/scroll_area/',
       '/feature/component/built_in/scroll_area',
@@ -428,6 +435,12 @@ declare module 'vue-router/auto-routes' {
     'src/views/feature/component/built_in/page_main/index.vue': {
       routes:
         | '/feature/component/built_in/page_main/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in/radio_group/index.vue': {
+      routes:
+        | '/feature/component/built_in/radio_group/'
       views:
         | never
     }

@@ -78,6 +78,7 @@ const data: {
       { path: '/feature/component/built_in/loading/', title: '加载遮罩' },
       { path: '/feature/component/built_in/modal/', title: '弹窗' },
       { path: '/feature/component/built_in/page_main/', title: '内容块' },
+      { path: '/feature/component/built_in/radio_group/', title: '单选组' },
       { path: '/feature/component/built_in/scroll_area/', title: '滚动区域' },
       { path: '/feature/component/built_in/select/', title: '选择器' },
       { path: '/feature/component/built_in/slider/', title: '滑块' },
