@@ -12,7 +12,7 @@ packages:
   - apps/*
 
 catalog:
-  '@antfu/eslint-config': ^8.2.0
+  '@antfu/eslint-config': ^9.0.0
   '@clack/prompts': ^1.3.0
   '@faker-js/faker': ^10.4.0
   '@iconify/json': ^2.2.471
@@ -73,7 +73,7 @@ catalog:
   stylelint-config-recess-order: ^7.7.0
   stylelint-config-standard-scss: ^17.0.0
   stylelint-config-standard-vue: ^1.0.0
-  stylelint-scss: ^7.0.0
+  stylelint-scss: ^7.1.0
   svgo: ^4.0.1
   swiper: ^12.1.4
   tailwind-merge: ^3.6.0
@@ -90,7 +90,7 @@ catalog:
   vant: ^4.9.24
   vconsole: ^3.15.1
   vee-validate: ^4.15.1
-  vite: ^8.0.11
+  vite: ^8.0.12
   vite-plugin-archiver: ^0.3.2
   vite-plugin-banner: ^0.8.1
   vite-plugin-compression2: ^2.5.3
@@ -110,5 +110,5 @@ catalogs:
     '@nutui/nutui': ^4.3.14
     '@nutui/touch-emulator': ^1.0.0
   varlet-ui:
-    '@varlet/touch-emulator': ^3.15.2
-    '@varlet/ui': ^3.15.2
+    '@varlet/touch-emulator': ^3.16.1
+    '@varlet/ui': ^3.16.1
