@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+
 definePage({
   meta: {
     title: '徽章',
@@ -7,25 +9,9 @@ definePage({
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <FmPageMain>
-      <div class="flex gap-8">
-        <FmBadge :value="true">
-          <FmIcon name="i-ri:notification-3-line" />
-        </FmBadge>
-        <FmBadge :value="99">
-          <FmIcon name="i-ri:notification-3-line" />
-        </FmBadge>
-        <FmBadge value="噢">
-          <FmIcon name="i-ri:notification-3-line" />
-        </FmBadge>
-        <FmBadge value="9" variant="secondary">
-          <FmIcon name="i-ri:notification-3-line" />
-        </FmBadge>
-        <FmBadge value="9" variant="destructive">
-          <FmIcon name="i-ri:notification-3-line" />
-        </FmBadge>
-      </div>
+      <Demo1 />
     </FmPageMain>
   </AppPageLayout>
 </template>

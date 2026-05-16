@@ -1,17 +1,17 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+
 definePage({
   meta: {
     title: '输入框',
   },
 })
-
-const value = ref('')
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <FmPageMain>
-      <FmInput v-model="value" placeholder="请输入内容" />
+      <Demo1 />
     </FmPageMain>
   </AppPageLayout>
 </template>

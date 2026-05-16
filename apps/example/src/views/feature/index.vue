@@ -67,9 +67,11 @@ const data: {
     title: '内建组件',
     icon: 'i-bx:bxs-component',
     routes: [
+      { path: '/feature/component/built_in/alert/', title: '提示' },
       { path: '/feature/component/built_in/avatar/', title: '头像' },
       { path: '/feature/component/built_in/badge/', title: '徽章' },
       { path: '/feature/component/built_in/button/', title: '按钮' },
+      { path: '/feature/component/built_in/button_group/', title: '按钮组' },
       { path: '/feature/component/built_in/card/', title: '卡片' },
       { path: '/feature/component/built_in/checkbox/', title: '复选框' },
       { path: '/feature/component/built_in/checkbox_group/', title: '复选框组' },

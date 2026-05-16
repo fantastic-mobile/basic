@@ -1,33 +1,17 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+
 definePage({
   meta: {
     title: '标签页',
   },
 })
-
-const tabs = ref(1)
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <FmPageMain>
-      <FmTabs v-model="tabs" :list="[{ label: '标签1', value: 1 }, { label: '标签2', value: 2 }, { label: '标签3', value: 3 }]">
-        <template #1>
-          <div class="flex-center">
-            标签1
-          </div>
-        </template>
-        <template #2>
-          <div class="flex-center">
-            标签2
-          </div>
-        </template>
-        <template #3>
-          <div class="flex-center">
-            标签3
-          </div>
-        </template>
-      </FmTabs>
+      <Demo1 />
     </FmPageMain>
   </AppPageLayout>
 </template>

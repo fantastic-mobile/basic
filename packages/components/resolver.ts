@@ -5,6 +5,7 @@ const COMPONENT_PREFIX = 'Fm'
 const PACKAGE_NAME = '@fantastic-mobile/components'
 
 const BASIC_COMPONENT_NAMES = [
+  'FmAlert',
   'FmAvatar',
   'FmBadge',
   'FmButton',

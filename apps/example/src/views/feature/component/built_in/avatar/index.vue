@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+
 definePage({
   meta: {
     title: '头像',
@@ -7,13 +9,9 @@ definePage({
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <FmPageMain>
-      <div class="flex gap-4">
-        <FmAvatar src="https://fantastic-mobile.hurui.me/logo.png" />
-        <FmAvatar src="https://fantastic-mobile.hurui.me/logo.png" shape="square" />
-        <FmAvatar src="" fallback="Hooray" />
-      </div>
+      <Demo1 />
     </FmPageMain>
   </AppPageLayout>
 </template>

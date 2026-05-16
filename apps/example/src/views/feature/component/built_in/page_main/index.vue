@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo2 from './_demo2.vue'
+import Demo3 from './_demo3.vue'
+import Demo4 from './_demo4.vue'
+
 definePage({
   meta: {
     title: '内容块',
@@ -7,30 +12,19 @@ definePage({
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <div>
       <FmPageMain>
-        PageMain 是最常用的页面组件，几乎所有页面都会使用到
-      </FmPageMain>
-      <FmPageMain title="你可以设置一个自定义的标题">
-        这里放页面内容
+        <Demo1 />
       </FmPageMain>
       <FmPageMain>
-        <template #title>
-          <div class="flex items-center justify-between">
-            通过 slot 设置标题
-            <FmButton size="sm" variant="outline">
-              自定义按钮
-            </FmButton>
-          </div>
-        </template>
-        这里放页面内容
+        <Demo2 />
       </FmPageMain>
-      <FmPageMain title="带展开/收起功能" collaspe height="20vh">
-        <h1 class="text-2xl font-bold">
-          Fantastic-mobile
-        </h1>
-        <img src="@/assets/images/logo.png" class="w-40">
+      <FmPageMain>
+        <Demo3 />
+      </FmPageMain>
+      <FmPageMain>
+        <Demo4 />
       </FmPageMain>
     </div>
   </AppPageLayout>

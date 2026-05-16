@@ -1,21 +1,22 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo2 from './_demo2.vue'
+
 definePage({
   meta: {
     title: '滑块',
   },
 })
-
-const value = ref<number[]>([0])
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <div>
       <FmPageMain>
-        <FmSlider v-model="value" />
+        <Demo1 />
       </FmPageMain>
       <FmPageMain>
-        <FmSlider v-model="value" orientation="vertical" class="data-[orientation=vertical]:h-50" />
+        <Demo2 />
       </FmPageMain>
     </div>
   </AppPageLayout>

@@ -1,20 +1,17 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+
 definePage({
   meta: {
     title: '开关',
   },
 })
-
-const switchVal = ref(false)
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <FmPageMain>
-      <div class="flex gap-4">
-        <FmSwitch v-model="switchVal" />
-        <FmSwitch v-model="switchVal" on-icon="ri:sun-line" off-icon="ri:moon-line" />
-      </div>
+      <Demo1 />
     </FmPageMain>
   </AppPageLayout>
 </template>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+
 definePage({
   meta: {
     title: '卡片',
@@ -7,16 +9,9 @@ definePage({
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <FmPageMain>
-      <div class="flex flex-col gap-4">
-        <FmCard v-for="i in 3" :key="i" title="卡片标题" description="卡片描述" class="w-full">
-          卡片内容
-          <template #footer>
-            卡片底部
-          </template>
-        </FmCard>
-      </div>
+      <Demo1 />
     </FmPageMain>
   </AppPageLayout>
 </template>

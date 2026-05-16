@@ -1,4 +1,5 @@
 // 基础版组件
+export { default as FmAlert } from './basic/alert/index.vue'
 export { default as FmAvatar } from './basic/avatar/index.vue'
 export { default as FmBadge } from './basic/badge/index.vue'
 export { default as FmButtonGroup } from './basic/button-group/index.vue'

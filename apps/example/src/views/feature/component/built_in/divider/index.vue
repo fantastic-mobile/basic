@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Demo1 from './demo1.vue'
+
 definePage({
   meta: {
     title: '分割线',
@@ -7,15 +9,9 @@ definePage({
 </script>
 
 <template>
-  <AppPageLayout navbar navbar-start-side="back">
+  <AppPageLayout navbar>
     <FmPageMain>
-      <FmDivider>center</FmDivider>
-      <FmDivider position="start">
-        left
-      </FmDivider>
-      <FmDivider position="end">
-        right
-      </FmDivider>
+      <Demo1 />
     </FmPageMain>
   </AppPageLayout>
 </template>

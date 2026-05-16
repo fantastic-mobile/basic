@@ -58,6 +58,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/feature/component/built_in/alert/': RouteRecordInfo<
+      '/feature/component/built_in/alert/',
+      '/feature/component/built_in/alert',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/feature/component/built_in/avatar/': RouteRecordInfo<
       '/feature/component/built_in/avatar/',
       '/feature/component/built_in/avatar',
@@ -75,6 +82,13 @@ declare module 'vue-router/auto-routes' {
     '/feature/component/built_in/button/': RouteRecordInfo<
       '/feature/component/built_in/button/',
       '/feature/component/built_in/button',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in/button_group/': RouteRecordInfo<
+      '/feature/component/built_in/button_group/',
+      '/feature/component/built_in/button_group',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -103,6 +117,13 @@ declare module 'vue-router/auto-routes' {
     '/feature/component/built_in/divider/': RouteRecordInfo<
       '/feature/component/built_in/divider/',
       '/feature/component/built_in/divider',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in/divider/demo1': RouteRecordInfo<
+      '/feature/component/built_in/divider/demo1',
+      '/feature/component/built_in/divider/demo1',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -382,6 +403,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/views/feature/component/built_in/alert/index.vue': {
+      routes:
+        | '/feature/component/built_in/alert/'
+      views:
+        | never
+    }
     'src/views/feature/component/built_in/avatar/index.vue': {
       routes:
         | '/feature/component/built_in/avatar/'
@@ -397,6 +424,12 @@ declare module 'vue-router/auto-routes' {
     'src/views/feature/component/built_in/button/index.vue': {
       routes:
         | '/feature/component/built_in/button/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in/button_group/index.vue': {
+      routes:
+        | '/feature/component/built_in/button_group/'
       views:
         | never
     }
@@ -421,6 +454,12 @@ declare module 'vue-router/auto-routes' {
     'src/views/feature/component/built_in/divider/index.vue': {
       routes:
         | '/feature/component/built_in/divider/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in/divider/demo1.vue': {
+      routes:
+        | '/feature/component/built_in/divider/demo1'
       views:
         | never
     }
