@@ -17,7 +17,7 @@ declare global {
   const definePage: typeof import('vue-router/experimental').definePage
   const defineStore: typeof import('pinia').defineStore
   const effectScope: typeof import('vue').effectScope
-  const fmToast: typeof import('@fantastic-mobile/components').fmToast
+  const useFmToast: typeof import('@fantastic-mobile/components').useFmToast
   const getActivePinia: typeof import('pinia').getActivePinia
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope

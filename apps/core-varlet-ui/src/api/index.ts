@@ -60,7 +60,7 @@ function handleError(error: any) {
   else if (message.includes('Request failed with status code')) {
     message = `接口${message.substr(message.length - 3)}异常`
   }
-  fmToast.error('Error', {
+  useFmToast().error('Error', {
     description: message,
   })
   return Promise.reject(error)
@@ -78,7 +78,7 @@ api.interceptors.response.use(
     if (typeof response.data === 'object') {
       if (response.data.status === 1) {
         if (response.data.error) {
-          fmToast.warning('Warning', {
+          useFmToast().warning('Warning', {
             description: response.data.error,
           })
           return Promise.reject(response.data)

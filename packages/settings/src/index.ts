@@ -1,5 +1,5 @@
 import type { RequiredDeep } from 'type-fest'
-import type { SettingsOptions } from '../types'
+import type { SettingsOptions } from './types'
 import { createDefu } from 'defu'
 import { cloneDeep } from 'es-toolkit'
 import settingsDefault from './default'
@@ -14,3 +14,13 @@ const merge = createDefu((obj, key, value) => {
 export function setSettings(settings: SettingsOptions) {
   return merge(settings, cloneDeep(settingsDefault)) as RequiredDeep<SettingsOptions>
 }
+
+export type {
+  AppSettings,
+  CopyrightSettings,
+  NavbarSettings,
+  PageSettings,
+  SettingsOptions,
+  TabbarSettings,
+  ThemeSettings,
+} from './types'

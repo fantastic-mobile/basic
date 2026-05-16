@@ -4,9 +4,7 @@ import type { ComponentResolver, TypeImport } from 'unplugin-vue-components'
 const COMPONENT_PREFIX = 'Fm'
 const PACKAGE_NAME = '@fantastic-mobile/components'
 
-// 所有已注册的组件名（与 index.ts 导出保持同步）
-// 这是唯一数据源，resolver 和 types 都从这里读取
-const COMPONENT_NAMES = [
+const BASIC_COMPONENT_NAMES = [
   'FmAvatar',
   'FmBadge',
   'FmButton',
@@ -32,25 +30,21 @@ const COMPONENT_NAMES = [
   'FmTrend',
 ] as const
 
+const COMPONENT_NAMES = [
+  ...BASIC_COMPONENT_NAMES,
+] as const
+
 const AUTO_IMPORT_NAMES = [
   'useFmDrawer',
   'useFmLoading',
   'useFmModal',
-  'fmToast',
+  'useFmToast',
 ] as const
 
-/**
- * unplugin-auto-import 静态导入
- * 用于脚本中自动导入 package 暴露的工具方法
- */
 export const AutoImports: ImportsMap = {
   [PACKAGE_NAME]: [...AUTO_IMPORT_NAMES],
 }
 
-/**
- * unplugin-vue-components resolver
- * 用于模板中自动导入组件
- */
 export function ComponentsResolver(): ComponentResolver {
   const names = new Set<string>(COMPONENT_NAMES)
   return {
@@ -66,10 +60,6 @@ export function ComponentsResolver(): ComponentResolver {
   }
 }
 
-/**
- * unplugin-vue-components types
- * 用于在生成的 components.d.ts 中声明全局组件类型
- */
 export const ComponentsType: TypeImport = {
   from: PACKAGE_NAME,
   names: [...COMPONENT_NAMES],
