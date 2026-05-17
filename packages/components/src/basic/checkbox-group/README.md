@@ -27,7 +27,7 @@
 ### CheckboxGroupOption 接口
 
 ```ts
-interface CheckboxGroupOption {
+export interface CheckboxGroupOption {
   label: string
   value: AcceptableValue
   description?: string
@@ -40,7 +40,7 @@ interface CheckboxGroupOption {
 
 | 名称 | 说明 |
 |------|------|
-| `option` | 自定义选项内容，slot props: `{ option, checked, disabled, id }` |
+| `option` | 自定义选项内容，slot props: `{ option, checked, disabled, id }`，`option` 会保留 `options` 中的扩展字段类型 |
 
 ## Events
 
@@ -173,16 +173,19 @@ const options = [
   {
     label: '专注模式',
     value: 'focus',
+    summary: '任务优先',
     description: '突出主任务，弱化辅助信息。',
   },
   {
     label: '平衡模式',
     value: 'balanced',
+    summary: '默认体验',
     description: '信息密度与可读性保持平衡。',
   },
   {
     label: '高密度模式',
     value: 'dense',
+    summary: '信息看板',
     description: '适合大屏运营与监控看板。',
   },
 ]
@@ -202,8 +205,13 @@ const options = [
         ]"
       >
         <div class="min-w-0">
-          <div class="truncate font-medium">{{ option.label }}</div>
-          <div v-if="option.description" class="text-xs text-muted-foreground leading-5">
+          <div class="flex items-center gap-2">
+            <span class="truncate font-medium">{{ option.label }}</span>
+            <span class="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
+              {{ option.summary }}
+            </span>
+          </div>
+          <div class="text-xs text-muted-foreground leading-5">
             {{ option.description }}
           </div>
         </div>
@@ -218,7 +226,7 @@ const options = [
 
 ## 注意事项
 
-1. **数据驱动**：组选项必须通过 `options` 传入，不再使用多个 `FmCheckbox` 手工拼接。
+1. **数据驱动**：组选项必须通过 `options` 传入，不再使用多个 `FaCheckbox` 手工拼接。
 2. **v-model 类型**：组件通过 `v-model` 管理选中值数组。
 3. **禁用优先级**：组件整体 `disabled` 为 `true` 时，会覆盖单项可用状态。
 4. **数量限制**：当选中数量小于等于 `min` 时，已选项会被禁用；当选中数量大于等于 `max` 时，未选项会被禁用。
