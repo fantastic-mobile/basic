@@ -1,21 +1,15 @@
-autoInstallPeers: true
-catalogMode: prefer
-cleanupUnusedCatalogs: true
-engineStrict: true
-ignoreWorkspaceRootCheck: true
-shamefullyHoist: true
-shellEmulator: true
-verifyDepsBeforeRun: prompt
 
 packages:
   - packages/*
   - apps/*
+autoInstallPeers: true
 catalog:
   '@antfu/eslint-config': ^9.0.0
   '@clack/prompts': ^1.3.0
   '@faker-js/faker': ^10.4.0
   '@iconify/json': ^2.2.471
   '@iconify/vue': ^5.0.1
+  "@lucide/vue": ^1.17.0
   '@spiriit/vite-plugin-svg-spritemap': ^7.0.0
   '@stylistic/stylelint-config': ^5.0.0
   '@types/node': ^25.6.2
@@ -51,7 +45,6 @@ catalog:
   eslint: ^10.3.0
   http-server: ^14.1.1
   lint-staged: ^17.0.4
-  lucide-vue-next: ^1.0.0
   mitt: ^3.0.1
   npm-run-all2: ^8.0.4
   nprogress: ^0.2.0
@@ -103,6 +96,7 @@ catalog:
   vue-sonner: ^2.0.9
   vue-tsc: ^3.2.8
   zod: ^4.4.3
+catalogMode: prefer
 catalogs:
   nut-ui:
     '@nutui/nutui': ^4.3.14
@@ -110,3 +104,9 @@ catalogs:
   varlet-ui:
     '@varlet/touch-emulator': ^3.16.1
     '@varlet/ui': ^3.16.1
+cleanupUnusedCatalogs: true
+engineStrict: true
+ignoreWorkspaceRootCheck: true
+shamefullyHoist: true
+shellEmulator: true
+verifyDepsBeforeRun: prompt

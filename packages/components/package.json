@@ -27,10 +27,10 @@
   },
   "dependencies": {
     "@iconify/vue": "catalog:",
+    "@lucide/vue": "catalog:",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
     "es-toolkit": "catalog:",
-    "lucide-vue-next": "catalog:",
     "reka-ui": "catalog:",
     "spinkit": "catalog:",
     "tailwind-merge": "catalog:",
