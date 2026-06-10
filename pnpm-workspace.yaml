@@ -14,7 +14,7 @@ catalog:
   '@antfu/eslint-config': ^9.0.0
   '@clack/prompts': ^1.5.1
   '@faker-js/faker': ^10.4.0
-  '@iconify/json': ^2.2.483
+  '@iconify/json': ^2.2.484
   '@iconify/vue': ^5.0.1
   '@lucide/vue': ^1.17.0
   '@spiriit/vite-plugin-svg-spritemap': ^7.0.0
@@ -68,7 +68,7 @@ catalog:
   sass-embedded: ^1.100.0
   simple-git-hooks: ^2.13.1
   spinkit: ^2.0.1
-  stylelint: ^17.12.0
+  stylelint: ^17.13.0
   stylelint-config-recess-order: ^7.7.0
   stylelint-config-standard-scss: ^17.0.0
   stylelint-config-standard-vue: ^1.0.0
@@ -101,7 +101,7 @@ catalog:
   vue-esign: ^1.1.4
   vue-router: ^5.1.0
   vue-sonner: ^2.0.9
-  vue-tsc: ^3.3.3
+  vue-tsc: ^3.3.4
   zod: ^4.4.3
 catalogs:
   nut-ui:
@@ -111,5 +111,8 @@ catalogs:
     '@varlet/touch-emulator': ^3.17.1
     '@varlet/ui': ^3.17.1
 allowBuilds:
+  '@parcel/watcher': true
+  core-js: true
   esbuild: true
+  simple-git-hooks: true
   vue-demi: true
