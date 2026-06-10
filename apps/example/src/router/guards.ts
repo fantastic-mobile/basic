@@ -79,14 +79,14 @@ function setupKeepAlive(router: Router) {
             shouldClear = to.meta.keepAlive !== from.name
           }
           else if (Array.isArray(to.meta.keepAlive)) {
-            shouldClear = !to.meta.keepAlive.includes(from.name)
+            shouldClear = !(to.meta.keepAlive as string[]).includes(from.name as string)
           }
           if (to.meta.noKeepAlive) {
             if (typeof to.meta.noKeepAlive === 'string') {
               shouldClear = to.meta.noKeepAlive === from.name
             }
             else if (Array.isArray(to.meta.noKeepAlive)) {
-              shouldClear = to.meta.noKeepAlive.includes(from.name)
+              shouldClear = (to.meta.noKeepAlive as string[]).includes(from.name as string)
             }
           }
           if (shouldClear) {
