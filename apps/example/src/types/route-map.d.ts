@@ -20,8 +20,9 @@ import type {
 
 declare module 'vue-router' {
   interface TypesConfig {
-    ParamParsers:
-      | never
+    _ParamParsers: {}
+    RouteNamedMap: import('vue-router/auto-routes').RouteNamedMap
+    _RouteFileInfoMap: import('vue-router/auto-routes')._RouteFileInfoMap
   }
 }
 
@@ -384,17 +385,23 @@ declare module 'vue-router/auto-routes' {
         | '/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/[...all].vue': {
       routes:
         | '/[...all]'
       views:
         | never
+      pathParamNames:
+        | 'all'
     }
     'src/views/feature/index.vue': {
       routes:
         | '/feature/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/basic.vue': {
@@ -402,11 +409,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/basic'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/alert/index.vue': {
       routes:
         | '/feature/component/built_in/alert/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/avatar/index.vue': {
@@ -414,11 +425,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/avatar/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/badge/index.vue': {
       routes:
         | '/feature/component/built_in/badge/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/button/index.vue': {
@@ -426,11 +441,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/button/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/button_group/index.vue': {
       routes:
         | '/feature/component/built_in/button_group/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/card/index.vue': {
@@ -438,11 +457,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/card/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/checkbox/index.vue': {
       routes:
         | '/feature/component/built_in/checkbox/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/checkbox_group/index.vue': {
@@ -450,11 +473,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/checkbox_group/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/divider/index.vue': {
       routes:
         | '/feature/component/built_in/divider/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/divider/demo1.vue': {
@@ -462,11 +489,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/divider/demo1'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/drawer/index.vue': {
       routes:
         | '/feature/component/built_in/drawer/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/input/index.vue': {
@@ -474,11 +505,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/input/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/loading/index.vue': {
       routes:
         | '/feature/component/built_in/loading/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/modal/index.vue': {
@@ -486,11 +521,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/modal/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/page_main/index.vue': {
       routes:
         | '/feature/component/built_in/page_main/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/radio_group/index.vue': {
@@ -498,11 +537,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/radio_group/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/scroll_area/index.vue': {
       routes:
         | '/feature/component/built_in/scroll_area/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/select/index.vue': {
@@ -510,11 +553,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/select/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/slider/index.vue': {
       routes:
         | '/feature/component/built_in/slider/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/switch/index.vue': {
@@ -522,11 +569,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/switch/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/tabs/index.vue': {
       routes:
         | '/feature/component/built_in/tabs/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/built_in/toast/index.vue': {
@@ -534,11 +585,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/built_in/toast/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/component/built_in/trend/index.vue': {
       routes:
         | '/feature/component/built_in/trend/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/component/composite.vue': {
@@ -546,11 +601,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/component/composite'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/function/icon.vue': {
       routes:
         | '/feature/function/icon'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/function/keepAlive.vue': {
@@ -558,11 +617,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/function/keepAlive'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/function/unocss.vue': {
       routes:
         | '/feature/function/unocss'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/navbar/custom-area.vue': {
@@ -570,11 +633,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/navbar/custom-area'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/navbar/custom-navbar.vue': {
       routes:
         | '/feature/navbar/custom-navbar'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/navbar/default.vue': {
@@ -582,11 +649,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/navbar/default'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/navbar/none.vue': {
       routes:
         | '/feature/navbar/none'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/page/loadmore.vue': {
@@ -594,11 +665,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/page/loadmore'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/permission/index.vue': {
       routes:
         | '/feature/permission/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/permission/test.vue': {
@@ -606,11 +681,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/permission/test'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/plugin/animation.vue': {
       routes:
         | '/feature/plugin/animation'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/plugin/echarts.vue': {
@@ -618,11 +697,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/plugin/echarts'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/plugin/esign.vue': {
       routes:
         | '/feature/plugin/esign'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/plugin/swiper.vue': {
@@ -630,11 +713,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/plugin/swiper'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/plugin/vchart.vue': {
       routes:
         | '/feature/plugin/vchart'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/feature/tabbar/custom-area.vue': {
@@ -642,11 +729,15 @@ declare module 'vue-router/auto-routes' {
         | '/feature/tabbar/custom-area'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/feature/tabbar/default.vue': {
       routes:
         | '/feature/tabbar/default'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/views/login.vue': {
@@ -654,17 +745,23 @@ declare module 'vue-router/auto-routes' {
         | 'login'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/reload.vue': {
       routes:
         | 'reload'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/views/user/index.vue': {
       routes:
         | '/user/'
       views:
+        | never
+      pathParamNames:
         | never
     }
   }

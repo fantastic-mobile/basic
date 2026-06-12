@@ -14,12 +14,12 @@ catalog:
   '@antfu/eslint-config': ^9.0.0
   '@clack/prompts': ^1.5.1
   '@faker-js/faker': ^10.4.0
-  '@iconify/json': ^2.2.484
+  '@iconify/json': ^2.2.485
   '@iconify/vue': ^5.0.1
   '@lucide/vue': ^1.17.0
   '@spiriit/vite-plugin-svg-spritemap': ^7.0.0
   '@stylistic/stylelint-config': ^5.0.0
-  '@types/node': ^25.9.2
+  '@types/node': ^25.9.3
   '@types/nprogress': ^0.2.3
   '@types/qs': ^6.15.1
   '@unocss/core': ^66.7.0
@@ -53,7 +53,7 @@ catalog:
   http-server: ^14.1.1
   lint-staged: ^17.0.7
   mitt: ^3.0.1
-  npm-run-all2: ^8.0.4
+  npm-run-all2: ^9.0.1
   nprogress: ^0.2.0
   overlayscrollbars-vue: ^0.5.10
   path-browserify: ^1.0.1
@@ -64,7 +64,7 @@ catalog:
   postcss-mobile-forever: ^5.0.0
   postcss-nested: ^7.0.2
   qs: ^6.15.2
-  reka-ui: ^2.9.9
+  reka-ui: ^2.9.10
   sass-embedded: ^1.100.0
   simple-git-hooks: ^2.13.1
   spinkit: ^2.0.1
@@ -97,7 +97,7 @@ catalog:
   vite-plugin-pages: ^0.33.3
   vite-plugin-qrcode: ^0.4.1
   vite-plugin-vue-devtools: ^8.1.2
-  vue: ^3.5.35
+  vue: ^3.5.38
   vue-esign: ^1.1.4
   vue-router: ^5.1.0
   vue-sonner: ^2.0.9
