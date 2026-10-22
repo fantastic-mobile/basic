@@ -20,7 +20,7 @@ const checked = ref(false)
         <FmIcon name="https://fantastic-mobile.hurui.me/logo.png" class="text-8" />
       </div>
       <div class="flex-center flex-1">
-        <FmIcon name="https://one-step-admin.hurui.me/logo.png" class="text-8" />
+        <FmIcon name="https://one-step-console.hurui.me/logo.png" class="text-8" />
       </div>
     </template>
     <div class="p-4 flex flex-col gap-4">
