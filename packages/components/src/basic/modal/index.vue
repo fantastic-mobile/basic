@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { VNode } from 'vue'
 import type { ModalEmits, ModalProps } from '.'
+import { cn } from 'cn'
 import { VisuallyHidden } from 'reka-ui'
 import { computed, nextTick, ref, shallowRef, useId, useTemplateRef, watch } from 'vue'
-import { cn } from '#utils'
 import Button from '../button/index.vue'
 import Icon from '../icon/index.vue'
 import {

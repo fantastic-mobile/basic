@@ -45,8 +45,34 @@ const props = withDefaults(
   },
 )
 
-const fieldProps = computed(() => pick(props, ['label', 'name', 'id', 'size', 'placeholder', 'border', 'colon', 'required', 'center', 'arrowDirection', 'labelClass', 'labelWidth', 'labelAlign', 'leftIcon', 'rightIcon', 'rules']))
-const calendarProps = computed(() => pick(props, ['color', 'minDate', 'maxDate', 'formatter', 'showConfirm', 'confirmText', 'firstDayOfWeek', 'round']))
+const fieldProps = computed(() => pick(props, [
+  'label',
+  'name',
+  'id',
+  'size',
+  'placeholder',
+  'border',
+  'colon',
+  'required',
+  'center',
+  'arrowDirection',
+  'labelClass',
+  'labelWidth',
+  'labelAlign',
+  'leftIcon',
+  'rightIcon',
+  'rules',
+]))
+const calendarProps = computed(() => pick(props, [
+  'color',
+  'minDate',
+  'maxDate',
+  'formatter',
+  'showConfirm',
+  'confirmText',
+  'firstDayOfWeek',
+  'round',
+]))
 
 const value = defineModel<string>()
 const valueStr = computed(() => value.value && dayjs(value.value).format(props.format))

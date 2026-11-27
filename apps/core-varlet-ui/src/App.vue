@@ -11,7 +11,11 @@ const { auth } = useAppAuth()
 
 const isAuth = computed(() => {
   return route.matched.every((item) => {
-    return item.meta.auth ? (item.meta.auth === true ? true : auth(item.meta.auth)) : true
+    return item.meta.auth
+      ? (item.meta.auth === true
+          ? true
+          : auth(item.meta.auth))
+      : true
   })
 })
 

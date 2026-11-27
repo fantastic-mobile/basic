@@ -2,8 +2,8 @@
 import type { AcceptableValue, SelectContentProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import { useTextDirection } from '@vueuse/core'
+import { cn } from 'cn'
 import { computed, watch } from 'vue'
-import { cn } from '#utils'
 import {
   Select,
   SelectContent,
@@ -80,7 +80,9 @@ const selectedOption = computed({
 
       if (Object.hasOwn(firstOption, 'options')) {
         const group = firstOption as GroupOption
-        return group.options && group.options.length > 0 ? group.options[0] : null
+        return group.options && group.options.length > 0
+          ? group.options[0]
+          : null
       }
       else {
         return firstOption as Option

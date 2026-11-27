@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends string | number">
 import type { HTMLAttributes, VNode } from 'vue'
+import { cn } from 'cn'
 import { omit } from 'es-toolkit'
 import { computed, ref, useTemplateRef } from 'vue'
-import { cn } from '#utils'
 import Button from '../button/index.vue'
 import Icon from '../icon/index.vue'
 import { Input } from './input'

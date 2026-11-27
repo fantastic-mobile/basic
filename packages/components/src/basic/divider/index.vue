@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
-import { cn } from '#utils'
+import { cn } from 'cn'
 
 defineOptions({
   name: 'BuiltInDivider',

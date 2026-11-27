@@ -66,7 +66,9 @@ export function useDrawer() {
 
     const updateVNode = () => {
       vnode = createVNode(Drawer, Object.assign({
-        'id': instance && instance.uid ? `FmDrawer-${instance.uid}` : undefined,
+        'id': instance && instance.uid
+          ? `FmDrawer-${instance.uid}`
+          : undefined,
         'modelValue': visible.value,
         'onUpdate:modelValue': (val: boolean) => {
           visible.value = val
@@ -121,7 +123,10 @@ export function useDrawer() {
       visible.value = false
     }
     const update = (newOptions: BaseOptions) => {
-      options.value = { ...options.value, ...newOptions }
+      options.value = {
+        ...options.value,
+        ...newOptions,
+      }
     }
     return {
       open,

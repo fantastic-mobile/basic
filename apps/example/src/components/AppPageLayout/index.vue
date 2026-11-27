@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { useElementSize, useScroll } from '@vueuse/core'
-import { cn } from '../../utils'
+import { cn } from 'cn'
 
 defineOptions({
   name: 'AppPageLayout',

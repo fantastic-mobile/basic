@@ -15,7 +15,9 @@ declare module 'axios' {
 }
 
 const api = axios.create({
-  baseURL: (import.meta.env.DEV && import.meta.env.VITE_ENABLE_PROXY) ? '/proxy/' : import.meta.env.VITE_APP_API_BASEURL,
+  baseURL: (import.meta.env.DEV && import.meta.env.VITE_ENABLE_PROXY)
+    ? '/proxy/'
+    : import.meta.env.VITE_APP_API_BASEURL,
   timeout: 1000 * 60,
   responseType: 'json',
 })

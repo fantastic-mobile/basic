@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { useElementSize, useTextDirection } from '@vueuse/core'
+import { cn } from 'cn'
 import { onMounted, useTemplateRef, watch } from 'vue'
-import { cn } from '#utils'
 import { ScrollArea, ScrollBar } from './scroll-area'
 
 defineOptions({

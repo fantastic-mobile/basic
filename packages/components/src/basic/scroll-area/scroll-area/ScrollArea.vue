@@ -2,13 +2,13 @@
 import type { ScrollAreaRootProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
+import { cn } from 'cn'
 import {
   ScrollAreaCorner,
   ScrollAreaRoot,
   ScrollAreaViewport,
 } from 'reka-ui'
 import { useTemplateRef } from 'vue'
-import { cn } from '#utils'
 import ScrollBar from './ScrollBar.vue'
 
 const props = defineProps<ScrollAreaRootProps & {

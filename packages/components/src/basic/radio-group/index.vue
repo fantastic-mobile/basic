@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="TOption extends RadioGroupOption">
 import type { AcceptableValue, RadioGroupRootProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
+import { cn } from 'cn'
 import { useId, watch } from 'vue'
-import { cn } from '#utils'
 import { Label } from '../label/label'
 import { RadioGroup, RadioGroupItem } from './radio-group'
 

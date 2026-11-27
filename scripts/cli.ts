@@ -243,7 +243,9 @@ async function selectApps(apps: AppInfo[], message: string, selectionMode: ModeC
     options: getAppChoices(apps),
   }))
 
-  return [getAppByPackageName(apps, selectedPackageName)]
+  return [
+    getAppByPackageName(apps, selectedPackageName),
+  ]
 }
 
 async function runSelectedApps(apps: AppInfo[], config: ModeConfig, showRunMessage: boolean): Promise<void> {

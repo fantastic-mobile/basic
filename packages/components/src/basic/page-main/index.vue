@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
+import { cn } from 'cn'
 import { ref } from 'vue'
-import { cn } from '#utils'
 import Button from '../button/index.vue'
 import Icon from '../icon/index.vue'
 

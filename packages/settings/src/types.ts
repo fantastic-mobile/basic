@@ -1,4 +1,4 @@
-import type { RouteNamedMap } from 'vue-router/auto-routes'
+import type { RouteMap } from 'vue-router'
 
 // Internal helper types
 type ThemeColorScheme = '' | 'light' | 'dark'
@@ -51,9 +51,10 @@ export interface NavbarSettings {
   enable?: boolean
 }
 
-// Internal tabbar helper types
 interface TabbarListItem {
-  path: keyof RouteNamedMap
+  path: string extends RouteMap[keyof RouteMap]['path']
+    ? never
+    : RouteMap[keyof RouteMap]['path']
   icon?: string
   activeIcon?: string
   text?: string

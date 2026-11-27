@@ -19,7 +19,12 @@ definePage({
 
 const show = ref(false)
 
-const modules = [Navigation, Pagination, Scrollbar, A11y]
+const modules = [
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+]
 </script>
 
 <template>

@@ -40,23 +40,26 @@ export default defineConfig({
     },
   ],
   shortcuts: [
-    [/^flex-?(col)?-(start|end|center|baseline|stretch)-?(start|end|center|between|around|evenly|left|right)?$/, ([, col, items, justify]) => {
-      const cls = ['flex']
-      if (col === 'col') {
-        cls.push('flex-col')
-      }
-      if (items === 'center' && !justify) {
-        cls.push('items-center')
-        cls.push('justify-center')
-      }
-      else {
-        cls.push(`items-${items}`)
-        if (justify) {
-          cls.push(`justify-${justify}`)
+    [
+      /^flex-?(col)?-(start|end|center|baseline|stretch)-?(start|end|center|between|around|evenly|left|right)?$/,
+      ([, col, items, justify]) => {
+        const cls = ['flex']
+        if (col === 'col') {
+          cls.push('flex-col')
         }
-      }
-      return cls.join(' ')
-    }],
+        if (items === 'center' && !justify) {
+          cls.push('items-center')
+          cls.push('justify-center')
+        }
+        else {
+          cls.push(`items-${items}`)
+          if (justify) {
+            cls.push(`justify-${justify}`)
+          }
+        }
+        return cls.join(' ')
+      },
+    ],
   ],
   presets: [
     presetWind4({

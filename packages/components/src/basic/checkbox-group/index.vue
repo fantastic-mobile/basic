@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="TOption extends CheckboxGroupOption">
 import type { AcceptableValue } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
+import { cn } from 'cn'
 import { computed, useId, watch } from 'vue'
-import { cn } from '#utils'
 import { Checkbox } from '../checkbox/checkbox'
 import { Label } from '../label/label'
 

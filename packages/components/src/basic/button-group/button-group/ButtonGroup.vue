@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { ButtonGroupVariants } from '.'
-import { cn } from '#utils'
+import { cn } from 'cn'
 import { buttonGroupVariants } from '.'
 
 const props = defineProps<{

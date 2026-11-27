@@ -59,7 +59,7 @@ watch(() => appAuthStore.avatar, () => {
         <div class="rounded-lg bg-card flex flex-col">
           <div class="p-4 border-b border-b-([var(--g-bg)] solid) flex gap-2 items-center last:border-b-none">
             <div class="p-2 rounded-full bg-[#fae9eb] flex-center inline-flex">
-              <FmIcon name="i-carbon:thumbs-up" class="text-4 text-[#53b7ad]" />
+              <FmIcon name="i-carbon:thumbs-up" class="text-[#53b7ad] text-4" />
             </div>
             点赞
             <div class="font-mono ms-auto flex gap-2 items-center">
@@ -69,7 +69,7 @@ watch(() => appAuthStore.avatar, () => {
           </div>
           <div class="p-4 border-b border-b-([var(--g-bg)] solid) flex gap-2 items-center last:border-b-none">
             <div class="p-2 rounded-full bg-[#fae9eb] flex-center inline-flex">
-              <FmIcon name="i-carbon:favorite" class="text-4 text-[#6ecc84]" />
+              <FmIcon name="i-carbon:favorite" class="text-[#6ecc84] text-4" />
             </div>
             收藏
             <div class="font-mono ms-auto flex gap-2 items-center">
@@ -79,7 +79,7 @@ watch(() => appAuthStore.avatar, () => {
           </div>
           <div class="p-4 border-b border-b-([var(--g-bg)] solid) flex gap-2 items-center last:border-b-none">
             <div class="p-2 rounded-full bg-[#fae9eb] flex-center inline-flex">
-              <FmIcon name="i-carbon:share" class="text-4 text-[#4580dd]" />
+              <FmIcon name="i-carbon:share" class="text-[#4580dd] text-4" />
             </div>
             分享
             <div class="font-mono ms-auto flex gap-2 items-center">

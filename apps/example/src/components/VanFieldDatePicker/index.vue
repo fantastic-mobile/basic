@@ -33,14 +33,38 @@ const props = defineProps<{
   formatter?: DatePickerProps['formatter']
 }>()
 
-const fieldProps = computed(() => pick(props, ['label', 'name', 'id', 'size', 'placeholder', 'border', 'colon', 'required', 'center', 'arrowDirection', 'labelClass', 'labelWidth', 'labelAlign', 'leftIcon', 'rightIcon', 'rules']))
+const fieldProps = computed(() => pick(props, [
+  'label',
+  'name',
+  'id',
+  'size',
+  'placeholder',
+  'border',
+  'colon',
+  'required',
+  'center',
+  'arrowDirection',
+  'labelClass',
+  'labelWidth',
+  'labelAlign',
+  'leftIcon',
+  'rightIcon',
+  'rules',
+]))
 const popupProps = computed(() => pick(props, ['round']))
-const datePickerProps = computed(() => pick(props, ['columnsType', 'minDate', 'maxDate', 'formatter']))
+const datePickerProps = computed(() => pick(props, [
+  'columnsType',
+  'minDate',
+  'maxDate',
+  'formatter',
+]))
 
 const value = defineModel<string[]>()
 const valueDate = ref<string[]>(value.value ?? [])
 const valueStr = computed(() => {
-  return value.value ? value.value.join('-') : ''
+  return value.value
+    ? value.value.join('-')
+    : ''
 })
 
 const showPicker = ref(false)

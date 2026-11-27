@@ -29,7 +29,9 @@ const props = withDefaults(
 const isUp = computed(() => props.type === 'up')
 
 const isColorUp = computed(() => {
-  return props.reverse ? !isUp.value : isUp.value
+  return props.reverse
+    ? !isUp.value
+    : isUp.value
 })
 
 const sizeClasses = {

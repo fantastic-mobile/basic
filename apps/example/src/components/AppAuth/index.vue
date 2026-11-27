@@ -10,7 +10,9 @@ const props = defineProps<{
 
 const isCheck = computed(() => {
   return props.all
-    ? useAppAuth().authAll(typeof props.value === 'string' ? [props.value] : props.value)
+    ? useAppAuth().authAll(typeof props.value === 'string'
+        ? [props.value]
+        : props.value)
     : useAppAuth().auth(props.value)
 })
 </script>

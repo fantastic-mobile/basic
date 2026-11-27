@@ -2,8 +2,8 @@
 import type { TabsContentProps, TabsRootProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import { useTextDirection } from '@vueuse/core'
+import { cn } from 'cn'
 import { ref, watch } from 'vue'
-import { cn } from '#utils'
 import Icon from '../icon/index.vue'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs'
 

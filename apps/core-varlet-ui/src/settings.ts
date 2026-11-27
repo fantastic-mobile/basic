@@ -11,7 +11,7 @@ export default setSettings({
         text: '主页',
       },
       {
-        path: '/user/',
+        path: '/user',
         icon: 'i-ic:baseline-person',
         activeIcon: 'i-ic:twotone-person',
         text: '我的',

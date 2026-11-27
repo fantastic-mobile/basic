@@ -21,7 +21,9 @@ const buttonItems = ref<any>([])
 onMounted(() => {
   // 主动捕获默认槽位中提供的所有内容
   watchEffect(() => {
-    buttonItems.value = slots.default ? slots.default() : []
+    buttonItems.value = slots.default
+      ? slots.default()
+      : []
   })
 })
 </script>

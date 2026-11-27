@@ -32,7 +32,26 @@ const props = defineProps<{
   columns?: PickerOption[]
 }>()
 
-const fieldProps = computed(() => pick(props, ['label', 'name', 'id', 'type', 'size', 'placeholder', 'border', 'colon', 'required', 'center', 'arrowDirection', 'labelClass', 'labelWidth', 'labelAlign', 'autosize', 'leftIcon', 'rightIcon', 'rules']))
+const fieldProps = computed(() => pick(props, [
+  'label',
+  'name',
+  'id',
+  'type',
+  'size',
+  'placeholder',
+  'border',
+  'colon',
+  'required',
+  'center',
+  'arrowDirection',
+  'labelClass',
+  'labelWidth',
+  'labelAlign',
+  'autosize',
+  'leftIcon',
+  'rightIcon',
+  'rules',
+]))
 const popupProps = computed(() => pick(props, ['round']))
 const pickerProps = computed(() => pick(props, ['columns']))
 

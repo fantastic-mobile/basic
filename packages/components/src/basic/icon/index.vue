@@ -2,8 +2,8 @@
 import type { HTMLAttributes } from 'vue'
 import { Icon } from '@iconify/vue'
 import { UseImage } from '@vueuse/components'
+import { cn } from 'cn'
 import { computed, defineComponent, h, Transition } from 'vue'
-import { cn } from '#utils'
 
 defineOptions({
   name: 'BuiltInIcon',

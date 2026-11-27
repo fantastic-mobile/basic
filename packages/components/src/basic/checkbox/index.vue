@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { CheckboxRootProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
+import { cn } from 'cn'
 import { computed, useId, watch } from 'vue'
-import { cn } from '#utils'
 import { Label } from '../label/label'
 import { Checkbox } from './checkbox'
 

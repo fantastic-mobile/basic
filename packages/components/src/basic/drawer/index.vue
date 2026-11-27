@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { VNode } from 'vue'
 import type { DrawerEmits, DrawerProps } from '.'
+import { cn } from 'cn'
 import { VisuallyHidden } from 'reka-ui'
 import { computed, ref, shallowRef, useId, watch } from 'vue'
-import { cn } from '#utils'
 import Button from '../button/index.vue'
 import Icon from '../icon/index.vue'
 import {

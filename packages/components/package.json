@@ -2,9 +2,6 @@
   "name": "@fantastic-mobile/components",
   "type": "module",
   "version": "0.0.0",
-  "imports": {
-    "#utils": "./src/utils.ts"
-  },
   "exports": {
     ".": "./src/index.ts",
     "./resolver": "./resolver.ts"
@@ -29,11 +26,10 @@
     "@iconify/vue": "catalog:",
     "@lucide/vue": "catalog:",
     "class-variance-authority": "catalog:",
-    "clsx": "catalog:",
+    "cn": "catalog:",
     "es-toolkit": "catalog:",
     "reka-ui": "catalog:",
     "spinkit": "catalog:",
-    "tailwind-merge": "catalog:",
     "vue-sonner": "catalog:"
   }
 }
